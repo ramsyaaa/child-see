@@ -110,13 +110,13 @@
                 <p class="text-muted small mb-3">Tipe <strong>Ya/Tidak</strong> menggunakan 3 opsi standar:</p>
                 <div class="d-flex flex-column gap-2">
                     <div class="border rounded p-2 d-flex justify-content-between align-items-center">
-                        <span>Tidak Pernah</span><span class="badge bg-success">0</span>
+                        <span>Tidak</span><span class="badge bg-success">0</span>
                     </div>
                     <div class="border rounded p-2 d-flex justify-content-between align-items-center">
-                        <span>Kadang-Kadang</span><span class="badge bg-warning text-dark">1</span>
+                        <span>Ragu-Ragu</span><span class="badge bg-warning text-dark">1</span>
                     </div>
                     <div class="border rounded p-2 d-flex justify-content-between align-items-center">
-                        <span>Sering</span><span class="badge bg-danger">2</span>
+                        <span>Iya</span><span class="badge bg-danger">2</span>
                     </div>
                 </div>
                 <small class="text-muted d-block mt-2">Pilihan ini hanya baca-saja dan ditentukan sistem.</small>

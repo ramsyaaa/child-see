@@ -246,9 +246,9 @@ class MasterDataSeeder extends Seeder
     // ─────────────────────────────────────────────────
     private function addYesNoOptions(Questionnaire $q): void {
         $options = [
-            ['label' => 'Tidak Pernah', 'value' => 'never',     'score' => 0, 'sort_order' => 1],
-            ['label' => 'Kadang-Kadang','value' => 'sometimes',  'score' => 1, 'sort_order' => 2],
-            ['label' => 'Sering',       'value' => 'often',      'score' => 2, 'sort_order' => 3],
+            ['label' => 'Tidak',    'value' => 'never',    'score' => 0, 'sort_order' => 1],
+            ['label' => 'Ragu-Ragu','value' => 'sometimes','score' => 1, 'sort_order' => 2],
+            ['label' => 'Iya',      'value' => 'often',    'score' => 2, 'sort_order' => 3],
         ];
         foreach ($options as $o) {
             AnswerOption::updateOrCreate(

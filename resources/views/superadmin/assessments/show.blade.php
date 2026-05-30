@@ -204,11 +204,11 @@
                                 <td>
                                     @php $sc = $ans->score ?? 0; @endphp
                                     @if($sc == 0)
-                                        <span class="badge bg-secondary">Tidak Pernah</span>
+                                        <span class="badge bg-secondary">Tidak</span>
                                     @elseif($sc == 1)
-                                        <span class="badge bg-warning text-dark">Kadang-Kadang</span>
+                                        <span class="badge bg-warning text-dark">Ragu-Ragu</span>
                                     @else
-                                        <span class="badge bg-danger">Sering</span>
+                                        <span class="badge bg-danger">Iya</span>
                                     @endif
                                 </td>
                                 <td><strong>{{ $ans->score }}</strong></td>
