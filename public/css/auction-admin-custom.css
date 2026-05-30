@@ -1,0 +1,823 @@
+/* ===================================
+   Auction System Admin Custom Styles
+   =================================== */
+
+/* ===================================
+   1. PAGINATION STYLING
+   =================================== */
+.pagination {
+    margin: 20px 0;
+    justify-content: center;
+}
+
+.pagination .page-item {
+    margin: 0 2px;
+}
+
+.pagination .page-link {
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    color: #6c757d;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.pagination .page-link:hover {
+    background-color: #f8f9fa;
+    border-color: #adb5bd;
+    color: #495057;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #ff7753;
+    border-color: #ff7753;
+    color: white;
+    box-shadow: 0 2px 4px rgba(114, 28, 36, 0.3);
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #adb5bd;
+    background-color: #fff;
+    border-color: #dee2e6;
+    cursor: not-allowed;
+}
+
+.pagination .page-link:focus {
+    box-shadow: 0 0 0 0.2rem rgba(114, 28, 36, 0.25);
+    border-color: #ff7753;
+}
+
+/* Pagination info text */
+.pagination-info {
+    color: #6c757d;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* ===================================
+   2. BURGUNDY COLOR SCHEME
+   =================================== */
+
+/* Primary burgundy color variables */
+:root {
+    --burgundy-primary: #ff7753;
+    --burgundy-secondary: #8b2635;
+    --burgundy-light: #a13042;
+    --burgundy-dark: #5a161c;
+    --burgundy-hover: #9d2a3a;
+}
+
+/* Primary buttons */
+.btn-primary {
+    background-color: var(--burgundy-primary) !important;
+    border-color: var(--burgundy-primary) !important;
+    color: white !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    background-color: var(--burgundy-hover) !important;
+    border-color: var(--burgundy-hover) !important;
+    color: white !important;
+    box-shadow: 0 4px 8px rgba(114, 28, 36, 0.3) !important;
+}
+
+/* Outline primary buttons */
+.btn-outline-primary {
+    color: var(--burgundy-primary) !important;
+    border-color: var(--burgundy-primary) !important;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary:active {
+    background-color: var(--burgundy-primary) !important;
+    border-color: var(--burgundy-primary) !important;
+    color: white !important;
+}
+
+/* Navigation sidebar active states */
+.pc-navbar .pc-item.active > .pc-link,
+.pc-navbar .pc-item.active .pc-link {
+    background-color: var(--burgundy-primary) !important;
+    color: white !important;
+}
+
+.pc-navbar .pc-item.active > .pc-link:before,
+.pc-navbar .pc-item.active .pc-link:before {
+    background-color: var(--burgundy-light) !important;
+}
+
+/* Badge colors for status indicators */
+.badge-primary {
+    background-color: var(--burgundy-primary) !important;
+    color: white !important;
+}
+
+.badge-danger {
+    background-color: var(--burgundy-dark) !important;
+    color: white !important;
+}
+
+/* Card headers and accent colors */
+.card-header {
+    border-bottom: 2px solid var(--burgundy-primary) !important;
+}
+
+.card-title {
+    color: var(--burgundy-primary) !important;
+    font-weight: 600 !important;
+}
+
+/* Links and hover states */
+a {
+    color: var(--burgundy-primary) !important;
+}
+
+a:hover {
+    color: var(--burgundy-hover) !important;
+}
+
+/* Breadcrumb active color */
+.breadcrumb-item.active {
+    color: var(--burgundy-primary) !important;
+}
+
+/* Form focus states */
+.form-control:focus {
+    border-color: var(--burgundy-primary) !important;
+    box-shadow: 0 0 0 0.2rem rgba(114, 28, 36, 0.25) !important;
+}
+
+/* Table hover effects */
+.table-hover tbody tr:hover {
+    background-color: rgba(114, 28, 36, 0.05) !important;
+}
+
+/* ===================================
+   3. CURRENCY FORMATTING
+   =================================== */
+.currency-idr {
+    font-weight: 600;
+    color: var(--burgundy-primary);
+}
+
+.currency-large {
+    font-size: 1.2em;
+    font-weight: 700;
+}
+
+/* ===================================
+   4. VIRTUAL ACCOUNT MODAL STYLING
+   =================================== */
+.modal-header {
+    background-color: var(--burgundy-primary) !important;
+    color: white !important;
+    border-bottom: none !important;
+}
+
+.modal-header .btn-close {
+    filter: invert(1) !important;
+}
+
+.modal-title {
+    color: white !important;
+    font-weight: 600 !important;
+}
+
+.va-quick-action-btn {
+    background-color: var(--burgundy-secondary) !important;
+    border-color: var(--burgundy-secondary) !important;
+    color: white !important;
+    font-size: 12px !important;
+    padding: 4px 8px !important;
+    border-radius: 4px !important;
+}
+
+.va-quick-action-btn:hover {
+    background-color: var(--burgundy-hover) !important;
+    border-color: var(--burgundy-hover) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* ===================================
+   5. ENHANCED UI COMPONENTS
+   =================================== */
+
+/* Enhanced card styling */
+.card {
+    border: 1px solid rgba(114, 28, 36, 0.1) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+    transition: all 0.3s ease !important;
+}
+
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Enhanced button styling */
+.btn {
+    border-radius: 6px !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn:hover {
+    transform: translateY(-1px) !important;
+}
+
+/* Enhanced table styling */
+.table th {
+    background-color: rgba(114, 28, 36, 0.05) !important;
+    color: var(--burgundy-primary) !important;
+    font-weight: 600 !important;
+    border-bottom: 2px solid var(--burgundy-primary) !important;
+}
+
+/* Status badge enhancements */
+.badge {
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    padding: 4px 8px !important;
+    border-radius: 4px !important;
+}
+
+/* Badge color variants with proper text contrast */
+.badge-success {
+    background-color: #28a745 !important;
+    color: white !important;
+}
+
+.badge-danger {
+    background-color: #dc3545 !important;
+    color: white !important;
+}
+
+.badge-warning {
+    background-color: #ffc107 !important;
+    color: #333 !important;
+}
+
+.badge-info {
+    background-color: #17a2b8 !important;
+    color: white !important;
+}
+
+.badge-secondary {
+    background-color: #6c757d !important;
+    color: white !important;
+}
+
+.badge-light {
+    background-color: #f8f9fa !important;
+    color: #333 !important;
+}
+
+.badge-dark {
+    background-color: #343a40 !important;
+    color: white !important;
+}
+
+/* Quick action buttons in tables */
+.avtar.btn-link-success {
+    background-color: rgba(40, 167, 69, 0.1) !important;
+    color: #28a745 !important;
+}
+
+.avtar.btn-link-danger {
+    background-color: rgba(114, 28, 36, 0.1) !important;
+    color: var(--burgundy-primary) !important;
+}
+
+.avtar.btn-link-secondary {
+    background-color: rgba(108, 117, 125, 0.1) !important;
+    color: #6c757d !important;
+}
+
+/* ===================================
+   6. VIEW TOGGLE AND SEARCH STYLING
+   =================================== */
+
+/* View Toggle Buttons */
+.btn-group .btn.active {
+    background-color: var(--burgundy-primary) !important;
+    border-color: var(--burgundy-primary) !important;
+    color: white !important;
+}
+
+.btn-group .btn:not(.active) {
+    background-color: transparent !important;
+    border-color: var(--burgundy-primary) !important;
+    color: var(--burgundy-primary) !important;
+}
+
+.btn-group .btn:not(.active):hover {
+    background-color: rgba(114, 28, 36, 0.1) !important;
+    border-color: var(--burgundy-primary) !important;
+    color: var(--burgundy-primary) !important;
+}
+
+/* Enhanced Search Filters */
+#searchFilters .input-group-text {
+    background-color: var(--burgundy-primary) !important;
+    border-color: var(--burgundy-primary) !important;
+    color: white !important;
+}
+
+#searchFilters .form-control {
+    border-color: var(--burgundy-primary) !important;
+}
+
+#searchFilters .form-control:focus {
+    border-color: var(--burgundy-primary) !important;
+    box-shadow: 0 0 0 0.2rem rgba(114, 28, 36, 0.25) !important;
+}
+
+/* View Container Transitions */
+.view-container {
+    transition: all 0.3s ease !important;
+}
+
+/* Clear Filters Button */
+.clear-filters-btn {
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
+    color: white !important;
+}
+
+.clear-filters-btn:hover {
+    background-color: #5a6268 !important;
+    border-color: #545b62 !important;
+}
+
+/* ===================================
+   7. ENHANCED TABLE STYLING
+   =================================== */
+
+/* DataTables wrapper styling */
+.dataTables_wrapper {
+    padding: 0 !important;
+}
+
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_paginate {
+    margin-bottom: 15px !important;
+}
+
+/* Search box styling */
+.dataTables_filter input {
+    border: 1px solid var(--burgundy-primary) !important;
+    border-radius: 6px !important;
+    padding: 8px 12px !important;
+    margin-left: 8px !important;
+}
+
+.dataTables_filter input:focus {
+    box-shadow: 0 0 0 0.2rem rgba(114, 28, 36, 0.25) !important;
+    border-color: var(--burgundy-primary) !important;
+}
+
+/* Length selector styling */
+.dataTables_length select {
+    border: 1px solid var(--burgundy-primary) !important;
+    border-radius: 6px !important;
+    padding: 4px 8px !important;
+    margin: 0 8px !important;
+}
+
+/* Enhanced table styling */
+.table-enhanced {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+}
+
+.table-enhanced thead th {
+    background: linear-gradient(
+        135deg,
+        var(--burgundy-primary),
+        var(--burgundy-secondary)
+    ) !important;
+    color: white !important;
+    font-weight: 600 !important;
+    border: none !important;
+    padding: 15px 12px !important;
+    text-align: center !important;
+    position: relative !important;
+}
+
+.table-enhanced thead th:first-child {
+    border-top-left-radius: 8px !important;
+}
+
+.table-enhanced thead th:last-child {
+    border-top-right-radius: 8px !important;
+}
+
+.table-enhanced tbody td {
+    padding: 12px !important;
+    vertical-align: middle !important;
+    border-bottom: 1px solid rgba(114, 28, 36, 0.1) !important;
+    transition: all 0.3s ease !important;
+}
+
+.table-enhanced tbody tr:hover {
+    background-color: rgba(114, 28, 36, 0.05) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.table-enhanced tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 8px !important;
+}
+
+.table-enhanced tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 8px !important;
+}
+
+/* Sortable column indicators */
+.table-enhanced thead th.sorting,
+.table-enhanced thead th.sorting_asc,
+.table-enhanced thead th.sorting_desc {
+    cursor: pointer !important;
+    position: relative !important;
+}
+
+.table-enhanced thead th.sorting:after,
+.table-enhanced thead th.sorting_asc:after,
+.table-enhanced thead th.sorting_desc:after {
+    position: absolute !important;
+    right: 8px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Action buttons in tables */
+.table-actions {
+    display: flex !important;
+    gap: 4px !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+}
+
+.table-actions .btn {
+    font-size: 11px !important;
+    padding: 4px 8px !important;
+    border-radius: 4px !important;
+}
+
+/* Mobile responsive table */
+@media (max-width: 768px) {
+    .table-responsive {
+        border-radius: 8px !important;
+        border: 1px solid rgba(114, 28, 36, 0.1) !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+    .table-enhanced {
+        min-width: 800px !important;
+    }
+
+    .table-enhanced thead th,
+    .table-enhanced tbody td {
+        padding: 8px 6px !important;
+        font-size: 12px !important;
+        white-space: nowrap !important;
+    }
+
+    .table-actions {
+        flex-direction: row !important;
+        gap: 2px !important;
+        min-width: 120px !important;
+    }
+
+    .table-actions .btn {
+        font-size: 10px !important;
+        padding: 3px 6px !important;
+        min-width: 28px !important;
+    }
+
+    /* DataTables mobile controls */
+    .dataTables_wrapper .dataTables_length,
+    .dataTables_wrapper .dataTables_filter {
+        margin-bottom: 10px !important;
+    }
+
+    .dataTables_wrapper .dataTables_length select,
+    .dataTables_wrapper .dataTables_filter input {
+        font-size: 14px !important;
+        padding: 6px 8px !important;
+    }
+
+    .dataTables_paginate .paginate_button {
+        padding: 6px 8px !important;
+        font-size: 12px !important;
+        margin: 0 1px !important;
+    }
+}
+
+/* Extra small devices (phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .table-enhanced {
+        min-width: 600px !important;
+    }
+
+    .table-enhanced thead th,
+    .table-enhanced tbody td {
+        padding: 6px 4px !important;
+        font-size: 11px !important;
+    }
+
+    .table-actions .btn {
+        font-size: 9px !important;
+        padding: 2px 4px !important;
+        min-width: 24px !important;
+    }
+
+    .dataTables_wrapper .dataTables_info {
+        font-size: 12px !important;
+    }
+
+    .dataTables_paginate .paginate_button {
+        padding: 4px 6px !important;
+        font-size: 11px !important;
+    }
+}
+
+/* DataTables pagination styling - Override any conflicts */
+.dataTables_wrapper .dataTables_paginate {
+    margin-top: 15px !important;
+}
+
+.dataTables_paginate .paginate_button,
+.dataTables_paginate .paginate_button a {
+    border: 1px solid var(--burgundy-primary) !important;
+    border-radius: 6px !important;
+    color: var(--burgundy-primary) !important;
+    padding: 8px 12px !important;
+    margin: 0 2px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+    text-decoration: none !important;
+    background-color: white !important;
+    display: inline-block !important;
+}
+
+/* Ensure no conflicts with simple-datatables */
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    background: white !important;
+}
+
+.dataTables_paginate .paginate_button:hover:not(.current):not(.disabled) {
+    background-color: rgba(114, 28, 36, 0.1) !important;
+    border-color: var(--burgundy-primary) !important;
+    color: var(--burgundy-primary) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 2px 4px rgba(114, 28, 36, 0.2) !important;
+}
+
+.dataTables_paginate .paginate_button.current {
+    background-color: var(--burgundy-primary) !important;
+    border-color: var(--burgundy-primary) !important;
+    color: white !important;
+    box-shadow: 0 2px 4px rgba(114, 28, 36, 0.3) !important;
+    font-weight: 600 !important;
+}
+
+.dataTables_paginate .paginate_button.disabled {
+    color: #adb5bd !important;
+    background-color: #f8f9fa !important;
+    border-color: #dee2e6 !important;
+    cursor: not-allowed !important;
+    opacity: 0.6 !important;
+}
+
+/* DataTables info and length styling */
+.dataTables_wrapper .dataTables_info {
+    color: #6c757d !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+}
+
+.dataTables_wrapper .dataTables_length select {
+    border: 1px solid var(--burgundy-primary) !important;
+    border-radius: 6px !important;
+    color: var(--burgundy-primary) !important;
+    font-weight: 500 !important;
+}
+
+.dataTables_wrapper .dataTables_length select:focus {
+    border-color: var(--burgundy-primary) !important;
+    box-shadow: 0 0 0 0.2rem rgba(114, 28, 36, 0.25) !important;
+}
+
+/* Ensure DataTables overrides any simple-datatables styling */
+.dataTables_wrapper {
+    font-family: inherit !important;
+}
+
+.dataTables_wrapper table.dataTable {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+}
+
+/* Fix any potential conflicts with existing table styling */
+.table-enhanced.dataTable {
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+.table-enhanced.dataTable thead th {
+    border-bottom: 2px solid var(--burgundy-primary) !important;
+}
+
+.table-enhanced.dataTable tbody td {
+    border-top: 1px solid rgba(114, 28, 36, 0.1) !important;
+}
+
+/* ===================================
+   7. ACCORDION LAYOUT STYLING
+   =================================== */
+
+/* Accordion container */
+.admin-accordion {
+    margin-bottom: 20px;
+}
+
+/* Accordion item styling */
+.accordion-item {
+    border: 1px solid rgba(114, 28, 36, 0.1) !important;
+    border-radius: 8px !important;
+    margin-bottom: 10px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+    transition: all 0.3s ease !important;
+}
+
+.accordion-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Accordion header styling */
+.accordion-header {
+    border-radius: 8px !important;
+}
+
+.accordion-button {
+    background-color: rgba(114, 28, 36, 0.05) !important;
+    border: none !important;
+    color: var(--burgundy-primary) !important;
+    font-weight: 600 !important;
+    padding: 15px 20px !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease !important;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: var(--burgundy-primary) !important;
+    color: white !important;
+    box-shadow: none !important;
+}
+
+.accordion-button:focus {
+    box-shadow: 0 0 0 0.25rem rgba(114, 28, 36, 0.25) !important;
+    border-color: var(--burgundy-primary) !important;
+}
+
+.accordion-button::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23721c24'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+}
+
+/* Accordion body styling */
+.accordion-body {
+    padding: 20px !important;
+    background-color: #fff !important;
+    border-radius: 0 0 8px 8px !important;
+}
+
+/* Accordion header content layout */
+.accordion-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-right: 15px;
+}
+
+.accordion-header-main {
+    flex: 1;
+}
+
+.accordion-header-badges {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* Accordion detail rows */
+.accordion-detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.accordion-detail-row:last-child {
+    border-bottom: none;
+}
+
+.accordion-detail-label {
+    font-weight: 600;
+    color: var(--burgundy-primary);
+    min-width: 120px;
+}
+
+.accordion-detail-value {
+    flex: 1;
+    text-align: right;
+}
+
+/* Action buttons in accordion */
+.accordion-actions {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #f8f9fa;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.accordion-actions .btn {
+    font-size: 12px !important;
+    padding: 6px 12px !important;
+}
+
+/* ===================================
+   7. RESPONSIVE ENHANCEMENTS
+   =================================== */
+@media (max-width: 768px) {
+    .pagination {
+        font-size: 12px;
+    }
+
+    .pagination .page-link {
+        padding: 6px 8px;
+    }
+
+    .card {
+        margin-bottom: 15px;
+    }
+
+    .table-responsive {
+        font-size: 14px;
+    }
+
+    /* Mobile accordion adjustments */
+    .accordion-header-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .accordion-header-badges {
+        align-self: flex-end;
+    }
+
+    .accordion-detail-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .accordion-detail-value {
+        text-align: left;
+    }
+
+    .accordion-actions {
+        justify-content: center;
+    }
+
+    .accordion-button {
+        padding: 12px 15px !important;
+    }
+}

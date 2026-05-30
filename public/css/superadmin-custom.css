@@ -1,0 +1,333 @@
+/* ===================================
+   Ferensa Studio Superadmin Custom Styles
+   Warm Coral Theme (#FF6F51)
+   =================================== */
+
+/* ===================================
+   1. COLOR SCHEME VARIABLES
+   =================================== */
+:root {
+    --coral-primary: #ff6f51;
+    --coral-hover: #e65a3d;
+    --coral-light: #ffb8a5;
+    --coral-dark: #cc5841;
+    --sage-green: #97b5a9;
+    --soft-rose: #e3b7b4;
+    --pastel-yellow: #f5dd89;
+    --broken-white: #fff6df;
+}
+
+/* ===================================
+   2. PRIMARY BUTTONS
+   =================================== */
+.btn-primary {
+    background-color: var(--coral-primary) !important;
+    border-color: var(--coral-primary) !important;
+    color: white !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    background-color: var(--coral-hover) !important;
+    border-color: var(--coral-hover) !important;
+    color: white !important;
+    box-shadow: 0 4px 8px rgba(255, 111, 81, 0.3) !important;
+}
+
+.btn-outline-primary {
+    color: var(--coral-primary) !important;
+    border-color: var(--coral-primary) !important;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary:active {
+    background-color: var(--coral-primary) !important;
+    border-color: var(--coral-primary) !important;
+    color: white !important;
+}
+
+/* ===================================
+   3. ENHANCED TABLE STYLING
+   =================================== */
+.table-enhanced {
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.table-enhanced thead th {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid var(--coral-primary);
+    color: #495057;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    padding: 12px 15px;
+    vertical-align: middle;
+}
+
+.table-enhanced tbody tr {
+    transition: all 0.2s ease;
+    border-bottom: 1px solid rgba(255, 111, 81, 0.1);
+}
+
+.table-enhanced tbody tr:hover {
+    background-color: rgba(255, 111, 81, 0.05);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.table-enhanced tbody td {
+    padding: 12px 15px;
+    vertical-align: middle;
+    border-top: 1px solid rgba(255, 111, 81, 0.1);
+}
+
+/* ===================================
+   4. DATATABLES CUSTOMIZATION
+   =================================== */
+.dataTables_wrapper {
+    font-family: inherit !important;
+}
+
+.dataTables_wrapper .dataTables_length select {
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 5px 10px;
+    margin: 0 5px;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 5px 10px;
+    margin-left: 5px;
+}
+
+.dataTables_wrapper .dataTables_info {
+    color: #6c757d;
+    font-size: 14px;
+    padding-top: 10px;
+}
+
+.dataTables_wrapper .dataTables_paginate {
+    padding-top: 10px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    color: #6c757d !important;
+    padding: 6px 12px;
+    margin: 0 2px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background-color: #f8f9fa !important;
+    border-color: #adb5bd !important;
+    color: #495057 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background-color: var(--coral-primary) !important;
+    border-color: var(--coral-primary) !important;
+    color: white !important;
+    box-shadow: 0 2px 4px rgba(255, 111, 81, 0.3);
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
+    color: #adb5bd !important;
+    background-color: #fff !important;
+    border-color: #dee2e6 !important;
+    cursor: not-allowed;
+}
+
+/* ===================================
+   5. BADGES & STATUS INDICATORS
+   =================================== */
+.badge {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 6px;
+}
+
+.badge.bg-success {
+    background-color: var(--sage-green) !important;
+}
+
+.badge.bg-warning {
+    background-color: var(--pastel-yellow) !important;
+    color: #856404 !important;
+}
+
+.badge.bg-danger {
+    background-color: var(--coral-primary) !important;
+}
+
+.badge.bg-info {
+    background-color: var(--soft-rose) !important;
+    color: #fff !important;
+}
+
+.badge.bg-light-secondary {
+    background-color: rgba(151, 181, 169, 0.1) !important;
+    color: var(--sage-green) !important;
+}
+
+/* ===================================
+   6. CARD ENHANCEMENTS
+   =================================== */
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.card-header {
+    background-color: #fff;
+    border-bottom: 2px solid rgba(255, 111, 81, 0.1);
+    padding: 1.25rem 1.5rem;
+    border-radius: 12px 12px 0 0 !important;
+}
+
+.card-header h5 {
+    color: #495057;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+/* ===================================
+   7. ACTION BUTTONS
+   =================================== */
+.table-actions {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+.table-actions .btn {
+    padding: 6px 10px;
+    font-size: 0.875rem;
+}
+
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 0.875rem;
+    border-radius: 6px;
+}
+
+/* ===================================
+   8. SEARCH & FILTER STYLING
+   =================================== */
+.input-group-text {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    color: #6c757d;
+}
+
+.form-control:focus {
+    border-color: var(--coral-primary);
+    box-shadow: 0 0 0 0.2rem rgba(255, 111, 81, 0.25);
+}
+
+/* ===================================
+   9. AVATAR ICONS
+   =================================== */
+.avtar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.avtar-s {
+    width: 40px;
+    height: 40px;
+}
+
+.bg-light-warning {
+    background-color: rgba(245, 221, 137, 0.2) !important;
+    color: var(--pastel-yellow) !important;
+}
+
+.bg-light-success {
+    background-color: rgba(151, 181, 169, 0.2) !important;
+    color: var(--sage-green) !important;
+}
+
+.bg-light-primary {
+    background-color: rgba(255, 111, 81, 0.2) !important;
+    color: var(--coral-primary) !important;
+}
+
+.bg-light-info {
+    background-color: rgba(227, 183, 180, 0.2) !important;
+    color: var(--soft-rose) !important;
+}
+
+/* ===================================
+   10. RESPONSIVE TABLE
+   =================================== */
+.table-responsive {
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+/* ===================================
+   11. PAGINATION
+   =================================== */
+.pagination {
+    margin: 20px 0;
+    justify-content: center;
+}
+
+.pagination .page-item {
+    margin: 0 2px;
+}
+
+.pagination .page-link {
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    color: #6c757d;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.pagination .page-link:hover {
+    background-color: #f8f9fa;
+    border-color: #adb5bd;
+    color: #495057;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--coral-primary);
+    border-color: var(--coral-primary);
+    color: white;
+    box-shadow: 0 2px 4px rgba(255, 111, 81, 0.3);
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #adb5bd;
+    background-color: #fff;
+    border-color: #dee2e6;
+    cursor: not-allowed;
+}

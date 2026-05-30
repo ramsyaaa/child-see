@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In — Ferensa Studio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    .form-input {
+      border: 1px solid #e8e0d0;
+      border-radius: 10px;
+      padding: 12px 16px 12px 42px;
+      width: 100%;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      background: white;
+      color: #1a1a1a;
+    }
+    .form-input:focus { border-color: #C4923A; box-shadow: 0 0 0 3px rgba(196,146,58,0.12); }
+    .form-input::placeholder { color: #b0a898; }
+    .input-wrap { position: relative; }
+    .input-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: #b0a898; font-size: 13px; }
+    .toggle-pass { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: #b0a898; cursor: pointer; font-size: 13px; }
+    .social-btn { border: 1px solid #e8e0d0; border-radius: 10px; padding: 10px; width: 100%; font-size: 13px; font-weight: 500; color: #4a4a4a; background: white; cursor: pointer; transition: background 0.2s, border-color 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .social-btn:hover { background: #f5f0e8; border-color: #d0c8b8; }
+  </style>
+</head>
+<body class="bg-[#faf7f2]">
+
+  <div class="min-h-screen flex">
+
+    <!-- LEFT: Image panel -->
+    <div class="hidden md:flex md:w-1/2 relative flex-col justify-end p-10 overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&q=80&w=1200" class="absolute inset-0 w-full h-full object-cover" alt="Water" />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+      <div class="relative z-10">
+        <h2 class="font-['Playfair_Display'] text-4xl font-semibold text-white mb-2">Welcome Back</h2>
+        <p class="text-white/70 text-sm leading-relaxed max-w-xs">Continue your journey toward wellness, connection, and meaningful growth.</p>
+      </div>
+    </div>
+
+    <!-- RIGHT: Form panel -->
+    <div class="w-full md:w-1/2 flex flex-col justify-center px-8 md:px-14 py-12 bg-[#faf7f2]">
+      <div class="max-w-sm mx-auto w-full">
+
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-2.5 mb-10">
+          <img src="assets/logo.png" alt="Ferensa Studio" class="h-10 w-auto" onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="hidden w-8 h-8 rounded-full bg-gradient-to-br from-[#C4923A] to-[#8B4513] items-center justify-center"><i class="fas fa-leaf text-white text-xs"></i></div>
+          <span class="font-['Playfair_Display'] text-2xl font-semibold text-[#B85C38]">Ferensa Studio</span>
+        </a>
+
+        <h1 class="font-['Playfair_Display'] text-3xl font-semibold mb-1">Sign In</h1>
+        <p class="text-[#7a7a7a] text-sm mb-8">Welcome back to your sanctuary</p>
+
+        <form onsubmit="return handleLogin(event)" class="space-y-4">
+          <!-- Email -->
+          <div>
+            <label class="block text-xs font-medium text-[#4a4a4a] mb-1.5">Email Address</label>
+            <div class="input-wrap">
+              <i class="fas fa-envelope input-icon"></i>
+              <input type="email" required class="form-input" placeholder="your@email.com" />
+            </div>
+          </div>
+          <!-- Password -->
+          <div>
+            <label class="block text-xs font-medium text-[#4a4a4a] mb-1.5">Password</label>
+            <div class="input-wrap">
+              <i class="fas fa-lock input-icon"></i>
+              <input type="password" id="pwd" required class="form-input pr-10" placeholder="••••••••" />
+              <span class="toggle-pass" onclick="togglePwd('pwd', this)"><i class="fas fa-eye"></i></span>
+            </div>
+          </div>
+
+          <!-- Remember + Forgot -->
+          <div class="flex items-center justify-between text-xs">
+            <label class="flex items-center gap-2 cursor-pointer text-[#4a4a4a]">
+              <input type="checkbox" class="accent-[#C4923A] w-3.5 h-3.5" />
+              Remember me
+            </label>
+            <a href="#" class="text-[#B85C38] hover:underline">Forgot password?</a>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" id="login-btn" class="w-full bg-[#C4923A] text-white py-3 rounded-full text-sm font-semibold hover:bg-[#A07830] transition-colors mt-2">
+            Sign In
+          </button>
+        </form>
+
+        <!-- Register link -->
+        <p class="text-center text-xs text-[#7a7a7a] mt-5">
+          Don't have an account? <a href="register.html" class="text-[#B85C38] font-medium hover:underline">Create Account</a>
+        </p>
+
+        <!-- Divider -->
+        <div class="flex items-center gap-3 my-6">
+          <div class="flex-1 h-px bg-[#e8e0d0]"></div>
+          <span class="text-xs text-[#b0a898]">or continue with</span>
+          <div class="flex-1 h-px bg-[#e8e0d0]"></div>
+        </div>
+
+        <!-- Social buttons -->
+        <div class="grid grid-cols-2 gap-3">
+          <button class="social-btn"><i class="fab fa-google text-[#DB4437]"></i> Google</button>
+          <button class="social-btn"><i class="fab fa-facebook text-[#4267B2]"></i> Facebook</button>
+        </div>
+
+        <!-- Back to home -->
+        <a href="index.html" class="flex items-center justify-center gap-1.5 text-xs text-[#7a7a7a] hover:text-[#B85C38] transition-colors mt-8">
+          <i class="fas fa-arrow-left text-[10px]"></i> Back to Home
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    function togglePwd(id, el) {
+      const input = document.getElementById(id);
+      const icon = el.querySelector('i');
+      if (input.type === 'password') { input.type = 'text'; icon.classList.replace('fa-eye', 'fa-eye-slash'); }
+      else { input.type = 'password'; icon.classList.replace('fa-eye-slash', 'fa-eye'); }
+    }
+    function handleLogin(e) {
+      e.preventDefault();
+      const btn = document.getElementById('login-btn');
+      btn.textContent = 'Signing in...';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = 'Welcome back!';
+        btn.style.background = '#5a7a52';
+        setTimeout(() => { btn.textContent = 'Sign In'; btn.style.background = ''; btn.disabled = false; e.target.reset(); }, 2500);
+      }, 1200);
+      return false;
+    }
+  </script>
+</body>
+</html>

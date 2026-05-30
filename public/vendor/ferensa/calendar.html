@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendar — Ferensa Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-[#faf7f2]">
+    <!-- NAV -->
+    <nav class="site-nav">
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between"
+      >
+        <a href="index.html" class="flex items-center gap-2.5">
+          <img src="assets/logo.png" alt="Ferensa Studio" class="h-9 w-auto" onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="hidden w-8 h-8 rounded-full bg-gradient-to-br from-[#C4923A] to-[#8B4513] items-center justify-center"><i class="fas fa-leaf text-white text-xs"></i></div>
+          <span class="font-['Playfair_Display'] text-xl font-semibold text-[#B85C38]">Ferensa Studio</span>
+        </a>
+        <ul
+          class="hidden md:flex items-center gap-7 text-[13px] text-[#4a4a4a] font-medium"
+        >
+          <li>
+            <a href="index.html" class="hover:text-[#B85C38] transition-colors"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a href="about.html" class="hover:text-[#B85C38] transition-colors"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href="classes.html"
+              class="hover:text-[#B85C38] transition-colors"
+              >Classes</a
+            >
+          </li>
+          <li>
+            <a
+              href="instructors.html"
+              class="hover:text-[#B85C38] transition-colors"
+              >Instructors</a
+            >
+          </li>
+          <li><a href="calendar.html" class="text-[#B85C38]">Calendar</a></li>
+          <li>
+            <a
+              href="bundles.html"
+              class="hover:text-[#B85C38] transition-colors"
+              >Bundles</a
+            >
+          </li>
+          <li>
+            <a href="blog.html" class="hover:text-[#B85C38] transition-colors"
+              >Blog</a
+            >
+          </li>
+        </ul>
+        <div class="hidden md:flex items-center gap-3">
+          <a
+            href="login.html"
+            class="text-[13px] font-medium text-[#4a4a4a] hover:text-[#B85C38] transition-colors"
+            >Sign In</a
+          >
+          <a href="register.html" class="btn-grad btn-grad-sm">Join Us</a>
+        </div>
+        <button
+          id="menu-btn"
+          class="md:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#f5f0e8] text-[#4a4a4a]"
+        >
+          <i class="fas fa-bars text-lg"></i>
+        </button>
+      </div>
+    </nav>
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 z-[500] bg-black/40 opacity-0 pointer-events-none translate-x-full transition-all duration-400"
+    >
+      <div
+        class="absolute right-0 top-0 bottom-0 w-72 bg-[#faf7f2] shadow-2xl flex flex-col p-8"
+      >
+        <div class="flex items-center justify-between mb-10">
+          <span
+            class="font-['Playfair_Display'] text-xl font-semibold text-[#B85C38]"
+            >Menu</span
+          >
+          <button
+            id="menu-close"
+            class="w-9 h-9 flex items-center justify-center rounded-full bg-[#f5f0e8] text-[#4a4a4a]"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <nav class="flex flex-col gap-5 text-[15px] font-medium text-[#4a4a4a]">
+          <a href="index.html" class="hover:text-[#B85C38]">Home</a
+          ><a href="about.html" class="hover:text-[#B85C38]">About</a>
+          <a href="classes.html" class="hover:text-[#B85C38]">Classes</a
+          ><a href="instructors.html" class="hover:text-[#B85C38]"
+            >Instructors</a
+          >
+          <a href="calendar.html" class="text-[#B85C38]">Calendar</a
+          ><a href="bundles.html" class="hover:text-[#B85C38]">Bundles</a>
+          <a href="blog.html" class="hover:text-[#B85C38]">Blog</a>
+        </nav>
+        <div class="mt-auto flex flex-col gap-3">
+          <a href="login.html" class="btn-outline text-center">Sign In</a>
+          <a href="register.html" class="btn-grad text-center">Join Us</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="py-16 px-6 text-center relative overflow-hidden">
+      <div class="absolute inset-0 hero-grad-bg opacity-20"></div>
+      <div class="relative z-10 max-w-2xl mx-auto">
+        <p
+          class="text-[11px] font-semibold uppercase tracking-[0.35em] text-[#B85C38] mb-3 reveal"
+        >
+          Class Booking
+        </p>
+        <h1
+          class="font-['Playfair_Display'] text-5xl font-semibold mb-3 reveal"
+        >
+          Class Calendar
+        </h1>
+        <p class="text-[#7a7a7a] text-sm leading-relaxed reveal">
+          Click any day to see available classes and book your spot
+        </p>
+      </div>
+    </section>
+
+    <!-- LEGEND + FILTERS -->
+    <section class="px-6 pb-6">
+      <div
+        class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4"
+      >
+        <div class="flex flex-wrap gap-4 text-xs font-medium">
+          <span class="flex items-center gap-2"
+            ><span
+              class="w-3 h-3 rounded bg-gradient-to-br from-[#C4923A] to-[#8B4513] inline-block"
+            ></span
+            >Has Classes</span
+          >
+          <span class="flex items-center gap-2"
+            ><span
+              class="w-3 h-3 rounded border-2 border-[#B85C38] inline-block"
+            ></span
+            >Today</span
+          >
+          <span class="flex items-center gap-2"
+            ><span class="w-3 h-3 rounded bg-[#e8e0d0] inline-block"></span>No
+            Classes</span
+          >
+        </div>
+        <div class="flex gap-2">
+          <button
+            class="text-xs border border-[#e8e0d0] px-4 py-2 rounded-full hover:border-[#C4923A] hover:text-[#B85C38] transition-colors bg-white"
+          >
+            All Types
+          </button>
+          <button
+            class="text-xs border border-[#e8e0d0] px-4 py-2 rounded-full hover:border-[#C4923A] hover:text-[#B85C38] transition-colors bg-white"
+          >
+            Yoga
+          </button>
+          <button
+            class="text-xs border border-[#e8e0d0] px-4 py-2 rounded-full hover:border-[#C4923A] hover:text-[#B85C38] transition-colors bg-white"
+          >
+            Pilates
+          </button>
+          <button
+            class="text-xs border border-[#e8e0d0] px-4 py-2 rounded-full hover:border-[#C4923A] hover:text-[#B85C38] transition-colors bg-white"
+          >
+            Meditation
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALENDAR -->
+    <section class="px-6 pb-20">
+      <div
+        class="max-w-6xl mx-auto bg-white rounded-3xl border border-[#e8e0d0] p-6 shadow-sm"
+      >
+        <!-- Month nav -->
+        <div class="flex items-center justify-between mb-8">
+          <button
+            id="cal-prev"
+            class="w-10 h-10 rounded-full border border-[#e8e0d0] flex items-center justify-center hover:border-[#C4923A] hover:text-[#B85C38] transition-colors"
+          >
+            <i class="fas fa-chevron-left text-sm"></i>
+          </button>
+          <h2
+            id="cal-month"
+            class="font-['Playfair_Display'] text-2xl font-semibold"
+          ></h2>
+          <button
+            id="cal-next"
+            class="w-10 h-10 rounded-full border border-[#e8e0d0] flex items-center justify-center hover:border-[#C4923A] hover:text-[#B85C38] transition-colors"
+          >
+            <i class="fas fa-chevron-right text-sm"></i>
+          </button>
+        </div>
+        <div id="cal-grid" class="grid grid-cols-7 gap-2"></div>
+      </div>
+    </section>
+
+    <!-- UPCOMING CLASSES LIST -->
+    <section class="px-6 pb-24 bg-[#f5f0e8] py-16">
+      <div class="max-w-6xl mx-auto">
+        <div class="mb-8 reveal">
+          <p
+            class="text-[11px] font-semibold uppercase tracking-[0.35em] text-[#B85C38] mb-2"
+          >
+            This Week
+          </p>
+          <h2 class="font-['Playfair_Display'] text-3xl font-semibold">
+            Upcoming Classes
+          </h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div
+            class="reveal bg-white rounded-2xl p-5 border border-[#e8e0d0] card-hover flex gap-4 items-start"
+          >
+            <div
+              class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#fdf3e7] to-[#f5e6cc] flex flex-col items-center justify-center flex-shrink-0"
+            >
+              <span class="text-[10px] font-bold text-[#C4923A] uppercase"
+                >Mon</span
+              >
+              <span
+                class="font-['Playfair_Display'] text-2xl font-semibold text-[#8B4513] leading-none"
+                >07</span
+              >
+            </div>
+            <div class="flex-1">
+              <h4 class="font-semibold text-sm mb-1">Morning Yoga Flow</h4>
+              <p class="text-xs text-[#7a7a7a] mb-1">
+                <i class="fas fa-clock mr-1 text-[#C4923A]"></i>07:00 – 08:00
+              </p>
+              <p class="text-xs text-[#7a7a7a] mb-3">
+                <i class="fas fa-user mr-1 text-[#C4923A]"></i>Maya Anindita ·
+                12/15 spots
+              </p>
+              <a href="bundles.html" class="btn-grad btn-grad-sm text-xs"
+                >Book Now</a
+              >
+            </div>
+          </div>
+          <div
+            class="reveal reveal-delay-1 bg-white rounded-2xl p-5 border border-[#e8e0d0] card-hover flex gap-4 items-start"
+          >
+            <div
+              class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#fdf3e7] to-[#f5e6cc] flex flex-col items-center justify-center flex-shrink-0"
+            >
+              <span class="text-[10px] font-bold text-[#C4923A] uppercase"
+                >Mon</span
+              >
+              <span
+                class="font-['Playfair_Display'] text-2xl font-semibold text-[#8B4513] leading-none"
+                >07</span
+              >
+            </div>
+            <div class="flex-1">
+              <h4 class="font-semibold text-sm mb-1">Mat Pilates</h4>
+              <p class="text-xs text-[#7a7a7a] mb-1">
+                <i class="fas fa-clock mr-1 text-[#C4923A]"></i>09:00 – 10:00
+              </p>
+              <p class="text-xs text-[#7a7a7a] mb-3">
+                <i class="fas fa-user mr-1 text-[#C4923A]"></i>Sarah Kusuma ·
+                8/15 spots
+              </p>
+              <a href="bundles.html" class="btn-grad btn-grad-sm text-xs"
+                >Book Now</a
+              >
+            </div>
+          </div>
+          <div
+            class="reveal reveal-delay-2 bg-white rounded-2xl p-5 border border-[#e8e0d0] card-hover flex gap-4 items-start"
+          >
+            <div
+              class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#fdf3e7] to-[#f5e6cc] flex flex-col items-center justify-center flex-shrink-0"
+            >
+              <span class="text-[10px] font-bold text-[#C4923A] uppercase"
+                >Tue</span
+              >
+              <span
+                class="font-['Playfair_Display'] text-2xl font-semibold text-[#8B4513] leading-none"
+                >08</span
+              >
+            </div>
+            <div class="flex-1">
+              <h4 class="font-semibold text-sm mb-1">Power Yoga</h4>
+              <p class="text-xs text-[#7a7a7a] mb-1">
+                <i class="fas fa-clock mr-1 text-[#C4923A]"></i>07:00 – 08:30
+              </p>
+              <p class="text-xs text-[#7a7a7a] mb-3">
+                <i class="fas fa-user mr-1 text-[#C4923A]"></i>Maya Anindita ·
+                9/15 spots
+              </p>
+              <a href="bundles.html" class="btn-grad btn-grad-sm text-xs"
+                >Book Now</a
+              >
+            </div>
+          </div>
+          <div
+            class="reveal bg-white rounded-2xl p-5 border border-[#e8e0d0] card-hover flex gap-4 items-start"
+          >
+            <div
+              class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#fdf3e7] to-[#f5e6cc] flex flex-col items-center justify-center flex-shrink-0"
+            >
+              <span class="text-[10px] font-bold text-[#C4923A] uppercase"
+                >Thu</span
+              >
+              <span
+                class="font-['Playfair_Display'] text-2xl font-semibold text-[#8B4513] leading-none"
+                >10</span
+              >
+            </div>
+            <div class="flex-1">
+              <h4 class="font-semibold text-sm mb-1">Yoga Nidra</h4>
+              <p class="text-xs text-[#7a7a7a] mb-1">
+                <i class="fas fa-clock mr-1 text-[#C4923A]"></i>17:00 – 18:00
+              </p>
+              <p class="text-xs text-[#7a7a7a] mb-3">
+                <i class="fas fa-user mr-1 text-[#C4923A]"></i>Devi Lakshmi ·
+                8/12 spots
+              </p>
+              <a href="bundles.html" class="btn-grad btn-grad-sm text-xs"
+                >Book Now</a
+              >
+            </div>
+          </div>
+          <div
+            class="reveal reveal-delay-1 bg-white rounded-2xl p-5 border border-[#e8e0d0] card-hover flex gap-4 items-start"
+          >
+            <div
+              class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#fdf3e7] to-[#f5e6cc] flex flex-col items-center justify-center flex-shrink-0"
+            >
+              <span class="text-[10px] font-bold text-[#C4923A] uppercase"
+                >Sat</span
+              >
+              <span
+                class="font-['Playfair_Display'] text-2xl font-semibold text-[#8B4513] leading-none"
+                >12</span
+              >
+            </div>
+            <div class="flex-1">
+              <h4 class="font-semibold text-sm mb-1">Weekend Yoga</h4>
+              <p class="text-xs text-[#7a7a7a] mb-1">
+                <i class="fas fa-clock mr-1 text-[#C4923A]"></i>08:00 – 09:30
+              </p>
+              <p class="text-xs text-[#7a7a7a] mb-3">
+                <i class="fas fa-user mr-1 text-[#C4923A]"></i>Maya Anindita ·
+                13/15 spots
+              </p>
+              <a href="bundles.html" class="btn-grad btn-grad-sm text-xs"
+                >Book Now</a
+              >
+            </div>
+          </div>
+          <div
+            class="reveal reveal-delay-2 bg-white rounded-2xl p-5 border border-[#e8e0d0] card-hover flex gap-4 items-start"
+          >
+            <div
+              class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#fdf3e7] to-[#f5e6cc] flex flex-col items-center justify-center flex-shrink-0"
+            >
+              <span class="text-[10px] font-bold text-[#C4923A] uppercase"
+                >Sat</span
+              >
+              <span
+                class="font-['Playfair_Display'] text-2xl font-semibold text-[#8B4513] leading-none"
+                >12</span
+              >
+            </div>
+            <div class="flex-1">
+              <h4 class="font-semibold text-sm mb-1">Sound Bath</h4>
+              <p class="text-xs text-[#7a7a7a] mb-1">
+                <i class="fas fa-clock mr-1 text-[#C4923A]"></i>14:00 – 15:30
+              </p>
+              <p class="text-xs text-[#7a7a7a] mb-3">
+                <i class="fas fa-user mr-1 text-[#C4923A]"></i>Devi Lakshmi ·
+                8/10 spots
+              </p>
+              <a href="bundles.html" class="btn-grad btn-grad-sm text-xs"
+                >Book Now</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DAY MODAL -->
+    <div
+      id="day-modal"
+      class="fixed inset-0 z-[600] flex items-center justify-center px-4 opacity-0 pointer-events-none transition-opacity duration-300"
+    >
+      <div
+        class="absolute inset-0 bg-black/50 backdrop-blur-sm"
+        onclick="closeModal()"
+      ></div>
+      <div
+        class="relative z-10 bg-white rounded-3xl shadow-2xl w-full max-w-md p-8"
+      >
+        <div class="flex items-center justify-between mb-6">
+          <h3
+            id="modal-date"
+            class="font-['Playfair_Display'] text-xl font-semibold"
+          ></h3>
+          <button
+            onclick="closeModal()"
+            class="w-9 h-9 rounded-full bg-[#f5f0e8] flex items-center justify-center text-[#4a4a4a] hover:bg-[#e8e0d0] transition-colors"
+          >
+            <i class="fas fa-times text-sm"></i>
+          </button>
+        </div>
+        <div id="modal-events"></div>
+        <div class="mt-6 pt-5 border-t border-[#e8e0d0]">
+          <a href="bundles.html" class="btn-grad w-full justify-center"
+            >Get a Bundle to Book</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer py-20 px-6">
+      <div
+        class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 mb-12"
+      >
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-2.5 mb-4">
+            <img src="assets/logo.png" alt="Ferensa Studio" class="h-9 w-auto brightness-0 invert" onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="hidden w-8 h-8 rounded-full bg-gradient-to-br from-[#C4923A] to-[#8B4513] items-center justify-center"><i class="fas fa-leaf text-white text-xs"></i></div>
+            <span class="font-['Playfair_Display'] text-xl font-semibold text-[#C4923A]">Ferensa Studio</span>
+          </div>
+          <p class="text-sm leading-relaxed max-w-xs mb-6">
+            A place where community and connection flow as freely as our breath.
+          </p>
+          <div class="flex gap-3">
+            <a
+              href="#"
+              class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#C4923A] transition-colors"
+              ><i class="fab fa-instagram text-sm"></i
+            ></a>
+            <a
+              href="#"
+              class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#C4923A] transition-colors"
+              ><i class="fab fa-facebook text-sm"></i
+            ></a>
+            <a
+              href="#"
+              class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#C4923A] transition-colors"
+              ><i class="fab fa-tiktok text-sm"></i
+            ></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-sm font-semibold mb-5 uppercase tracking-wider">
+            Navigate
+          </h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="classes.html">Classes</a></li>
+            <li><a href="calendar.html" class="text-[#C4923A]">Calendar</a></li>
+            <li><a href="bundles.html">Bundles</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-sm font-semibold mb-5 uppercase tracking-wider">
+            Contact
+          </h4>
+          <ul class="space-y-4 text-sm">
+            <li class="flex gap-3 items-start">
+              <i class="fas fa-map-marker-alt text-[#C4923A] mt-0.5 w-4"></i
+              ><span>Depok, West Java, Indonesia</span>
+            </li>
+            <li class="flex gap-3 items-center">
+              <i class="fas fa-phone text-[#C4923A] w-4"></i
+              ><span>+62 812 3456 7890</span>
+            </li>
+            <li class="flex gap-3 items-center">
+              <i class="fas fa-envelope text-[#C4923A] w-4"></i
+              ><span>hello@ferensastudio.com</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div
+        class="max-w-6xl mx-auto border-t border-white/10 pt-8 text-center text-xs text-white/40"
+      >
+        &copy; 2026 Ferensa Studio. All rights reserved.
+      </div>
+    </footer>
+
+    <button id="to-top" aria-label="Back to top">
+      <i class="fas fa-arrow-up text-sm"></i>
+    </button>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

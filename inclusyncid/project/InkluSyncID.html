@@ -1,0 +1,1428 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>InkluSyncID — Identifikasi Anak Berkebutuhan Khusus (ABK) Sekolah Dasar</title>
+<meta name="description" content="InkluSyncID — Inclusion Synchronized. Platform identifikasi awal Anak Berkebutuhan Khusus (ABK) tingkat Sekolah Dasar untuk guru dan orang tua." />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Josefin+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          // Ivory/paper keeps the warm-white role; now mapped to the silver/off-white family
+          ivory:   { 50:'#FBFBFB', 100:'#F5F5F6', 200:'#E9E9EB', 300:'#D9D9D9' },
+          // "indigo" tokens repurposed for primary LAVENDER — keeps existing classes working
+          indigo:  { 700:'#6E5992', 800:'#5C477F', 900:'#4A3769' },
+          // "sogan" tokens repurposed for LIGHT PURPLE accent
+          sogan:   { 400:'#C9B4DE', 500:'#BAA6D6', 600:'#9F86C4', 700:'#7E65A5' },
+          // "maroon" tokens repurposed for DUSTY BLUE (secondary)
+          maroon:  { 500:'#9AAEC6', 600:'#839986', 700:'#627A98' },
+          // "sage" tokens repurposed for LIGHT BLUE (tertiary / success-ish)
+          sage:    { 500:'#D1DDEA', 600:'#C6D9E8', 700:'#A8BFD4' },
+          ink:     { 900:'#26223A' }
+        },
+        fontFamily: {
+          display: ['"Playfair Display SC"', '"Playfair Display"', 'serif'],
+          sans:    ['"Josefin Sans"', 'system-ui', 'sans-serif'],
+          mono:    ['"JetBrains Mono"', 'monospace']
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  :root {
+    --ivory-50:#FBFBFB; --ivory-100:#F5F5F6; --ivory-200:#E9E9EB; --ivory-300:#D9D9D9;
+    --indigo-800:#5C477F; --indigo-900:#4A3769;  /* LAVENDER primary */
+    --sogan-500:#BAA6D6; --sogan-600:#9F86C4;    /* LIGHT PURPLE accent */
+    --maroon-600:#839986;                         /* DUSTY BLUE -> used where "maroon-600" was */
+    --sage-600:#C6D9E8;                           /* LIGHT BLUE */
+  }
+  html, body { background: var(--ivory-100); color:#26223A; }
+  body { font-family: "Josefin Sans", system-ui, sans-serif; font-weight: 400; letter-spacing: 0.01em; }
+  .font-display { font-family: "Playfair Display SC", "Playfair Display", serif; letter-spacing: 0.005em; font-weight: 700; }
+  .font-mono { font-family: "JetBrains Mono", monospace; }
+
+  /* Batik kawung — four-petal circle motif */
+  .bg-kawung {
+    background-color: var(--ivory-100);
+    background-image:
+      radial-gradient(circle at 25% 25%, rgba(92,71,127,0.10) 8px, transparent 9px),
+      radial-gradient(circle at 75% 25%, rgba(92,71,127,0.10) 8px, transparent 9px),
+      radial-gradient(circle at 25% 75%, rgba(92,71,127,0.10) 8px, transparent 9px),
+      radial-gradient(circle at 75% 75%, rgba(92,71,127,0.10) 8px, transparent 9px),
+      radial-gradient(circle at 50% 50%, rgba(186,166,214,0.18) 3px, transparent 4px);
+    background-size: 56px 56px;
+  }
+  /* Batik parang — diagonal slanted wave */
+  .bg-parang {
+    background-color: var(--indigo-900);
+    background-image:
+      repeating-linear-gradient(135deg,
+        rgba(186,166,214,0.20) 0 2px,
+        transparent 2px 18px,
+        rgba(186,166,214,0.10) 18px 20px,
+        transparent 20px 36px);
+  }
+  /* Dotted ivory texture */
+  .bg-dots {
+    background-color: var(--ivory-100);
+    background-image: radial-gradient(rgba(92,71,127,0.16) 1px, transparent 1.2px);
+    background-size: 14px 14px;
+  }
+
+  /* Striped placeholder for imagery */
+  .ph-stripe {
+    background-color: var(--ivory-200);
+    background-image: repeating-linear-gradient(45deg,
+      rgba(92,71,127,0.10) 0 1px, transparent 1px 12px);
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .ph-stripe .ph-label {
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    font-family:"JetBrains Mono", monospace; font-size:11px; letter-spacing:0.08em;
+    color:rgba(74,55,105,0.60); text-transform:uppercase;
+    padding: 0 1rem; text-align:center;
+  }
+
+  .btn-primary {
+    background: var(--indigo-800); color: var(--ivory-100);
+    border: 1px solid var(--indigo-900);
+    transition: all .18s ease;
+  }
+  .btn-primary:hover { background: var(--indigo-900); transform: translateY(-1px); }
+
+  .btn-accent {
+    background: var(--sogan-500); color: #fff;
+    border: 1px solid var(--sogan-600);
+    transition: all .18s ease;
+  }
+  .btn-accent:hover { background: var(--sogan-600); transform: translateY(-1px); }
+
+  .btn-ghost {
+    background: transparent; color: var(--indigo-800);
+    border: 1px solid var(--indigo-800);
+  }
+  .btn-ghost:hover { background: rgba(30,58,95,0.06); }
+
+  .field input, .field select, .field textarea {
+    width: 100%;
+    background:#fff;
+    border:1px solid #D9D9D9;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 15px;
+    color:#1A1612;
+    transition: border-color .15s ease, box-shadow .15s ease;
+    font-family: inherit;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    outline:none; border-color: var(--indigo-800);
+    box-shadow: 0 0 0 3px rgba(92,71,127,0.15);
+  }
+  .field label {
+    display:block; font-size:13px; font-weight:600;
+    color: var(--indigo-900); margin-bottom:6px;
+    letter-spacing: 0.01em;
+  }
+
+  .chip {
+    display:inline-flex; align-items:center; gap:6px;
+    padding: 4px 10px; border-radius: 999px;
+    font-size: 11px; font-weight:600; letter-spacing:0.06em; text-transform: uppercase;
+  }
+
+  /* Accordion */
+  details.disability > summary { list-style:none; cursor:pointer; }
+  details.disability > summary::-webkit-details-marker { display:none; }
+  details.disability > summary .chev { transition: transform .25s ease; }
+  details.disability[open] > summary .chev { transform: rotate(180deg); }
+
+  /* Radio cards */
+  .radio-card input { position:absolute; opacity:0; pointer-events:none; }
+  .radio-card label {
+    display:flex; align-items:center; gap:10px;
+    padding: 12px 14px;
+    border:1px solid #D9D9D9; border-radius:10px;
+    background:#fff; cursor:pointer;
+    transition: all .15s ease;
+    font-weight: 500;
+  }
+  .radio-card input:checked + label {
+    border-color: var(--indigo-800);
+    background: rgba(92,71,127,0.06);
+    box-shadow: 0 0 0 3px rgba(92,71,127,0.12);
+  }
+  .radio-card label .dot {
+    width:14px; height:14px; border-radius:999px;
+    border:1.5px solid #B8B8B8; background:#fff; flex:none;
+  }
+  .radio-card input:checked + label .dot {
+    border-color: var(--indigo-800);
+    background: radial-gradient(circle, var(--indigo-800) 45%, #fff 50%);
+  }
+
+  /* Soft card */
+  .card {
+    background:#fff; border:1px solid #E4E0EC; border-radius: 16px;
+    box-shadow: 0 1px 0 rgba(92,71,127,0.04), 0 8px 24px -16px rgba(92,71,127,0.18);
+  }
+
+  .hr-batik {
+    height: 14px; background-repeat: repeat-x; background-size: 28px 14px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='14' viewBox='0 0 28 14'><path d='M0 7 Q7 0 14 7 T28 7' fill='none' stroke='%235C477F' stroke-width='1.2'/><circle cx='14' cy='7' r='1.4' fill='%23BAA6D6'/></svg>");
+    opacity: 0.8;
+  }
+
+  /* Fade-in on route change */
+  .route { animation: fade .32s ease both; }
+  @keyframes fade { from { opacity:0; transform: translateY(6px);} to { opacity:1; transform:none;} }
+
+  /* Nav link underline */
+  .nav-link { position: relative; padding: 8px 2px; font-weight:500; font-size:14px; color:#26223A; letter-spacing: 0.03em; }
+  .nav-link::after {
+    content:""; position:absolute; left:0; right:0; bottom:-2px; height:2px;
+    background: var(--sogan-500); transform: scaleX(0); transform-origin: left;
+    transition: transform .22s ease;
+  }
+  .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+  .nav-link.active { color: var(--indigo-900); }
+
+  /* Toast */
+  .toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(20px);
+    background: var(--indigo-900); color: var(--ivory-100);
+    padding: 12px 18px; border-radius: 999px; font-size: 14px;
+    opacity: 0; transition: all .28s ease; z-index: 200; pointer-events:none;
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.3);
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* Tweaks panel */
+  .tweaks {
+    position: fixed; right: 20px; bottom: 20px; z-index: 100;
+    background:#fff; border:1px solid #E7D9B6; border-radius: 14px;
+    padding: 14px; width: 260px; display:none;
+    box-shadow: 0 20px 40px -20px rgba(30,58,95,0.25);
+  }
+  .tweaks.open { display: block; }
+
+  /* Step dots */
+  .step-dot { width: 28px; height: 28px; border-radius:999px; display:grid; place-items:center; font-size:13px; font-weight:600; }
+  .step-dot.done { background: var(--sogan-500); color:#fff; }
+  .step-dot.active { background: var(--indigo-800); color:#fff; }
+  .step-dot.idle { background: #E7D9B6; color: var(--indigo-900); }
+
+  /* Test question */
+  .q-row { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0; border-top: 1px solid #F3EBD9; }
+  .q-row:first-child { border-top: 0; }
+  .q-opts { display:flex; gap:6px; flex:none; }
+  .q-opts button {
+    padding: 6px 12px; font-size:13px; border-radius:999px;
+    border:1px solid #E7D9B6; background:#fff; color:#1A1612;
+    cursor:pointer; transition: all .15s ease;
+  }
+  .q-opts button:hover { border-color: var(--indigo-800); }
+  .q-opts button.sel-yes { background: var(--indigo-800); color:#fff; border-color:var(--indigo-800);}
+  .q-opts button.sel-sometimes { background: var(--sogan-500); color:#fff; border-color:var(--sogan-500);}
+  .q-opts button.sel-no { background: var(--ivory-200); color: var(--indigo-900); border-color: var(--ivory-300);}
+
+  /* Footer batik border */
+  .footer-border {
+    height: 6px;
+    background-image: repeating-linear-gradient(90deg,
+      var(--sogan-500) 0 12px,
+      var(--indigo-800) 12px 24px,
+      var(--maroon-600) 24px 36px,
+      var(--sage-600) 36px 48px);
+  }
+
+  /* Playfair Display SC needs slight tracking to look balanced at body sizes */
+  h1.font-display, h2.font-display, h3.font-display { letter-spacing: 0.01em; }
+  em { font-family: "Playfair Display", serif; font-style: italic; font-weight: 500; }
+</style>
+</head>
+
+<body class="min-h-screen">
+
+<!-- ============================= NAVBAR ============================= -->
+<header class="sticky top-0 z-40 bg-ivory-100/85 backdrop-blur border-b border-ivory-300/60">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+    <a href="#/" class="flex items-center gap-3" data-link>
+      <!-- Logo -->
+      <span class="relative grid place-items-center w-10 h-10 rounded-full bg-indigo-800">
+        <svg viewBox="0 0 40 40" class="w-8 h-8">
+          <circle cx="20" cy="20" r="14" fill="none" stroke="#BAA6D6" stroke-width="1.2"/>
+          <circle cx="20" cy="20" r="8" fill="none" stroke="#F5F5F6" stroke-width="1.2"/>
+          <circle cx="20" cy="12" r="2" fill="#BAA6D6"/>
+          <circle cx="20" cy="28" r="2" fill="#BAA6D6"/>
+          <circle cx="12" cy="20" r="2" fill="#BAA6D6"/>
+          <circle cx="28" cy="20" r="2" fill="#BAA6D6"/>
+        </svg>
+      </span>
+      <div class="leading-tight">
+        <div class="font-display text-[19px] font-semibold text-indigo-900">InkluSync<span class="text-sogan-500">ID</span></div>
+        <div class="text-[10.5px] uppercase tracking-[0.18em] text-indigo-800/60 -mt-0.5">Inclusion Synchronized</div>
+      </div>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-8">
+      <a href="#/" class="nav-link" data-link data-route="/">Home</a>
+      <a href="#/identification" class="nav-link" data-link data-route="/identification">Start Identification</a>
+      <a href="#/profile" class="nav-link" data-link data-route="/profile">Profile</a>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a href="#/identification" data-link class="btn-accent px-4 py-2 rounded-full text-sm font-semibold">Mulai Identifikasi</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============================= ROUTER OUTLET ============================= -->
+<main id="view" class="route"></main>
+
+<!-- ============================= FOOTER ============================= -->
+<footer class="mt-20">
+  <div class="footer-border"></div>
+  <div class="bg-indigo-900 text-ivory-100">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-12 grid md:grid-cols-4 gap-10">
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="grid place-items-center w-10 h-10 rounded-full bg-ivory-100/10">
+            <svg viewBox="0 0 40 40" class="w-8 h-8">
+              <circle cx="20" cy="20" r="14" fill="none" stroke="#BAA6D6" stroke-width="1.2"/>
+              <circle cx="20" cy="20" r="8" fill="none" stroke="#F5F5F6" stroke-width="1.2"/>
+              <circle cx="20" cy="12" r="2" fill="#BAA6D6"/><circle cx="20" cy="28" r="2" fill="#BAA6D6"/>
+              <circle cx="12" cy="20" r="2" fill="#BAA6D6"/><circle cx="28" cy="20" r="2" fill="#BAA6D6"/>
+            </svg>
+          </span>
+          <div class="font-display text-xl">InkluSync<span class="text-sogan-500">ID</span></div>
+        </div>
+        <p class="text-ivory-200/80 text-sm leading-relaxed max-w-md">
+          Platform identifikasi awal Anak Berkebutuhan Khusus (ABK) tingkat Sekolah Dasar,
+          dirancang untuk mendukung guru dan orang tua dalam menemukenali potensi sedari dini.
+        </p>
+        <p class="mt-4 text-xs text-ivory-200/50 font-mono">www.inclusyncid.com</p>
+      </div>
+      <div>
+        <div class="text-xs uppercase tracking-[0.18em] text-sogan-400 mb-3">Navigasi</div>
+        <ul class="space-y-2 text-sm text-ivory-200/80">
+          <li><a href="#/" data-link class="hover:text-sogan-400">Home</a></li>
+          <li><a href="#/identification" data-link class="hover:text-sogan-400">Start Identification</a></li>
+          <li><a href="#/profile" data-link class="hover:text-sogan-400">Profile</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-xs uppercase tracking-[0.18em] text-sogan-400 mb-3">Kontak</div>
+        <ul class="space-y-2 text-sm text-ivory-200/80">
+          <li>Konsultasi: <span class="text-ivory-100">+62&nbsp;811-0000-0000</span></li>
+          <li>halo@inclusyncid.com</li>
+          <li>Universitas Pendidikan Indonesia</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-ivory-100/10">
+      <div class="max-w-7xl mx-auto px-6 lg:px-10 py-5 flex flex-wrap items-center justify-between gap-3 text-xs text-ivory-200/60">
+        <div>© 2026 InkluSyncID. Seluruh hak cipta dilindungi.</div>
+        <div class="flex items-center gap-4">
+          <span>HKI Paten Terdaftar</span>
+          <span>•</span>
+          <span>v1.0</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div id="toast" class="toast"></div>
+
+<!-- ============================= TWEAKS PANEL ============================= -->
+<div id="tweaks" class="tweaks">
+  <div class="flex items-center justify-between mb-3">
+    <div class="font-display text-base text-indigo-900">Tweaks</div>
+    <button id="tweaks-close" class="text-xs text-indigo-800/60 hover:text-indigo-900">tutup</button>
+  </div>
+  <div class="space-y-3">
+    <div>
+      <div class="text-xs font-semibold text-indigo-900 mb-1.5">Motif latar hero</div>
+      <div class="grid grid-cols-3 gap-1.5" id="tw-motif">
+        <button data-v="kawung" class="text-[11px] py-1.5 rounded-md border border-ivory-300 bg-ivory-100">Kawung</button>
+        <button data-v="parang" class="text-[11px] py-1.5 rounded-md border border-ivory-300 bg-ivory-100">Parang</button>
+        <button data-v="plain"  class="text-[11px] py-1.5 rounded-md border border-ivory-300 bg-ivory-100">Polos</button>
+      </div>
+    </div>
+    <div>
+      <div class="text-xs font-semibold text-indigo-900 mb-1.5">Warna aksen</div>
+      <div class="grid grid-cols-3 gap-1.5" id="tw-accent">
+        <button data-v="#BAA6D6" class="h-7 rounded-md border border-ivory-300" style="background:#BAA6D6"></button>
+        <button data-v="#8D77AB" class="h-7 rounded-md border border-ivory-300" style="background:#8D77AB"></button>
+        <button data-v="#839986" class="h-7 rounded-md border border-ivory-300" style="background:#839986"></button>
+      </div>
+    </div>
+    <div>
+      <div class="text-xs font-semibold text-indigo-900 mb-1.5">Ukuran judul hero</div>
+      <input id="tw-size" type="range" min="48" max="96" step="2" class="w-full"/>
+      <div class="text-[10px] font-mono text-indigo-800/60 text-right" id="tw-size-v">72px</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================= APP SCRIPT ============================= -->
+<script>
+/* ---------- State ---------- */
+const STORAGE_KEY = 'inclusyncid_v1';
+const defaultState = {
+  profile: null,        // { namaPengisi, status, namaAnak, ttl, usia, hambatan }
+  consent: false,
+  tests: [],            // [{type, date, answers, score, summary, recommendation}]
+};
+let state = loadState();
+
+const TWEAKS = /*EDITMODE-BEGIN*/{
+  "heroMotif": "plain",
+  "accentColor": "#8D77AB",
+  "heroSize": 62
+}/*EDITMODE-END*/;
+
+function loadState(){
+  try { return { ...defaultState, ...JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}') }; }
+  catch(e){ return { ...defaultState }; }
+}
+function saveState(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(window.__tt); window.__tt = setTimeout(()=>t.classList.remove('show'), 2200);
+}
+
+/* ---------- Router ---------- */
+const routes = {
+  '/':                renderHome,
+  '/identification':  renderIdentificationStart,
+  '/identification/profile':  renderIdentProfile,
+  '/identification/consent':  renderIdentConsent,
+  '/identification/choose':   renderIdentChoose,
+  '/identification/test':     renderIdentTest,
+  '/profile':          renderProfile,
+  '/profile/result':   renderProfileResult,
+};
+
+function currentRoute(){
+  const h = (location.hash || '#/').replace(/^#/,'');
+  const [path, q] = h.split('?');
+  return { path, params: Object.fromEntries(new URLSearchParams(q || '')) };
+}
+
+function navigate(path){
+  if (!path.startsWith('#')) path = '#' + path;
+  location.hash = path;
+}
+
+function router(){
+  const { path, params } = currentRoute();
+  const handler = routes[path] || renderNotFound;
+  const view = document.getElementById('view');
+  view.classList.remove('route'); void view.offsetWidth; view.classList.add('route');
+  view.innerHTML = handler(params) || '';
+  // Update nav active
+  document.querySelectorAll('[data-link][data-route]').forEach(a => {
+    const r = a.dataset.route;
+    const match = (r === '/' && path === '/') || (r !== '/' && path.startsWith(r));
+    a.classList.toggle('active', match);
+  });
+  window.scrollTo({ top:0, behavior:'instant' });
+}
+
+window.addEventListener('hashchange', router);
+
+/* ---------- Placeholder helper ---------- */
+function ph(label, className='') {
+  return `<div class="ph-stripe ${className}"><div class="ph-label">${label}</div></div>`;
+}
+
+/* ---------- Data: team, facts, questions ---------- */
+const TEAM = [
+  { group:'Dosen Pengembang', name:'Dr. Ir. Sinta Kartika, M.Pd.', role:'Ketua Tim — Pendidikan Inklusi' },
+  { group:'Dosen Pengembang', name:'Dr. Bagas Pramudya, M.Psi.',    role:'Psikologi Perkembangan Anak' },
+  { group:'Dosen Pengembang', name:'Dr. Lestari Mahardhika, M.Kes.', role:'Terapi Wicara & Audiologi' },
+  { group:'Dosen Pengembang', name:'Dr. Reza Wicaksono, M.Pd.',     role:'Ortopedagogik' },
+  { group:'Dosen Pengembang', name:'Dr. Maya Anindya, M.Pd.',       role:'Pendidikan Dasar Inklusif' },
+  { group:'Mahasiswa', name:'Rafi Adrian',          role:'Frontend & UX Researcher' },
+  { group:'Mahasiswa', name:'Kirana Nur Azizah',    role:'Content & Instrument Design' },
+  { group:'Tim Eksternal', name:'Bina Cita Indonesia', role:'Konsultan Tumbuh Kembang' },
+];
+
+const FACTS = [
+  {
+    title:'1 dari 6 anak',
+    body:'Studi WHO (2023) memperkirakan sekitar 1 dari 6 anak usia sekolah dasar hidup dengan kebutuhan khusus — banyak di antaranya belum teridentifikasi hingga kelas atas.',
+    tag:'Statistik'
+  },
+  {
+    title:'Usia 5–9 tahun',
+    body:'Identifikasi yang dilakukan pada rentang usia ini memberi dampak intervensi paling signifikan terhadap hasil akademik dan sosial anak.',
+    tag:'Waktu emas'
+  },
+  {
+    title:'Guru = pengamat utama',
+    body:'Guru kelas berinteraksi dengan anak 4–6 jam setiap hari dan berada di posisi unik untuk mengamati pola belajar dan interaksi yang tidak tampak di rumah.',
+    tag:'Peran'
+  },
+];
+
+const DISABILITIES = [
+  {
+    id:'penglihatan',
+    name:'Hambatan Penglihatan',
+    color:'#1E3A5F',
+    icon:'<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="3" fill="currentColor"/>',
+    short:'Anak dengan hambatan penglihatan menunjukkan kesulitan dalam mengenali huruf/angka dari jarak biasa, sering memicingkan mata, mengeluhkan silau, atau menempelkan wajah ke buku saat membaca.',
+    long:'Meliputi low-vision maupun tunanetra total. Identifikasi awal difokuskan pada pola visual fungsional di ruang kelas — bukan pemeriksaan klinis. Tes ini berisi 12 pernyataan observasi selama 1–2 minggu.'
+  },
+  {
+    id:'pendengaran',
+    name:'Hambatan Pendengaran',
+    color:'#8D77AB',
+    icon:'<path d="M12 3a7 7 0 0 0-7 7v4a3 3 0 0 0 3 3h1v-8a3 3 0 1 1 6 0c0 2.5-3 3-3 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>',
+    short:'Anak dengan hambatan pendengaran sering tampak tidak merespon panggilan, meminta pengulangan, berbicara dengan volume tidak lazim, atau lebih mengandalkan isyarat visual dari teman.',
+    long:'Meliputi spektrum ringan hingga berat. Fokus identifikasi adalah pada respon anak terhadap instruksi lisan dan interaksi sosial verbal. Tes berisi 10 pernyataan observasi kelas.'
+  },
+  {
+    id:'intelektual',
+    name:'Hambatan Intelektual',
+    color:'#A86916',
+    icon:'<path d="M9 3a5 5 0 0 0-3 9v3h6v-3a5 5 0 0 0-3-9z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M7 18h4M8 21h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>',
+    short:'Anak dengan hambatan intelektual menunjukkan keterlambatan dalam mencapai tonggak perkembangan, kesulitan memahami instruksi berlapis, dan membutuhkan waktu signifikan lebih lama untuk tugas akademik dasar.',
+    long:'Identifikasi awal mengacu pada kesenjangan antara kemampuan anak dan rata-rata usia kronologisnya, diamati dalam tugas-tugas akademik, kemandirian, dan komunikasi. Tes berisi 15 pernyataan.'
+  },
+];
+
+const QUESTIONS = {
+  penglihatan: [
+    'Anak sering memicingkan mata saat menatap papan tulis.',
+    'Anak terlihat menempelkan buku sangat dekat ke wajah saat membaca.',
+    'Anak mengeluhkan sakit kepala setelah membaca atau menulis.',
+    'Anak sulit menyalin dari papan tulis meski sudah dipindah ke baris depan.',
+    'Anak bertabrakan dengan benda atau ragu saat berjalan di tempat baru.',
+    'Anak menghindari aktivitas yang membutuhkan ketelitian visual.',
+    'Mata anak tampak berair atau merah tanpa sebab jelas.',
+    'Anak sulit mengenali warna dasar yang sama dari jarak sedang.',
+    'Anak salah membaca huruf dengan bentuk serupa (b–d, p–q).',
+    'Anak lebih nyaman di ruangan yang redup dibanding terang.',
+    'Anak meminta bantuan teman untuk membaca instruksi tertulis.',
+    'Orang tua melaporkan anak kesulitan menonton dari jarak normal di rumah.',
+  ],
+  pendengaran: [
+    'Anak tidak menoleh saat namanya dipanggil dari belakang.',
+    'Anak sering meminta pertanyaan atau instruksi diulang.',
+    'Anak berbicara dengan volume yang terlalu keras atau terlalu pelan.',
+    'Anak lebih memperhatikan bibir lawan bicara daripada matanya.',
+    'Anak sulit mengikuti percakapan dengan beberapa orang sekaligus.',
+    'Pelafalan anak kurang jelas untuk kata-kata yang umum pada seusianya.',
+    'Anak tampak kaget berlebihan pada suara mendadak.',
+    'Anak lebih senang bermain sendiri daripada interaksi verbal.',
+    'Anak mengandalkan gerak isyarat teman untuk memahami instruksi.',
+    'Anak merespon lebih cepat pada isyarat visual dibanding suara.',
+  ],
+  intelektual: [
+    'Anak memerlukan waktu jauh lebih lama menyelesaikan tugas dibanding teman sebaya.',
+    'Anak kesulitan mengingat instruksi 2–3 langkah sekaligus.',
+    'Perkembangan bahasa anak terasa tertinggal dari teman sekelasnya.',
+    'Anak sulit memahami konsep abstrak seperti waktu atau jumlah.',
+    'Anak masih kesulitan mengancing baju, mengikat tali sepatu, atau hal kemandirian lainnya.',
+    'Anak kurang mampu memecahkan masalah sederhana secara mandiri.',
+    'Anak menghafal mekanis tanpa memahami makna materi.',
+    'Anak sulit mengikuti permainan dengan aturan berlapis.',
+    'Anak belum lancar membilang secara berurutan hingga 20.',
+    'Anak cenderung pasif dan menunggu arahan dalam kelompok.',
+    'Anak kesulitan membedakan hal yang penting dari yang tidak penting.',
+    'Anak belum dapat menceritakan kembali kejadian sederhana dalam urutan.',
+    'Anak membutuhkan pengulangan materi yang sama berhari-hari.',
+    'Anak belum menunjukkan minat pada kegiatan sosial kelompok.',
+    'Anak tampak kewalahan pada tugas dengan banyak variabel.',
+  ],
+};
+
+const RECOMMENDATIONS = {
+  penglihatan: {
+    low:  'Tidak ditemukan indikasi kuat hambatan penglihatan. Tetap lakukan pemantauan rutin dan pastikan pemeriksaan mata tahunan.',
+    mid:  'Terdapat indikasi awal hambatan penglihatan. Disarankan: (1) pindahkan anak ke baris depan, (2) perbesar ukuran teks bahan ajar, (3) rujuk ke dokter mata dalam 2–4 minggu ke depan.',
+    high: 'Indikasi kuat hambatan penglihatan. Disarankan segera: (1) konsultasi optometri / dokter mata, (2) koordinasi dengan guru pembimbing khusus, (3) penyesuaian media ajar dengan kontras & ukuran tinggi.',
+  },
+  pendengaran: {
+    low:  'Tidak ditemukan indikasi kuat hambatan pendengaran. Pantau respon anak terhadap instruksi verbal secara berkala.',
+    mid:  'Terdapat indikasi awal hambatan pendengaran. Disarankan: (1) berbicara menghadap anak, (2) kurangi kebisingan latar, (3) pemeriksaan audiometri pada 1 bulan ke depan.',
+    high: 'Indikasi kuat hambatan pendengaran. Disarankan segera: (1) rujukan audiologi, (2) koordinasi dengan terapis wicara, (3) gunakan dukungan visual dan tulisan untuk setiap instruksi penting.',
+  },
+  intelektual: {
+    low:  'Tidak ditemukan indikasi kuat hambatan intelektual. Pertahankan pendekatan pembelajaran yang sudah berjalan.',
+    mid:  'Terdapat indikasi awal keterlambatan perkembangan kognitif. Disarankan: (1) asesmen psikologi pendidikan, (2) modifikasi materi dengan langkah-langkah kecil, (3) pelibatan orang tua untuk latihan di rumah.',
+    high: 'Indikasi kuat hambatan intelektual. Disarankan segera: (1) asesmen psikologi menyeluruh, (2) rujukan ke pusat tumbuh kembang, (3) program pembelajaran individual (PPI) bersama guru pembimbing khusus.',
+  },
+};
+
+/* ============================= RENDERERS ============================= */
+
+/* ---------- HOME ---------- */
+function renderHome(){
+  return `
+  <!-- HERO -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-${TWEAKS.heroMotif === 'plain' ? 'dots' : TWEAKS.heroMotif}" ${TWEAKS.heroMotif==='parang'?'style="opacity:.35"':''}></div>
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-10 pt-20 pb-24 grid lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-7">
+        <div class="inline-flex items-center gap-2 chip bg-ivory-200 text-indigo-900 mb-6">
+          <span class="w-1.5 h-1.5 rounded-full bg-sogan-500"></span>
+          Identifikasi awal ABK — Sekolah Dasar
+        </div>
+        <h1 class="font-display text-indigo-900 leading-[1.02]" style="font-size: clamp(44px, 7vw, ${TWEAKS.heroSize}px); font-weight:600;">
+          Menemukenali potensi anak, <em class="text-sogan-600">sedari dini</em>.
+        </h1>
+        <p class="mt-6 text-[17px] leading-relaxed text-indigo-900/75 max-w-xl">
+          InkluSyncID adalah platform identifikasi awal Anak Berkebutuhan Khusus untuk guru
+          dan orang tua — dirancang berbasis instrumen terstandar oleh tim peneliti Pendidikan
+          Dasar Inklusif, dengan sentuhan budaya Nusantara.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#/identification" data-link class="btn-primary px-6 py-3 rounded-full font-semibold inline-flex items-center gap-2">
+            Mulai Identifikasi
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#facts" class="btn-ghost px-6 py-3 rounded-full font-semibold">Pelajari lebih dulu</a>
+        </div>
+
+        <div class="mt-10 flex items-center gap-6 text-sm text-indigo-900/70">
+          <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-sage-600"></span>Gratis & berbasis penelitian</div>
+          <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-sage-600"></span>HKI Paten terdaftar</div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 relative">
+        <div class="relative card p-3">
+          <div class="aspect-[4/5] rounded-xl overflow-hidden">
+            ${ph('FOTO — anak SD dengan guru<br/>[stock: identifikasi ABK di kelas]')}
+          </div>
+          <div class="absolute -left-6 -bottom-6 card p-4 w-56 hidden md:block">
+            <div class="text-[11px] font-mono uppercase tracking-widest text-sogan-600">Landasan</div>
+            <div class="font-display text-indigo-900 text-lg mt-1 leading-snug">Permendikbud No. 70 / 2009</div>
+            <div class="text-xs text-indigo-900/60 mt-1">Pendidikan Inklusif bagi Peserta Didik Berkebutuhan Khusus.</div>
+          </div>
+        </div>
+        <!-- Decorative kawung element -->
+        <svg class="absolute -right-10 -top-10 w-40 h-40 text-sogan-500/30 hidden lg:block" viewBox="0 0 100 100" fill="none">
+          <circle cx="30" cy="30" r="18" stroke="currentColor"/>
+          <circle cx="70" cy="30" r="18" stroke="currentColor"/>
+          <circle cx="30" cy="70" r="18" stroke="currentColor"/>
+          <circle cx="70" cy="70" r="18" stroke="currentColor"/>
+          <circle cx="50" cy="50" r="4" fill="currentColor"/>
+        </svg>
+      </div>
+    </div>
+    <div class="hr-batik"></div>
+  </section>
+
+  <!-- FAKTA UNIK -->
+  <section id="facts" class="max-w-7xl mx-auto px-6 lg:px-10 py-20">
+    <div class="grid lg:grid-cols-12 gap-10 items-end mb-10">
+      <div class="lg:col-span-7">
+        <div class="chip bg-maroon-600/10 text-maroon-600 mb-4">Fakta Unik</div>
+        <h2 class="font-display text-4xl md:text-5xl text-indigo-900 leading-tight">
+          Kenapa harus ditemukenali <em class="text-maroon-600">sedari dini?</em>
+        </h2>
+      </div>
+      <div class="lg:col-span-5 text-[15px] text-indigo-900/75 leading-relaxed">
+        Intervensi yang diberikan pada rentang usia sekolah dasar memiliki dampak
+        perkembangan paling besar. Di bawah ini tiga alasan yang mendasari pentingnya
+        identifikasi awal di sekolah dan rumah.
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      ${FACTS.map((f,i)=>`
+        <article class="card p-6 relative overflow-hidden">
+          <div class="flex items-center justify-between mb-5">
+            <span class="font-mono text-xs text-sogan-600">0${i+1} / 03</span>
+            <span class="chip bg-ivory-200 text-indigo-900">${f.tag}</span>
+          </div>
+          <div class="font-display text-3xl text-indigo-900 leading-tight">${f.title}</div>
+          <p class="mt-3 text-[14px] text-indigo-900/70 leading-relaxed">${f.body}</p>
+          <svg class="absolute -right-4 -bottom-4 w-24 h-24 text-ivory-300" viewBox="0 0 24 24" fill="none"><circle cx="6" cy="6" r="4" stroke="currentColor"/><circle cx="18" cy="6" r="4" stroke="currentColor"/><circle cx="6" cy="18" r="4" stroke="currentColor"/><circle cx="18" cy="18" r="4" stroke="currentColor"/></svg>
+        </article>
+      `).join('')}
+    </div>
+
+    <!-- Kapan memulai -->
+    <div class="mt-14 card p-8 md:p-10 grid md:grid-cols-12 gap-8 items-center">
+      <div class="md:col-span-5 aspect-[4/3] rounded-xl overflow-hidden">
+        ${ph('FOTO — guru menemani<br/>siswa belajar di kelas')}
+      </div>
+      <div class="md:col-span-7">
+        <div class="chip bg-sage-600/15 text-sage-700 mb-4">Kapan memulai?</div>
+        <h3 class="font-display text-3xl text-indigo-900 leading-tight">
+          Tes ini dapat dimulai kapan pun guru atau orang tua mulai merasa <em>"ada sesuatu yang berbeda"</em> pada anak.
+        </h3>
+        <ul class="mt-5 space-y-3 text-[15px] text-indigo-900/80">
+          <li class="flex gap-3"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-sogan-500 flex-none"></span>Ketika anak terlihat tertinggal dari teman sekelasnya dalam satu aspek perkembangan.</li>
+          <li class="flex gap-3"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-sogan-500 flex-none"></span>Ketika pola sama teramati konsisten selama setidaknya 2 minggu.</li>
+          <li class="flex gap-3"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-sogan-500 flex-none"></span>Sebagai asesmen awal rutin tahunan di sekolah dasar inklusif.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- LANDING CTA START -->
+  <section class="bg-parang text-ivory-100 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24 grid md:grid-cols-12 gap-10 items-center relative z-10">
+      <div class="md:col-span-7">
+        <div class="chip bg-ivory-100/10 text-ivory-100 mb-5">Siap Memulai?</div>
+        <h2 class="font-display text-4xl md:text-6xl leading-[1.05]">
+          Identifikasi awal butuh waktu
+          <em class="text-sogan-400">kurang dari 10 menit.</em>
+        </h2>
+        <p class="mt-5 text-ivory-100/80 max-w-lg text-[16px] leading-relaxed">
+          Isi profil singkat, baca lembar persetujuan, lalu pilih jenis hambatan yang ingin diidentifikasi.
+          Hasilnya dapat disimpan dan didiskusikan dengan tenaga ahli kami.
+        </p>
+        <div class="mt-8 flex gap-3">
+          <a href="#/identification" data-link class="btn-accent px-7 py-4 rounded-full font-semibold text-base inline-flex items-center gap-2">
+            START
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="md:col-span-5">
+        <div class="aspect-[5/6] rounded-xl overflow-hidden ring-1 ring-ivory-100/10">
+          ${ph('FOTO — anak SD tersenyum<br/>[stock: sekolah inklusif]', 'h-full')}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIM PENGEMBANG -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 py-20">
+    <div class="mb-10">
+      <div class="chip bg-indigo-800/10 text-indigo-800 mb-4">Tim Pengembang</div>
+      <h2 class="font-display text-4xl md:text-5xl text-indigo-900 leading-tight max-w-3xl">
+        Dikembangkan oleh praktisi dan akademisi Pendidikan Dasar Inklusif.
+      </h2>
+    </div>
+
+    ${['Dosen Pengembang','Mahasiswa','Tim Eksternal'].map(group => `
+      <div class="mb-10">
+        <div class="flex items-center gap-4 mb-5">
+          <div class="font-mono text-xs uppercase tracking-[0.18em] text-sogan-600">${group}</div>
+          <div class="flex-1 h-px bg-ivory-300"></div>
+          <div class="text-xs text-indigo-900/50 font-mono">${TEAM.filter(t=>t.group===group).length} org</div>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          ${TEAM.filter(t=>t.group===group).map(t=>`
+            <article class="card p-3">
+              <div class="aspect-square rounded-lg overflow-hidden mb-3">
+                ${ph(group==='Dosen Pengembang'?'foto dosen':group==='Mahasiswa'?'foto mahasiswa':'foto tim eksternal')}
+              </div>
+              <div class="font-display text-[17px] leading-tight text-indigo-900">${t.name}</div>
+              <div class="text-[12px] text-indigo-900/60 mt-1 leading-snug">${t.role}</div>
+            </article>
+          `).join('')}
+        </div>
+      </div>
+    `).join('')}
+  </section>
+
+  <!-- HKI PATEN -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 pb-20">
+    <div class="card overflow-hidden grid lg:grid-cols-12">
+      <div class="lg:col-span-5 relative bg-indigo-900 text-ivory-100 p-10 flex flex-col justify-between min-h-[320px]">
+        <div class="chip bg-ivory-100/10 text-ivory-100 w-fit">HKI Paten Terdaftar</div>
+        <div>
+          <div class="font-mono text-xs text-sogan-400 mb-2">No. Pendaftaran</div>
+          <div class="font-display text-3xl">EC00202512345</div>
+          <div class="text-ivory-100/60 text-sm mt-2">Direktorat Jenderal Kekayaan Intelektual, Kemenkumham RI — 2025</div>
+        </div>
+        <!-- parang pattern -->
+        <svg class="absolute right-6 top-6 w-24 h-24 opacity-30" viewBox="0 0 100 100" fill="none">
+          <path d="M10 90 Q30 70 50 90 T90 90" stroke="#BAA6D6" stroke-width="1.5"/>
+          <path d="M10 70 Q30 50 50 70 T90 70" stroke="#BAA6D6" stroke-width="1.5"/>
+          <path d="M10 50 Q30 30 50 50 T90 50" stroke="#BAA6D6" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <div class="lg:col-span-7 p-10">
+        <h3 class="font-display text-3xl text-indigo-900 leading-tight">Instrumen InkluSyncID</h3>
+        <p class="mt-3 text-[15px] text-indigo-900/75 leading-relaxed">
+          Instrumen identifikasi yang digunakan pada platform ini merupakan hasil penelitian yang telah
+          didaftarkan sebagai Hak Kekayaan Intelektual. Seluruh butir pernyataan disusun berdasarkan
+          observasi lapangan di sekolah dasar inklusif dan telah melalui uji validitas oleh pakar
+          Pendidikan Khusus.
+        </p>
+        <div class="mt-6 grid grid-cols-3 gap-5">
+          <div><div class="font-display text-3xl text-sogan-600">37</div><div class="text-xs text-indigo-900/60 mt-1">Butir pernyataan observasi</div></div>
+          <div><div class="font-display text-3xl text-sogan-600">3</div><div class="text-xs text-indigo-900/60 mt-1">Domain hambatan</div></div>
+          <div><div class="font-display text-3xl text-sogan-600">12</div><div class="text-xs text-indigo-900/60 mt-1">SD inklusif uji coba</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFO LAINNYA -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 pb-20">
+    <div class="grid md:grid-cols-2 gap-5">
+      <a href="#" class="card p-7 hover:-translate-y-0.5 transition block">
+        <div class="chip bg-sogan-500/10 text-sogan-600 mb-4">Buku</div>
+        <h3 class="font-display text-2xl text-indigo-900 leading-snug">Identifikasi Anak Berkebutuhan Khusus</h3>
+        <p class="mt-2 text-sm text-indigo-900/65 leading-relaxed">Buku panduan lengkap terbitan Pustaka Nusantara — pendamping platform ini, memuat instrumen rinci dan studi kasus.</p>
+        <div class="mt-5 flex items-center gap-2 text-sogan-600 font-semibold text-sm">
+          Kunjungi web penerbit
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </a>
+      <a href="#" class="card p-7 hover:-translate-y-0.5 transition block">
+        <div class="chip bg-sage-600/15 text-sage-700 mb-4">Konsultasi</div>
+        <h3 class="font-display text-2xl text-indigo-900 leading-snug">Konsultasi lebih lanjut via WhatsApp Business</h3>
+        <p class="mt-2 text-sm text-indigo-900/65 leading-relaxed">Tim tenaga ahli kami siap mendampingi guru dan orang tua untuk tindak lanjut hasil identifikasi.</p>
+        <div class="mt-5 flex items-center gap-2 text-sage-700 font-semibold text-sm">
+          Hubungi via WhatsApp
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 pb-24">
+    <div class="text-center mb-10">
+      <div class="chip bg-ivory-200 text-indigo-900 mb-4">Partner Pusat Tumbuh Kembang</div>
+      <h2 class="font-display text-3xl md:text-4xl text-indigo-900">Bekerja sama dengan lembaga tumbuh kembang anak terpercaya.</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-5">
+      <a href="#" class="card p-8 flex flex-col md:flex-row items-center gap-6 hover:-translate-y-0.5 transition">
+        <div class="w-24 h-24 rounded-full bg-ivory-200 grid place-items-center flex-none">
+          <span class="font-display text-2xl text-indigo-900">BCI</span>
+        </div>
+        <div>
+          <div class="font-display text-xl text-indigo-900">Bina Cita Indonesia</div>
+          <p class="text-sm text-indigo-900/65 mt-1 leading-relaxed">Pusat tumbuh kembang & terapi anak, Jakarta & Bandung.</p>
+          <div class="mt-3 text-sogan-600 font-semibold text-sm inline-flex items-center gap-1">Kunjungi web BCI →</div>
+        </div>
+      </a>
+      <a href="#" class="card p-8 flex flex-col md:flex-row items-center gap-6 hover:-translate-y-0.5 transition">
+        <div class="w-24 h-24 rounded-full bg-ivory-200 grid place-items-center flex-none">
+          <span class="font-display text-lg text-indigo-900">Bloom</span>
+        </div>
+        <div>
+          <div class="font-display text-xl text-indigo-900">Bloom Child Development Center</div>
+          <p class="text-sm text-indigo-900/65 mt-1 leading-relaxed">Asesmen menyeluruh tumbuh kembang dan intervensi dini.</p>
+          <div class="mt-3 text-sogan-600 font-semibold text-sm inline-flex items-center gap-1">Kunjungi Bloom Center →</div>
+        </div>
+      </a>
+    </div>
+  </section>
+  `;
+}
+
+/* ---------- IDENTIFICATION: intro (redirect to /profile form) ---------- */
+function renderIdentificationStart(){
+  navigate('/identification/profile');
+  return identShell(1, `<div class="text-center py-20 text-indigo-900/50">Mengalihkan…</div>`);
+}
+
+/* ---------- IDENTIFICATION SHELL ---------- */
+function identShell(step, inner, opts={}){
+  const steps = [
+    { n:1, label:'Profil Pengisi' },
+    { n:2, label:'Persetujuan' },
+    { n:3, label:'Pilih Jenis' },
+    { n:4, label:'Tes Identifikasi' },
+  ];
+  return `
+  <div class="bg-dots">
+    <div class="max-w-5xl mx-auto px-6 lg:px-10 py-12">
+      <div class="mb-2 text-xs font-mono uppercase tracking-[0.18em] text-sogan-600">Start Identification</div>
+      <h1 class="font-display text-3xl md:text-4xl text-indigo-900 leading-tight">${opts.title || 'Identifikasi Anak Berkebutuhan Khusus'}</h1>
+      <p class="text-indigo-900/65 mt-2 max-w-2xl text-[15px]">${opts.sub || 'Lengkapi langkah-langkah di bawah ini. Data Anda tersimpan otomatis di peramban — Anda bisa kembali kapan saja.'}</p>
+
+      <ol class="mt-8 flex items-center gap-2 md:gap-4">
+        ${steps.map((s,i)=>`
+          <li class="flex items-center gap-3">
+            <span class="step-dot ${s.n<step?'done':s.n===step?'active':'idle'}">${s.n<step?'✓':s.n}</span>
+            <span class="text-sm ${s.n===step?'text-indigo-900 font-semibold':'text-indigo-900/55'} hidden sm:inline">${s.label}</span>
+            ${i<steps.length-1?'<span class="w-6 md:w-10 h-px bg-ivory-300"></span>':''}
+          </li>
+        `).join('')}
+      </ol>
+
+      <div class="mt-8">${inner}</div>
+    </div>
+  </div>`;
+}
+
+/* ---------- STEP 1: Profil Pengisi ---------- */
+function renderIdentProfile(){
+  const p = state.profile || {};
+  const inner = `
+    <form id="profile-form" class="card p-7 md:p-9">
+      <div class="grid md:grid-cols-2 gap-5">
+        <div class="field">
+          <label>Nama Pengisi</label>
+          <input name="namaPengisi" value="${p.namaPengisi||''}" placeholder="mis. Ibu Astuti" required />
+        </div>
+        <div class="field">
+          <label>Status</label>
+          <div class="radio-card grid grid-cols-2 gap-2 mt-0.5">
+            <div class="relative"><input id="st-g" type="radio" name="status" value="Guru" ${p.status==='Guru'?'checked':''}><label for="st-g"><span class="dot"></span>Guru</label></div>
+            <div class="relative"><input id="st-o" type="radio" name="status" value="Orang Tua" ${p.status==='Orang Tua'?'checked':''}><label for="st-o"><span class="dot"></span>Orang Tua</label></div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Nama Anak</label>
+          <input name="namaAnak" value="${p.namaAnak||''}" placeholder="mis. Raka Ardiansyah" required />
+        </div>
+        <div class="field">
+          <label>Tempat, Tanggal Lahir</label>
+          <input name="ttl" value="${p.ttl||''}" placeholder="mis. Bandung, 12 Mei 2017" required />
+        </div>
+
+        <div class="field">
+          <label>Usia (Tahun)</label>
+          <input name="usia" type="number" min="5" max="15" value="${p.usia||''}" placeholder="7" required />
+        </div>
+        <div class="field">
+          <label>Hambatan yang Dialami <span class="font-normal text-indigo-900/50">(gambaran singkat)</span></label>
+          <input name="hambatan" value="${p.hambatan||''}" placeholder="mis. sulit menyalin dari papan tulis" required />
+        </div>
+      </div>
+
+      <div class="mt-8 flex flex-wrap items-center justify-between gap-3">
+        <a href="#/" data-link class="text-sm text-indigo-900/60 hover:text-indigo-900">← Kembali ke beranda</a>
+        <button type="submit" class="btn-primary px-6 py-3 rounded-full font-semibold">
+          Lanjut — Lembar Persetujuan →
+        </button>
+      </div>
+    </form>
+  `;
+  setTimeout(()=>{
+    const f = document.getElementById('profile-form');
+    f.addEventListener('submit', e=>{
+      e.preventDefault();
+      const fd = new FormData(f);
+      state.profile = Object.fromEntries(fd.entries());
+      saveState();
+      toast('Profil tersimpan');
+      navigate('/identification/consent');
+    });
+  },0);
+  return identShell(1, inner, { title:'Langkah 1 — Pengisian Profil', sub:'Lengkapi data pengisi dan anak terlebih dahulu.' });
+}
+
+/* ---------- STEP 2: Persetujuan ---------- */
+function renderIdentConsent(){
+  if (!state.profile) { navigate('/identification/profile'); return ''; }
+  const inner = `
+    <form id="consent-form" class="card p-7 md:p-9">
+      <div class="prose max-w-none">
+        <h3 class="font-display text-2xl text-indigo-900 m-0">Lembar Persetujuan Pengguna</h3>
+        <p class="text-[15px] text-indigo-900/75 leading-relaxed mt-3">
+          Dengan menekan tombol lanjut, Anda — <strong>${state.profile.namaPengisi}</strong> sebagai
+          <strong>${state.profile.status}</strong> — menyatakan bahwa:
+        </p>
+        <ul class="space-y-2 text-[15px] text-indigo-900/80 mt-3 list-none p-0">
+          <li class="flex gap-3"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-sogan-500 flex-none"></span>Data yang Anda isikan digunakan semata-mata untuk identifikasi awal dan tidak dibagikan ke pihak ketiga tanpa izin.</li>
+          <li class="flex gap-3"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-sogan-500 flex-none"></span>Hasil identifikasi InkluSyncID bukan diagnosis klinis; keputusan akhir tetap berada pada tenaga profesional.</li>
+          <li class="flex gap-3"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-sogan-500 flex-none"></span>Anda telah membaca dan memahami instrumen yang akan diberikan pada langkah berikutnya.</li>
+          <li class="flex gap-3"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-sogan-500 flex-none"></span>Anda memberikan persetujuan atas nama wali sah dari anak bernama <strong>${state.profile.namaAnak}</strong>.</li>
+        </ul>
+      </div>
+
+      <label class="mt-8 flex items-start gap-3 cursor-pointer select-none">
+        <input id="agree" type="checkbox" class="mt-1 w-5 h-5 accent-indigo-800" ${state.consent?'checked':''}/>
+        <span class="text-[15px] text-indigo-900/85">Saya membaca dan menyetujui pernyataan di atas, serta bersedia mengisi instrumen secara jujur berdasarkan pengamatan saya.</span>
+      </label>
+
+      <div class="mt-8 flex flex-wrap items-center justify-between gap-3">
+        <a href="#/identification/profile" data-link class="text-sm text-indigo-900/60 hover:text-indigo-900">← Kembali ke profil</a>
+        <button id="next-btn" type="submit" class="btn-primary px-6 py-3 rounded-full font-semibold disabled:opacity-40 disabled:cursor-not-allowed" disabled>
+          Lanjut — Memilih Jenis Identifikasi →
+        </button>
+      </div>
+    </form>
+  `;
+  setTimeout(()=>{
+    const cb = document.getElementById('agree');
+    const btn = document.getElementById('next-btn');
+    const sync = ()=>{ btn.disabled = !cb.checked; };
+    cb.addEventListener('change', sync); sync();
+    document.getElementById('consent-form').addEventListener('submit', e=>{
+      e.preventDefault();
+      if (!cb.checked) return;
+      state.consent = true; saveState();
+      navigate('/identification/choose');
+    });
+  },0);
+  return identShell(2, inner, { title:'Langkah 2 — Persetujuan', sub:'Bacalah dengan saksama sebelum melanjutkan.' });
+}
+
+/* ---------- STEP 3: Choose disability ---------- */
+function renderIdentChoose(){
+  if (!state.profile || !state.consent) { navigate('/identification/profile'); return ''; }
+  const inner = `
+    <div class="card p-7 md:p-9">
+      <div class="mb-6 p-4 rounded-lg bg-ivory-200 border border-ivory-300">
+        <div class="text-xs font-mono uppercase tracking-[0.18em] text-sogan-600 mb-1">Hambatan yang disampaikan</div>
+        <div class="text-[15px] text-indigo-900">"${state.profile.hambatan}"</div>
+      </div>
+
+      <p class="text-[15px] text-indigo-900/75 leading-relaxed">
+        Berdasarkan hambatan yang telah disampaikan, silakan pilih berdasarkan karakteristik yang
+        sesuai dengan gambaran umum hambatan anak. Klik panah untuk melihat deskripsi.
+      </p>
+
+      <div class="mt-6 space-y-3">
+        ${DISABILITIES.map(d=>`
+          <details class="disability card p-0 overflow-hidden" data-id="${d.id}">
+            <summary class="p-5 md:p-6 flex items-center gap-4">
+              <span class="w-11 h-11 rounded-full grid place-items-center flex-none" style="background: ${d.color}14; color:${d.color}">
+                <svg viewBox="0 0 24 24" class="w-6 h-6">${d.icon}</svg>
+              </span>
+              <div class="flex-1">
+                <div class="font-display text-[19px] text-indigo-900 leading-tight">${d.name}</div>
+                <div class="text-xs text-indigo-900/55 mt-0.5">Klik panah ke bawah untuk deskripsi</div>
+              </div>
+              <svg class="chev w-5 h-5 text-indigo-900/70" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </summary>
+            <div class="px-6 pb-6 pt-0 border-t border-ivory-200 grid md:grid-cols-12 gap-6">
+              <div class="md:col-span-8">
+                <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-sogan-600 mb-2 mt-5">Deskripsi singkat</div>
+                <p class="text-[15px] text-indigo-900/80 leading-relaxed">${d.short}</p>
+                <p class="text-[14px] text-indigo-900/65 leading-relaxed mt-3">${d.long}</p>
+              </div>
+              <div class="md:col-span-4 flex md:items-end md:justify-end pt-4">
+                <button class="btn-accent px-5 py-3 rounded-full font-semibold w-full md:w-auto" data-start="${d.id}">
+                  Klik Untuk Memulai Tes →
+                </button>
+              </div>
+            </div>
+          </details>
+        `).join('')}
+      </div>
+
+      <div class="mt-8 flex items-center justify-between">
+        <a href="#/identification/consent" data-link class="text-sm text-indigo-900/60 hover:text-indigo-900">← Kembali</a>
+      </div>
+    </div>
+  `;
+  setTimeout(()=>{
+    document.querySelectorAll('[data-start]').forEach(b=>{
+      b.addEventListener('click', ()=>{
+        navigate('/identification/test?type=' + b.dataset.start);
+      });
+    });
+  },0);
+  return identShell(3, inner, { title:'Langkah 3 — Pilih Jenis Identifikasi', sub:'Pilih domain hambatan yang paling mendekati gambaran anak.' });
+}
+
+/* ---------- STEP 4: Test ---------- */
+function renderIdentTest(params){
+  if (!state.profile || !state.consent) { navigate('/identification/profile'); return ''; }
+  const type = params.type;
+  const disability = DISABILITIES.find(d=>d.id===type);
+  if (!disability) { navigate('/identification/choose'); return ''; }
+  const qs = QUESTIONS[type];
+  const total = qs.length;
+
+  const inner = `
+    <div class="card p-7 md:p-9">
+      <div class="flex items-center gap-4 mb-2">
+        <span class="w-11 h-11 rounded-full grid place-items-center flex-none" style="background: ${disability.color}14; color:${disability.color}">
+          <svg viewBox="0 0 24 24" class="w-6 h-6">${disability.icon}</svg>
+        </span>
+        <div>
+          <div class="font-display text-2xl text-indigo-900 leading-tight">${disability.name}</div>
+          <div class="text-xs text-indigo-900/60 mt-0.5">${total} butir pernyataan observasi • untuk ${state.profile.namaAnak}</div>
+        </div>
+      </div>
+
+      <div class="mt-6 p-4 rounded-lg border border-sogan-500/30 bg-sogan-500/5 text-[14px] text-indigo-900/80 leading-relaxed">
+        <strong class="text-indigo-900">Petunjuk:</strong> pilih <strong>Ya</strong> jika pernyataan terjadi sering/konsisten,
+        <strong>Kadang</strong> jika sesekali, dan <strong>Tidak</strong> jika tidak pernah atau jarang Anda amati.
+      </div>
+
+      <div class="mt-3 flex items-center gap-2 text-xs text-indigo-900/65 font-mono">
+        <span id="q-progress">0 / ${total}</span>
+        <div class="flex-1 h-1.5 bg-ivory-200 rounded-full overflow-hidden">
+          <div id="q-bar" class="h-full bg-sogan-500 transition-all" style="width:0%"></div>
+        </div>
+      </div>
+
+      <div class="mt-4" id="q-list">
+        ${qs.map((q,i)=>`
+          <div class="q-row" data-idx="${i}">
+            <div class="flex items-start gap-3">
+              <span class="font-mono text-xs text-indigo-900/40 mt-0.5">${String(i+1).padStart(2,'0')}</span>
+              <span class="text-[15px] text-indigo-900 leading-relaxed">${q}</span>
+            </div>
+            <div class="q-opts">
+              <button data-val="yes">Ya</button>
+              <button data-val="sometimes">Kadang</button>
+              <button data-val="no">Tidak</button>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+
+      <div class="mt-8 flex flex-wrap items-center justify-between gap-3">
+        <a href="#/identification/choose" data-link class="text-sm text-indigo-900/60 hover:text-indigo-900">← Pilih jenis lain</a>
+        <button id="submit-test" class="btn-primary px-6 py-3 rounded-full font-semibold disabled:opacity-40 disabled:cursor-not-allowed" disabled>
+          Lihat Hasil Identifikasi →
+        </button>
+      </div>
+    </div>
+  `;
+  setTimeout(()=>{
+    const answers = {};
+    const rows = document.querySelectorAll('#q-list .q-row');
+    const submit = document.getElementById('submit-test');
+    const bar = document.getElementById('q-bar');
+    const prog = document.getElementById('q-progress');
+
+    rows.forEach(row=>{
+      const idx = +row.dataset.idx;
+      row.querySelectorAll('.q-opts button').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          const v = btn.dataset.val;
+          answers[idx] = v;
+          row.querySelectorAll('.q-opts button').forEach(b=>b.className='');
+          btn.className = 'sel-'+v;
+          const filled = Object.keys(answers).length;
+          prog.textContent = `${filled} / ${total}`;
+          bar.style.width = (filled/total*100).toFixed(1)+'%';
+          submit.disabled = filled !== total;
+        });
+      });
+    });
+
+    submit.addEventListener('click', ()=>{
+      if (Object.keys(answers).length !== total) return;
+      // Score: yes=2, sometimes=1, no=0; normalize to 0–100
+      let score = 0;
+      Object.values(answers).forEach(v=> score += v==='yes'?2:v==='sometimes'?1:0);
+      const pct = Math.round(score / (total*2) * 100);
+      const level = pct >= 60 ? 'high' : pct >= 30 ? 'mid' : 'low';
+      const result = {
+        type, typeName: disability.name, color: disability.color,
+        date: new Date().toISOString(),
+        answers, score: pct, level,
+        summary: level==='high' ? 'Indikasi kuat' : level==='mid' ? 'Indikasi awal' : 'Tidak terindikasi',
+        recommendation: RECOMMENDATIONS[type][level],
+      };
+      // keep only latest per type
+      state.tests = [...state.tests.filter(t=>t.type!==type), result];
+      saveState();
+      toast('Hasil identifikasi tersimpan');
+      navigate('/profile/result?type='+type);
+    });
+  },0);
+
+  return identShell(4, inner, { title:'Langkah 4 — Tes Identifikasi', sub:'Isi seluruh butir berdasarkan pengamatan Anda selama minimal 2 minggu terakhir.' });
+}
+
+/* ---------- PROFILE ---------- */
+function renderProfile(){
+  if (!state.profile) {
+    return `
+    <div class="max-w-3xl mx-auto px-6 lg:px-10 py-24 text-center">
+      <div class="font-mono text-xs uppercase tracking-[0.18em] text-sogan-600 mb-3">Profile</div>
+      <h1 class="font-display text-4xl text-indigo-900 leading-tight">Belum ada profil tersimpan.</h1>
+      <p class="mt-4 text-[15px] text-indigo-900/70 max-w-lg mx-auto">
+        Mulailah identifikasi untuk mengisi profil anak dan menyimpan hasil identifikasinya di sini.
+      </p>
+      <a href="#/identification" data-link class="inline-block mt-8 btn-primary px-6 py-3 rounded-full font-semibold">Mulai Identifikasi</a>
+    </div>`;
+  }
+
+  const p = state.profile;
+  const tests = [...state.tests].sort((a,b)=> new Date(b.date) - new Date(a.date));
+  return `
+  <div class="bg-dots">
+    <div class="max-w-5xl mx-auto px-6 lg:px-10 py-12">
+      <div class="font-mono text-xs uppercase tracking-[0.18em] text-sogan-600 mb-2">Tampilan Profile</div>
+      <h1 class="font-display text-3xl md:text-4xl text-indigo-900">Profil Anak</h1>
+
+      <div class="mt-6 grid lg:grid-cols-12 gap-6">
+        <div class="lg:col-span-5 card p-6">
+          <div class="aspect-square rounded-xl overflow-hidden mb-5">
+            ${ph('foto anak')}
+          </div>
+          <dl class="space-y-3 text-[14.5px]">
+            ${[
+              ['Nama Pengisi', p.namaPengisi],
+              ['Status', p.status],
+              ['Nama Anak', p.namaAnak],
+              ['TTL', p.ttl],
+              ['Usia', p.usia + ' tahun'],
+              ['Hambatan yang Dialami', p.hambatan],
+            ].map(([k,v])=>`
+              <div class="grid grid-cols-5 gap-3 items-baseline">
+                <dt class="col-span-2 text-indigo-900/55 text-[12.5px] uppercase tracking-wider font-semibold">${k}</dt>
+                <dd class="col-span-3 text-indigo-900">${v}</dd>
+              </div>
+            `).join('')}
+          </dl>
+          <div class="mt-6 flex gap-2">
+            <a href="#/identification/profile" data-link class="btn-ghost px-4 py-2 rounded-full text-sm font-semibold">Ubah profil</a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="font-display text-2xl text-indigo-900">Hasil Identifikasi</h2>
+            <a href="#/identification/choose" data-link class="btn-accent px-4 py-2 rounded-full text-sm font-semibold">+ Identifikasi baru</a>
+          </div>
+
+          ${tests.length === 0 ? `
+            <div class="card p-8 text-center text-indigo-900/60">
+              Belum ada hasil identifikasi. Silakan mulai dari <a href="#/identification/choose" data-link class="text-sogan-600 font-semibold">memilih jenis identifikasi</a>.
+            </div>
+          ` : tests.map(t=>`
+            <article class="card p-5 mb-4">
+              <div class="flex items-center justify-between gap-3 mb-3">
+                <div class="flex items-center gap-3">
+                  <span class="w-9 h-9 rounded-full grid place-items-center" style="background:${t.color}14; color:${t.color}">
+                    <svg viewBox="0 0 24 24" class="w-5 h-5">${DISABILITIES.find(d=>d.id===t.type).icon}</svg>
+                  </span>
+                  <div>
+                    <div class="font-display text-lg text-indigo-900 leading-tight">${t.typeName}</div>
+                    <div class="text-xs text-indigo-900/55 font-mono">${new Date(t.date).toLocaleDateString('id-ID',{year:'numeric',month:'long',day:'numeric'})}</div>
+                  </div>
+                </div>
+                <span class="chip ${t.level==='high'?'bg-maroon-600 text-white':t.level==='mid'?'bg-sogan-500 text-white':'bg-sage-600 text-white'}">
+                  ${t.summary}
+                </span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="flex-1 h-2 bg-ivory-200 rounded-full overflow-hidden">
+                  <div class="h-full" style="width:${t.score}%; background:${t.color}"></div>
+                </div>
+                <span class="font-mono text-xs text-indigo-900/65">${t.score} / 100</span>
+              </div>
+              <a href="#/profile/result?type=${t.type}" data-link class="mt-4 inline-flex items-center gap-1 text-sogan-600 font-semibold text-sm">
+                Lihat hasil lengkap →
+              </a>
+            </article>
+          `).join('')}
+
+          <div class="mt-6 card p-5 flex items-center gap-4 bg-sage-600/8 border-sage-600/30">
+            <svg class="w-10 h-10 text-sage-700 flex-none" viewBox="0 0 24 24" fill="none"><path d="M20.5 3.5A11 11 0 0 0 3.5 20.5L2 22l1.5-1.5" stroke="currentColor" stroke-width="1.6"/><path d="M8 11s1 2 4 2 4-2 4-2M9 9h.01M15 9h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <div class="flex-1">
+              <div class="font-display text-lg text-indigo-900 leading-tight">Konsultasi lebih lanjut</div>
+              <div class="text-sm text-indigo-900/65">Diskusikan hasil dengan tenaga ahli kami via WhatsApp Business.</div>
+            </div>
+            <a href="#" class="btn-primary px-4 py-2 rounded-full text-sm font-semibold">Hubungi Kami</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ---------- PROFILE RESULT ---------- */
+function renderProfileResult(params){
+  if (!state.profile) { navigate('/profile'); return ''; }
+  const t = state.tests.find(x=>x.type===params.type);
+  if (!t) { navigate('/profile'); return ''; }
+  const p = state.profile;
+  const d = DISABILITIES.find(x=>x.id===t.type);
+
+  return `
+  <div class="bg-dots">
+    <div class="max-w-5xl mx-auto px-6 lg:px-10 py-12">
+      <a href="#/profile" data-link class="inline-flex items-center gap-2 text-sm text-indigo-900/60 hover:text-indigo-900 mb-4">← Kembali ke profil</a>
+
+      <div class="card overflow-hidden">
+        <!-- Header -->
+        <div class="p-7 md:p-10" style="background:${d.color}; color:#FBF7EF">
+          <div class="flex flex-wrap items-start justify-between gap-4">
+            <div>
+              <div class="font-mono text-[11px] uppercase tracking-[0.18em] opacity-70">Hasil Identifikasi</div>
+              <h1 class="font-display text-3xl md:text-4xl mt-1 leading-tight">${t.typeName}</h1>
+              <div class="mt-2 text-[14px] opacity-80">${p.namaAnak} • ${p.usia} tahun • oleh ${p.namaPengisi} (${p.status})</div>
+            </div>
+            <div class="text-right">
+              <div class="font-mono text-[11px] uppercase tracking-[0.18em] opacity-70">Tanggal</div>
+              <div class="font-display text-xl">${new Date(t.date).toLocaleDateString('id-ID',{year:'numeric',month:'long',day:'numeric'})}</div>
+            </div>
+          </div>
+
+          <div class="mt-8 grid md:grid-cols-3 gap-5">
+            <div>
+              <div class="font-mono text-[11px] uppercase tracking-[0.18em] opacity-70 mb-1">Skor indikasi</div>
+              <div class="font-display text-5xl">${t.score}<span class="text-2xl opacity-60">/100</span></div>
+            </div>
+            <div class="md:col-span-2">
+              <div class="font-mono text-[11px] uppercase tracking-[0.18em] opacity-70 mb-1">Ringkasan</div>
+              <div class="font-display text-2xl leading-tight">${t.summary} hambatan ${d.name.toLowerCase().replace('hambatan ','')} pada anak.</div>
+              <div class="mt-3 h-2 bg-black/20 rounded-full overflow-hidden">
+                <div class="h-full bg-white/90" style="width:${t.score}%"></div>
+              </div>
+              <div class="mt-1 flex justify-between text-[10px] font-mono opacity-60">
+                <span>0 — tidak terindikasi</span><span>30 — awal</span><span>60 — kuat</span><span>100</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Body -->
+        <div class="p-7 md:p-10 grid md:grid-cols-12 gap-8">
+          <div class="md:col-span-7">
+            <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-sogan-600 mb-2">— Deskripsi Hasil —</div>
+            <h3 class="font-display text-2xl text-indigo-900 leading-tight">Apa artinya hasil ini?</h3>
+            <p class="mt-3 text-[15px] text-indigo-900/80 leading-relaxed">${d.short}</p>
+            <p class="mt-3 text-[15px] text-indigo-900/70 leading-relaxed">
+              Berdasarkan ${Object.keys(t.answers).length} butir pengamatan, InkluSyncID memperhitungkan
+              skor indikasi sebesar <strong>${t.score}/100</strong> dan mengklasifikasikannya
+              sebagai <strong style="color:${d.color}">${t.summary.toLowerCase()}</strong>. Hasil ini
+              bukan diagnosis klinis, melainkan petunjuk awal untuk langkah tindak lanjut.
+            </p>
+
+            <div class="mt-8 font-mono text-[11px] uppercase tracking-[0.18em] text-sogan-600 mb-2">— Rekomendasi —</div>
+            <div class="p-5 rounded-xl" style="background:${d.color}0d; border:1px solid ${d.color}33">
+              <p class="text-[15px] text-indigo-900/85 leading-relaxed">${t.recommendation}</p>
+            </div>
+
+            <div class="mt-8 grid grid-cols-3 gap-3">
+              <div class="p-4 rounded-lg bg-ivory-200">
+                <div class="font-mono text-[10px] uppercase tracking-widest text-sogan-600">Ya</div>
+                <div class="font-display text-2xl text-indigo-900">${Object.values(t.answers).filter(v=>v==='yes').length}</div>
+              </div>
+              <div class="p-4 rounded-lg bg-ivory-200">
+                <div class="font-mono text-[10px] uppercase tracking-widest text-sogan-600">Kadang</div>
+                <div class="font-display text-2xl text-indigo-900">${Object.values(t.answers).filter(v=>v==='sometimes').length}</div>
+              </div>
+              <div class="p-4 rounded-lg bg-ivory-200">
+                <div class="font-mono text-[10px] uppercase tracking-widest text-sogan-600">Tidak</div>
+                <div class="font-display text-2xl text-indigo-900">${Object.values(t.answers).filter(v=>v==='no').length}</div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="md:col-span-5 space-y-4">
+            <div class="card p-5 bg-ivory-100">
+              <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-sogan-600 mb-2">Jenis Identifikasi</div>
+              <div class="font-display text-lg text-indigo-900 leading-tight">${t.typeName}</div>
+              <div class="text-xs text-indigo-900/60 mt-1">Dari instrumen InkluSyncID terstandar.</div>
+            </div>
+            <div class="card p-5 bg-ivory-100">
+              <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-sogan-600 mb-2">Konsultasi Lebih Lanjut</div>
+              <div class="font-display text-lg text-indigo-900 leading-tight">WhatsApp Business</div>
+              <p class="text-sm text-indigo-900/65 mt-1">Hubungi tenaga ahli kami untuk tindak lanjut yang sesuai.</p>
+              <a href="#" class="mt-3 btn-primary w-full text-center px-4 py-2.5 rounded-full text-sm font-semibold inline-block">Hubungi via WA</a>
+            </div>
+            <div class="card p-5 bg-ivory-100">
+              <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-sogan-600 mb-2">Tes lain</div>
+              <div class="space-y-2">
+                ${DISABILITIES.filter(x=>x.id!==t.type).map(x=>`
+                  <a href="#/identification/test?type=${x.id}" data-link class="flex items-center gap-3 p-2 rounded-md hover:bg-ivory-200">
+                    <span class="w-7 h-7 rounded-full grid place-items-center" style="background:${x.color}14; color:${x.color}">
+                      <svg viewBox="0 0 24 24" class="w-4 h-4">${x.icon}</svg>
+                    </span>
+                    <span class="text-sm text-indigo-900">${x.name}</span>
+                    <span class="ml-auto text-xs text-indigo-900/50">→</span>
+                  </a>
+                `).join('')}
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </div>
+  `;
+}
+
+function renderNotFound(){
+  return `<div class="max-w-3xl mx-auto px-6 py-20 text-center">
+    <div class="font-display text-5xl text-indigo-900">404</div>
+    <div class="mt-3 text-indigo-900/65">Halaman tidak ditemukan.</div>
+    <a href="#/" data-link class="inline-block mt-6 btn-primary px-5 py-2.5 rounded-full text-sm font-semibold">Kembali ke beranda</a>
+  </div>`;
+}
+
+/* ---------- Click interception for data-link (ensures hash routing works across generated content) ---------- */
+document.addEventListener('click', e=>{
+  const a = e.target.closest('a[data-link]');
+  if (!a) return;
+  const href = a.getAttribute('href');
+  if (!href || !href.startsWith('#')) return;
+  // Default browser behavior is fine, but we handle hashchange listener already.
+});
+
+/* ---------- Tweaks ---------- */
+const tweaksEl = document.getElementById('tweaks');
+function applyTweaks(){
+  document.documentElement.style.setProperty('--sogan-500', TWEAKS.accentColor);
+  // re-render current page to pick up motif / size
+  router();
+}
+function setupTweaks(){
+  // motif
+  document.querySelectorAll('#tw-motif button').forEach(b=>{
+    if (b.dataset.v === TWEAKS.heroMotif) b.style.outline='2px solid var(--indigo-800)';
+    b.addEventListener('click', ()=>{
+      TWEAKS.heroMotif = b.dataset.v;
+      document.querySelectorAll('#tw-motif button').forEach(x=>x.style.outline='');
+      b.style.outline='2px solid var(--indigo-800)';
+      window.parent.postMessage({type:'__edit_mode_set_keys', edits:{heroMotif: TWEAKS.heroMotif}},'*');
+      applyTweaks();
+    });
+  });
+  document.querySelectorAll('#tw-accent button').forEach(b=>{
+    if (b.dataset.v === TWEAKS.accentColor) b.style.outline='2px solid var(--indigo-800)';
+    b.addEventListener('click', ()=>{
+      TWEAKS.accentColor = b.dataset.v;
+      document.querySelectorAll('#tw-accent button').forEach(x=>x.style.outline='');
+      b.style.outline='2px solid var(--indigo-800)';
+      window.parent.postMessage({type:'__edit_mode_set_keys', edits:{accentColor: TWEAKS.accentColor}},'*');
+      applyTweaks();
+    });
+  });
+  const size = document.getElementById('tw-size');
+  const sizeV = document.getElementById('tw-size-v');
+  size.value = TWEAKS.heroSize;
+  sizeV.textContent = TWEAKS.heroSize + 'px';
+  size.addEventListener('input', ()=>{
+    TWEAKS.heroSize = +size.value;
+    sizeV.textContent = TWEAKS.heroSize + 'px';
+  });
+  size.addEventListener('change', ()=>{
+    window.parent.postMessage({type:'__edit_mode_set_keys', edits:{heroSize: TWEAKS.heroSize}},'*');
+    applyTweaks();
+  });
+  document.getElementById('tweaks-close').addEventListener('click', ()=> tweaksEl.classList.remove('open'));
+}
+
+// Register listener BEFORE announcing
+window.addEventListener('message', e=>{
+  const d = e.data || {};
+  if (d.type === '__activate_edit_mode') tweaksEl.classList.add('open');
+  if (d.type === '__deactivate_edit_mode') tweaksEl.classList.remove('open');
+});
+window.parent.postMessage({type:'__edit_mode_available'}, '*');
+
+/* ---------- Boot ---------- */
+if (!location.hash) location.hash = '#/';
+setupTweaks();
+applyTweaks(); // also renders route
+</script>
+</body>
+</html>

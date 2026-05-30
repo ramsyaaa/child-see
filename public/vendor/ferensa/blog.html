@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Ferensa Studio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+</head>
+<body class="bg-[#faf7f2]">
+
+  <!-- NAV -->
+  <nav class="site-nav">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <img src="assets/logo.png" alt="Ferensa Studio" class="h-9 w-auto" onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='flex';" />
+        <div class="hidden w-8 h-8 rounded-full bg-gradient-to-br from-[#C4923A] to-[#8B4513] items-center justify-center"><i class="fas fa-leaf text-white text-xs"></i></div>
+        <span class="font-['Playfair_Display'] text-xl font-semibold text-[#B85C38]">Ferensa Studio</span>
+      </a>
+      <ul class="hidden md:flex items-center gap-7 text-[13px] text-[#4a4a4a] font-medium">
+        <li><a href="index.html" class="hover:text-[#B85C38] transition-colors">Home</a></li>
+        <li><a href="about.html" class="hover:text-[#B85C38] transition-colors">About</a></li>
+        <li><a href="classes.html" class="hover:text-[#B85C38] transition-colors">Classes</a></li>
+        <li><a href="instructors.html" class="hover:text-[#B85C38] transition-colors">Instructors</a></li>
+        <li><a href="calendar.html" class="hover:text-[#B85C38] transition-colors">Calendar</a></li>
+        <li><a href="bundles.html" class="hover:text-[#B85C38] transition-colors">Bundles</a></li>
+        <li><a href="blog.html" class="text-[#B85C38]">Blog</a></li>
+      </ul>
+      <div class="hidden md:flex items-center gap-3">
+        <a href="login.html" class="text-[13px] font-medium text-[#4a4a4a] hover:text-[#B85C38] transition-colors">Sign In</a>
+        <a href="register.html" class="btn-grad btn-grad-sm">Join Us</a>
+      </div>
+      <button id="menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#f5f0e8] text-[#4a4a4a]"><i class="fas fa-bars text-lg"></i></button>
+    </div>
+  </nav>
+  <div id="mobile-menu" class="fixed inset-0 z-[500] bg-black/40 opacity-0 pointer-events-none translate-x-full transition-all duration-400">
+    <div class="absolute right-0 top-0 bottom-0 w-72 bg-[#faf7f2] shadow-2xl flex flex-col p-8">
+      <div class="flex items-center justify-between mb-10">
+        <span class="font-['Playfair_Display'] text-xl font-semibold text-[#B85C38]">Menu</span>
+        <button id="menu-close" class="w-9 h-9 flex items-center justify-center rounded-full bg-[#f5f0e8] text-[#4a4a4a]"><i class="fas fa-times"></i></button>
+      </div>
+      <nav class="flex flex-col gap-5 text-[15px] font-medium text-[#4a4a4a]">
+        <a href="index.html" class="hover:text-[#B85C38]">Home</a>
+        <a href="about.html" class="hover:text-[#B85C38]">About</a>
+        <a href="classes.html" class="hover:text-[#B85C38]">Classes</a>
+        <a href="instructors.html" class="hover:text-[#B85C38]">Instructors</a>
+        <a href="calendar.html" class="hover:text-[#B85C38]">Calendar</a>
+        <a href="bundles.html" class="hover:text-[#B85C38]">Bundles</a>
+        <a href="blog.html" class="text-[#B85C38]">Blog</a>
+      </nav>
+      <div class="mt-auto flex flex-col gap-3">
+        <a href="login.html" class="btn-outline text-center">Sign In</a>
+        <a href="register.html" class="btn-grad text-center">Join Us</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="py-16 px-6 text-center reveal">
+    <div class="max-w-2xl mx-auto">
+      <h1 class="font-['Playfair_Display'] text-5xl font-semibold mb-3">Our Blog</h1>
+      <p class="text-[#7a7a7a] text-sm">Stories, insights, and inspiration for your wellness journey</p>
+    </div>
+  </section>
+
+  <!-- FEATURED POST -->
+  <section class="px-6 pb-10">
+    <div class="max-w-5xl mx-auto reveal">
+      <div class="grid grid-cols-1 md:grid-cols-2 bg-white rounded-3xl overflow-hidden border border-[#e8e0d0] hover:shadow-md transition-shadow">
+        <div class="h-72 md:h-auto overflow-hidden relative">
+          <span class="absolute top-4 left-4 bg-[#B85C38] text-white text-[10px] font-bold px-3 py-1 rounded-full z-10">Featured</span>
+          <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" alt="Finding Balance" />
+        </div>
+        <div class="p-8 flex flex-col justify-center">
+          <div class="flex gap-2 items-center mb-3">
+            <span class="text-[#C4923A] text-[10px] font-bold uppercase tracking-wider">Lifestyle</span>
+            <span class="text-[#e8e0d0]">·</span>
+            <span class="text-[#7a7a7a] text-xs">April 15, 2025</span>
+            <span class="text-[#e8e0d0]">·</span>
+            <span class="text-[#7a7a7a] text-xs">10 min read</span>
+          </div>
+          <h2 class="font-['Playfair_Display'] text-3xl font-semibold mb-4 leading-snug">Finding Balance in Modern Life</h2>
+          <p class="text-[#7a7a7a] text-sm leading-relaxed mb-6">This post is to give you a collection of personal stories with the experience of different tools and practitioners — a guide to integrating mindfulness into daily life.</p>
+          <a href="#" class="inline-block bg-[#C4923A] text-white text-sm px-6 py-2.5 rounded-full hover:bg-[#A07830] transition-colors w-fit">Read More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRID POSTS -->
+  <section class="px-6 pb-16">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <article class="reveal group bg-white rounded-2xl overflow-hidden border border-[#e8e0d0] hover:shadow-md transition-shadow">
+        <div class="h-48 overflow-hidden relative">
+          <span class="absolute top-3 left-3 bg-[#C4923A] text-white text-[9px] font-bold px-2.5 py-1 rounded-full z-10">Yoga</span>
+          <img src="https://images.unsplash.com/photo-1588286840104-8957b019727f?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Mindful Movement" />
+        </div>
+        <div class="p-5">
+          <p class="text-[#7a7a7a] text-xs mb-2">March 28, 2025 · 5 min read</p>
+          <h3 class="font-['Playfair_Display'] font-semibold text-lg mb-2 group-hover:text-[#B85C38] transition-colors">The Power of Mindful Movement</h3>
+          <p class="text-[#7a7a7a] text-xs leading-relaxed mb-4">How intentional movement practices can transform your relationship with your body and mind.</p>
+          <a href="#" class="text-[#B85C38] text-xs font-medium hover:underline">Read More →</a>
+        </div>
+      </article>
+
+      <article class="reveal group bg-white rounded-2xl overflow-hidden border border-[#e8e0d0] hover:shadow-md transition-shadow" style="transition-delay:0.1s">
+        <div class="h-48 overflow-hidden relative">
+          <span class="absolute top-3 left-3 bg-[#C4923A] text-white text-[9px] font-bold px-2.5 py-1 rounded-full z-10">Wellness</span>
+          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Self Care" />
+        </div>
+        <div class="p-5">
+          <p class="text-[#7a7a7a] text-xs mb-2">March 15, 2025 · 7 min read</p>
+          <h3 class="font-['Playfair_Display'] font-semibold text-lg mb-2 group-hover:text-[#B85C38] transition-colors">Creating Your Self Care Routine</h3>
+          <p class="text-[#7a7a7a] text-xs leading-relaxed mb-4">Building sustainable habits that nourish you deeply — body, mind, and spirit.</p>
+          <a href="#" class="text-[#B85C38] text-xs font-medium hover:underline">Read More →</a>
+        </div>
+      </article>
+
+      <article class="reveal group bg-white rounded-2xl overflow-hidden border border-[#e8e0d0] hover:shadow-md transition-shadow" style="transition-delay:0.2s">
+        <div class="h-48 overflow-hidden relative">
+          <span class="absolute top-3 left-3 bg-[#C4923A] text-white text-[9px] font-bold px-2.5 py-1 rounded-full z-10">Pilates</span>
+          <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Slowing Down" />
+        </div>
+        <div class="p-5">
+          <p class="text-[#7a7a7a] text-xs mb-2">March 5, 2025 · 6 min read</p>
+          <h3 class="font-['Playfair_Display'] font-semibold text-lg mb-2 group-hover:text-[#B85C38] transition-colors">The Art of Slowing Down</h3>
+          <p class="text-[#7a7a7a] text-xs leading-relaxed mb-4">Why rest is not laziness — and how learning to slow down can unlock your full potential.</p>
+          <a href="#" class="text-[#B85C38] text-xs font-medium hover:underline">Read More →</a>
+        </div>
+      </article>
+
+      <article class="reveal group bg-white rounded-2xl overflow-hidden border border-[#e8e0d0] hover:shadow-md transition-shadow">
+        <div class="h-48 overflow-hidden relative">
+          <span class="absolute top-3 left-3 bg-[#C4923A] text-white text-[9px] font-bold px-2.5 py-1 rounded-full z-10">Mindset</span>
+          <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Strength" />
+        </div>
+        <div class="p-5">
+          <p class="text-[#7a7a7a] text-xs mb-2">February 20, 2025 · 8 min read</p>
+          <h3 class="font-['Playfair_Display'] font-semibold text-lg mb-2 group-hover:text-[#B85C38] transition-colors">Building Strength from Within</h3>
+          <p class="text-[#7a7a7a] text-xs leading-relaxed mb-4">Mental resilience and physical strength are intertwined — here's how to cultivate both.</p>
+          <a href="#" class="text-[#B85C38] text-xs font-medium hover:underline">Read More →</a>
+        </div>
+      </article>
+
+      <article class="reveal group bg-white rounded-2xl overflow-hidden border border-[#e8e0d0] hover:shadow-md transition-shadow" style="transition-delay:0.1s">
+        <div class="h-48 overflow-hidden relative">
+          <span class="absolute top-3 left-3 bg-[#C4923A] text-white text-[9px] font-bold px-2.5 py-1 rounded-full z-10">Lifestyle</span>
+          <img src="https://images.unsplash.com/photo-1601925228088-8e65c372e4c4?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Wellness Journey" />
+        </div>
+        <div class="p-5">
+          <p class="text-[#7a7a7a] text-xs mb-2">February 10, 2025 · 4 min read</p>
+          <h3 class="font-['Playfair_Display'] font-semibold text-lg mb-2 group-hover:text-[#B85C38] transition-colors">Your Wellness Journey Starts Here</h3>
+          <p class="text-[#7a7a7a] text-xs leading-relaxed mb-4">A beginner's guide to finding your footing in the world of movement and mindfulness.</p>
+          <a href="#" class="text-[#B85C38] text-xs font-medium hover:underline">Read More →</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section id="community" class="py-20 px-6 bg-gradient-to-br from-[#8B4513] to-[#C4923A] text-white text-center">
+    <div class="max-w-xl mx-auto reveal">
+      <h2 class="font-['Playfair_Display'] text-4xl font-semibold mb-3">Join Our Community</h2>
+      <p class="text-white/70 text-sm mb-8 leading-relaxed">Subscribe to our newsletter for wellness tips, class announcements, and exclusive content.</p>
+      <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="return handleNewsletter(event)">
+        <input type="email" required placeholder="Your email address" class="flex-1 px-5 py-3 rounded-full text-sm text-[#1a1a1a] outline-none focus:ring-2 focus:ring-white/40" />
+        <button type="submit" id="sub-btn" class="bg-white text-[#8B4513] px-6 py-3 rounded-full text-sm font-semibold hover:bg-[#f5f0e8] transition-colors flex-shrink-0">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#f5f0e8] border-t border-[#e8e0d0] py-16 px-6">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+      <div>
+        <h4 class="font-['Playfair_Display'] text-xl font-semibold text-[#B85C38] mb-3">Ferensa Studio</h4>
+        <p class="text-sm text-[#7a7a7a] leading-relaxed max-w-xs">A place where community and connection flow as freely as our breath.</p>
+        <div class="flex gap-4 mt-5 text-[#B85C38]"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-facebook"></i></a><a href="#"><i class="fab fa-tiktok"></i></a></div>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold text-[#1a1a1a] mb-4">Our Classes</h4>
+        <ul class="space-y-2 text-sm text-[#7a7a7a]">
+          <li><a href="classes.html" class="hover:text-[#B85C38]">Yoga</a></li><li><a href="classes.html" class="hover:text-[#B85C38]">Mat Pilates</a></li>
+          <li><a href="classes.html" class="hover:text-[#B85C38]">Creative Workshops</a></li><li><a href="classes.html" class="hover:text-[#B85C38]">Seasonal Events</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold text-[#1a1a1a] mb-4">Contact Us</h4>
+        <ul class="space-y-3 text-sm text-[#7a7a7a]">
+          <li class="flex gap-2 items-start"><i class="fas fa-map-marker-alt text-[#C4923A] mt-0.5"></i> Depok, West Java, Indonesia</li>
+          <li class="flex gap-2 items-center"><i class="fas fa-phone text-[#C4923A]"></i> +62 812 3456 7890</li>
+          <li class="flex gap-2 items-center"><i class="fas fa-envelope text-[#C4923A]"></i> hello@ferensastudio.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="max-w-6xl mx-auto border-t border-[#e8e0d0] pt-6 text-center text-xs text-[#7a7a7a]">&copy; 2026 Ferensa Studio. All rights reserved.</div>
+  </footer>
+
+  <button id="to-top" class="fixed bottom-8 right-8 w-10 h-10 bg-[#C4923A] text-white rounded-full flex items-center justify-center shadow-lg z-50"><i class="fas fa-arrow-up text-sm"></i></button>
+  <script src="assets/js/main.js"></script>
+  <script>
+    function handleNewsletter(e) {
+      e.preventDefault();
+      const btn = document.getElementById('sub-btn');
+      btn.textContent = 'Subscribed!';
+      btn.style.background = '#d4edda';
+      btn.style.color = '#155724';
+      setTimeout(() => { btn.textContent = 'Subscribe'; btn.style.background = ''; btn.style.color = ''; e.target.reset(); }, 3000);
+      return false;
+    }
+  </script>
+</body>
+</html>

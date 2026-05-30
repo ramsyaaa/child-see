@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us — Ferensa Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-[#faf7f2]">
+    <!-- NAV -->
+    <nav class="site-nav">
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between"
+      >
+        <a href="index.html" class="flex items-center gap-2.5">
+          <img
+            src="assets/logo.png"
+            alt="Ferensa Studio"
+            class="h-9 w-auto"
+            onerror="
+              this.onerror = null;
+              this.style.display = 'none';
+              this.nextElementSibling.style.display = 'flex';
+            "
+          />
+          <div
+            class="hidden w-8 h-8 rounded-full bg-gradient-to-br from-[#C4923A] to-[#8B4513] items-center justify-center"
+          >
+            <i class="fas fa-leaf text-white text-xs"></i>
+          </div>
+        </a>
+        <ul
+          class="hidden md:flex items-center gap-7 text-[13px] text-[#4a4a4a] font-medium"
+        >
+          <li>
+            <a href="index.html" class="hover:text-[#B85C38] transition-colors"
+              >Home</a
+            >
+          </li>
+          <li><a href="about.html" class="text-[#B85C38]">About</a></li>
+          <li>
+            <a
+              href="classes.html"
+              class="hover:text-[#B85C38] transition-colors"
+              >Classes</a
+            >
+          </li>
+          <li>
+            <a
+              href="instructors.html"
+              class="hover:text-[#B85C38] transition-colors"
+              >Instructors</a
+            >
+          </li>
+          <li>
+            <a
+              href="calendar.html"
+              class="hover:text-[#B85C38] transition-colors"
+              >Calendar</a
+            >
+          </li>
+          <li>
+            <a
+              href="bundles.html"
+              class="hover:text-[#B85C38] transition-colors"
+              >Bundles</a
+            >
+          </li>
+          <li>
+            <a href="blog.html" class="hover:text-[#B85C38] transition-colors"
+              >Blog</a
+            >
+          </li>
+        </ul>
+        <div class="hidden md:flex items-center gap-3">
+          <a
+            href="login.html"
+            class="text-[13px] font-medium text-[#4a4a4a] hover:text-[#B85C38] transition-colors"
+            >Sign In</a
+          >
+          <a href="register.html" class="btn-grad btn-grad-sm">Join Us</a>
+        </div>
+        <button
+          id="menu-btn"
+          class="md:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#f5f0e8] text-[#4a4a4a]"
+        >
+          <i class="fas fa-bars text-lg"></i>
+        </button>
+      </div>
+    </nav>
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 z-[500] bg-black/40 opacity-0 pointer-events-none translate-x-full transition-all duration-400"
+    >
+      <div
+        class="absolute right-0 top-0 bottom-0 w-72 bg-[#faf7f2] shadow-2xl flex flex-col p-8"
+      >
+        <div class="flex items-center justify-between mb-10">
+          <span
+            class="font-['Playfair_Display'] text-xl font-semibold text-[#B85C38]"
+            >Menu</span
+          >
+          <button
+            id="menu-close"
+            class="w-9 h-9 flex items-center justify-center rounded-full bg-[#f5f0e8] text-[#4a4a4a]"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <nav class="flex flex-col gap-5 text-[15px] font-medium text-[#4a4a4a]">
+          <a href="index.html" class="hover:text-[#B85C38]">Home</a>
+          <a href="about.html" class="text-[#B85C38]">About</a>
+          <a href="classes.html" class="hover:text-[#B85C38]">Classes</a>
+          <a href="instructors.html" class="hover:text-[#B85C38]"
+            >Instructors</a
+          >
+          <a href="calendar.html" class="hover:text-[#B85C38]">Calendar</a>
+          <a href="bundles.html" class="hover:text-[#B85C38]">Bundles</a>
+          <a href="blog.html" class="hover:text-[#B85C38]">Blog</a>
+        </nav>
+        <div class="mt-auto flex flex-col gap-3">
+          <a href="login.html" class="btn-outline text-center">Sign In</a>
+          <a href="register.html" class="btn-grad text-center">Join Us</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="py-20 px-6 text-center bg-[#faf7f2]">
+      <div class="max-w-3xl mx-auto reveal">
+        <h1
+          class="font-['Playfair_Display'] text-5xl md:text-6xl font-semibold mb-8"
+        >
+          About Us
+        </h1>
+        <p class="text-[#4a4a4a] text-base leading-relaxed mb-5">
+          Ferensa Studio is a private, thoughtfully designed multipurpose space
+          dedicated to wellness, creativity, and connection. Located in Depok,
+          Ferensa was created as an intimate and inspiring sanctuary where
+          everyone can unwind, explore, and grow at their own pace, and in their
+          own space.
+        </p>
+        <p class="text-[#4a4a4a] text-base leading-relaxed">
+          Ferensa is here to be your one-stop solution for thoughtfully curated
+          events and creative space rentals in Indonesia. Our mission is to
+          empower communities, creators, and mindful brands through intentional
+          experiences that celebrate well-being, creativity, and meaningful
+          connection.
+        </p>
+      </div>
+    </section>
+
+    <!-- IMAGES -->
+    <section class="py-10 px-6">
+      <div
+        class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-5 reveal"
+      >
+        <div class="rounded-2xl overflow-hidden h-72">
+          <img
+            src="https://images.unsplash.com/photo-1591019479261-1a103585c559?auto=format&fit=crop&q=80&w=800"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+            alt="Studio Interior"
+          />
+        </div>
+        <div class="rounded-2xl overflow-hidden h-72">
+          <img
+            src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=800"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+            alt="Outdoor Yoga"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- OUR ESSENCE -->
+    <section class="py-24 px-6 bg-[#faf7f2]">
+      <div class="max-w-5xl mx-auto text-center mb-14 reveal">
+        <h2 class="font-['Playfair_Display'] text-4xl font-semibold mb-3">
+          Our Essence
+        </h2>
+        <p class="text-[#7a7a7a] text-sm">
+          What guides us in creating meaningful space for our community
+        </p>
+      </div>
+      <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="text-center reveal">
+          <div
+            class="w-16 h-16 bg-[#f5f0e8] rounded-full flex items-center justify-center mx-auto mb-4 text-[#C4923A] text-2xl"
+          >
+            <i class="fas fa-heart"></i>
+          </div>
+          <h3 class="font-['Playfair_Display'] font-semibold text-lg mb-2">
+            Intentionality
+          </h3>
+          <p class="text-xs text-[#7a7a7a] leading-relaxed">
+            Every detail is thoughtfully designed with purpose and care
+          </p>
+        </div>
+        <div class="text-center reveal" style="transition-delay: 0.1s">
+          <div
+            class="w-16 h-16 bg-[#f5f0e8] rounded-full flex items-center justify-center mx-auto mb-4 text-[#C4923A] text-2xl"
+          >
+            <i class="fas fa-users"></i>
+          </div>
+          <h3 class="font-['Playfair_Display'] font-semibold text-lg mb-2">
+            Community
+          </h3>
+          <p class="text-xs text-[#7a7a7a] leading-relaxed">
+            Building genuine connections and supportive relationships
+          </p>
+        </div>
+        <div class="text-center reveal" style="transition-delay: 0.2s">
+          <div
+            class="w-16 h-16 bg-[#f5f0e8] rounded-full flex items-center justify-center mx-auto mb-4 text-[#C4923A] text-2xl"
+          >
+            <i class="fas fa-seedling"></i>
+          </div>
+          <h3 class="font-['Playfair_Display'] font-semibold text-lg mb-2">
+            Growth
+          </h3>
+          <p class="text-xs text-[#7a7a7a] leading-relaxed">
+            Supporting your journey at your own pace and rhythm
+          </p>
+        </div>
+        <div class="text-center reveal" style="transition-delay: 0.3s">
+          <div
+            class="w-16 h-16 bg-[#f5f0e8] rounded-full flex items-center justify-center mx-auto mb-4 text-[#C4923A] text-2xl"
+          >
+            <i class="fas fa-star"></i>
+          </div>
+          <h3 class="font-['Playfair_Display'] font-semibold text-lg mb-2">
+            Authenticity
+          </h3>
+          <p class="text-xs text-[#7a7a7a] leading-relaxed">
+            Creating space for you to show up as your true self
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#f5f0e8] border-t border-[#e8e0d0] py-16 px-6">
+      <div
+        class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 mb-10"
+      >
+        <div>
+          <h4
+            class="font-['Playfair_Display'] text-xl font-semibold text-[#B85C38] mb-3"
+          >
+            Ferensa Studio
+          </h4>
+          <p class="text-sm text-[#7a7a7a] leading-relaxed max-w-xs">
+            A place where community and connection flow as freely as our breath.
+          </p>
+          <div class="flex gap-4 mt-5 text-[#B85C38]">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-sm font-semibold text-[#1a1a1a] mb-4">Our Classes</h4>
+          <ul class="space-y-2 text-sm text-[#7a7a7a]">
+            <li>
+              <a
+                href="classes.html"
+                class="hover:text-[#B85C38] transition-colors"
+                >Yoga</a
+              >
+            </li>
+            <li>
+              <a
+                href="classes.html"
+                class="hover:text-[#B85C38] transition-colors"
+                >Mat Pilates</a
+              >
+            </li>
+            <li>
+              <a
+                href="classes.html"
+                class="hover:text-[#B85C38] transition-colors"
+                >Creative Workshops</a
+              >
+            </li>
+            <li>
+              <a
+                href="classes.html"
+                class="hover:text-[#B85C38] transition-colors"
+                >Seasonal Events</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-sm font-semibold text-[#1a1a1a] mb-4">Contact Us</h4>
+          <ul class="space-y-3 text-sm text-[#7a7a7a]">
+            <li class="flex gap-2 items-start">
+              <i class="fas fa-map-marker-alt text-[#C4923A] mt-0.5"></i> Depok,
+              West Java, Indonesia
+            </li>
+            <li class="flex gap-2 items-center">
+              <i class="fas fa-phone text-[#C4923A]"></i> +62 812 3456 7890
+            </li>
+            <li class="flex gap-2 items-center">
+              <i class="fas fa-envelope text-[#C4923A]"></i>
+              hello@ferensastudio.com
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div
+        class="max-w-6xl mx-auto border-t border-[#e8e0d0] pt-6 text-center text-xs text-[#7a7a7a]"
+      >
+        &copy; 2026 Ferensa Studio. All rights reserved.
+      </div>
+    </footer>
+
+    <button
+      id="to-top"
+      class="fixed bottom-8 right-8 w-10 h-10 bg-[#C4923A] text-white rounded-full flex items-center justify-center shadow-lg z-50"
+    >
+      <i class="fas fa-arrow-up text-sm"></i>
+    </button>
+
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

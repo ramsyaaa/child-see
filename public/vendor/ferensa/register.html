@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Account — Ferensa Studio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    .form-input {
+      border: 1px solid #e8e0d0;
+      border-radius: 10px;
+      padding: 12px 16px 12px 42px;
+      width: 100%;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      background: white;
+      color: #1a1a1a;
+    }
+    .form-input:focus { border-color: #C4923A; box-shadow: 0 0 0 3px rgba(196,146,58,0.12); }
+    .form-input::placeholder { color: #b0a898; }
+    .input-wrap { position: relative; }
+    .input-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: #b0a898; font-size: 13px; }
+    .toggle-pass { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: #b0a898; cursor: pointer; font-size: 13px; }
+    .social-btn { border: 1px solid #e8e0d0; border-radius: 10px; padding: 10px; width: 100%; font-size: 13px; font-weight: 500; color: #4a4a4a; background: white; cursor: pointer; transition: background 0.2s, border-color 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .social-btn:hover { background: #f5f0e8; border-color: #d0c8b8; }
+  </style>
+</head>
+<body class="bg-[#faf7f2]">
+
+  <div class="min-h-screen flex">
+
+    <!-- LEFT: Image panel -->
+    <div class="hidden md:flex md:w-1/2 relative flex-col justify-end p-10 overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&q=80&w=1200" class="absolute inset-0 w-full h-full object-cover" alt="Studio" />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+      <div class="relative z-10">
+        <h2 class="font-['Playfair_Display'] text-4xl font-semibold text-white mb-2">Your Sanctuary Awaits</h2>
+        <p class="text-white/70 text-sm leading-relaxed max-w-xs">Join our community and discover a space where you can truly be yourself — free from judgment, full of growth.</p>
+      </div>
+    </div>
+
+    <!-- RIGHT: Form panel -->
+    <div class="w-full md:w-1/2 flex flex-col justify-center px-8 md:px-14 py-12 bg-[#faf7f2] overflow-y-auto">
+      <div class="max-w-sm mx-auto w-full">
+
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-2.5 mb-8">
+          <img src="assets/logo.png" alt="Ferensa Studio" class="h-10 w-auto" onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="hidden w-8 h-8 rounded-full bg-gradient-to-br from-[#C4923A] to-[#8B4513] items-center justify-center"><i class="fas fa-leaf text-white text-xs"></i></div>
+          <span class="font-['Playfair_Display'] text-2xl font-semibold text-[#B85C38]">Ferensa Studio</span>
+        </a>
+
+        <h1 class="font-['Playfair_Display'] text-3xl font-semibold mb-1">Create Account</h1>
+        <p class="text-[#7a7a7a] text-sm mb-7">Begin your wellness journey with us</p>
+
+        <form onsubmit="return handleRegister(event)" class="space-y-4">
+          <!-- Full Name -->
+          <div>
+            <label class="block text-xs font-medium text-[#4a4a4a] mb-1.5">Full Name</label>
+            <div class="input-wrap">
+              <i class="fas fa-user input-icon"></i>
+              <input type="text" required class="form-input" placeholder="Your full name" />
+            </div>
+          </div>
+          <!-- Email -->
+          <div>
+            <label class="block text-xs font-medium text-[#4a4a4a] mb-1.5">Email Address</label>
+            <div class="input-wrap">
+              <i class="fas fa-envelope input-icon"></i>
+              <input type="email" required class="form-input" placeholder="your@email.com" />
+            </div>
+          </div>
+          <!-- Phone -->
+          <div>
+            <label class="block text-xs font-medium text-[#4a4a4a] mb-1.5">Phone Number</label>
+            <div class="input-wrap">
+              <i class="fas fa-phone input-icon"></i>
+              <input type="tel" class="form-input" placeholder="+62 812 3456 7890" />
+            </div>
+          </div>
+          <!-- Password -->
+          <div>
+            <label class="block text-xs font-medium text-[#4a4a4a] mb-1.5">Password</label>
+            <div class="input-wrap">
+              <i class="fas fa-lock input-icon"></i>
+              <input type="password" id="pwd1" required class="form-input pr-10" placeholder="Min. 8 characters" />
+              <span class="toggle-pass" onclick="togglePwd('pwd1', this)"><i class="fas fa-eye"></i></span>
+            </div>
+          </div>
+          <!-- Confirm Password -->
+          <div>
+            <label class="block text-xs font-medium text-[#4a4a4a] mb-1.5">Confirm Password</label>
+            <div class="input-wrap">
+              <i class="fas fa-lock input-icon"></i>
+              <input type="password" id="pwd2" required class="form-input pr-10" placeholder="Repeat your password" />
+              <span class="toggle-pass" onclick="togglePwd('pwd2', this)"><i class="fas fa-eye"></i></span>
+            </div>
+          </div>
+
+          <!-- Terms -->
+          <label class="flex items-start gap-2.5 cursor-pointer text-xs text-[#4a4a4a]">
+            <input type="checkbox" required class="accent-[#C4923A] w-3.5 h-3.5 mt-0.5 flex-shrink-0" />
+            <span>I agree to the <a href="#" class="text-[#B85C38] hover:underline">Terms of Service</a> and <a href="#" class="text-[#B85C38] hover:underline">Privacy Policy</a></span>
+          </label>
+
+          <!-- Submit -->
+          <button type="submit" id="reg-btn" class="w-full bg-[#C4923A] text-white py-3 rounded-full text-sm font-semibold hover:bg-[#A07830] transition-colors mt-1">
+            Create Account
+          </button>
+        </form>
+
+        <!-- Login link -->
+        <p class="text-center text-xs text-[#7a7a7a] mt-5">
+          Already have an account? <a href="login.html" class="text-[#B85C38] font-medium hover:underline">Sign In</a>
+        </p>
+
+        <!-- Divider -->
+        <div class="flex items-center gap-3 my-6">
+          <div class="flex-1 h-px bg-[#e8e0d0]"></div>
+          <span class="text-xs text-[#b0a898]">or continue with</span>
+          <div class="flex-1 h-px bg-[#e8e0d0]"></div>
+        </div>
+
+        <!-- Social buttons -->
+        <div class="grid grid-cols-2 gap-3">
+          <button class="social-btn"><i class="fab fa-google text-[#DB4437]"></i> Google</button>
+          <button class="social-btn"><i class="fab fa-facebook text-[#4267B2]"></i> Facebook</button>
+        </div>
+
+        <!-- Back to home -->
+        <a href="index.html" class="flex items-center justify-center gap-1.5 text-xs text-[#7a7a7a] hover:text-[#B85C38] transition-colors mt-8">
+          <i class="fas fa-arrow-left text-[10px]"></i> Back to Home
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    function togglePwd(id, el) {
+      const input = document.getElementById(id);
+      const icon = el.querySelector('i');
+      if (input.type === 'password') { input.type = 'text'; icon.classList.replace('fa-eye', 'fa-eye-slash'); }
+      else { input.type = 'password'; icon.classList.replace('fa-eye-slash', 'fa-eye'); }
+    }
+    function handleRegister(e) {
+      e.preventDefault();
+      const p1 = document.getElementById('pwd1').value;
+      const p2 = document.getElementById('pwd2').value;
+      if (p1 !== p2) { alert('Passwords do not match.'); return false; }
+      const btn = document.getElementById('reg-btn');
+      btn.textContent = 'Creating account...';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = 'Account created!';
+        btn.style.background = '#5a7a52';
+        setTimeout(() => { window.location.href = 'login.html'; }, 1500);
+      }, 1200);
+      return false;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,954 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Classes — Ferensa Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .day-tab.active {
+        background: #c4923a;
+        color: white;
+      }
+      .class-card {
+        border: 1px solid #e8e0d0;
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      .badge-live {
+        background: #ef4444;
+        color: white;
+        font-size: 10px;
+        padding: 2px 8px;
+        border-radius: 999px;
+      }
+      .badge-full {
+        background: #9ca3af;
+        color: white;
+        font-size: 10px;
+        padding: 2px 8px;
+        border-radius: 999px;
+      }
+    </style>
+  </head>
+  <body class="bg-[#faf7f2]">
+    <!-- NAV -->
+    <nav class="site-nav">
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between"
+      >
+        <a href="index.html" class="flex items-center gap-2.5">
+          <img
+            src="assets/logo.png"
+            alt="Ferensa Studio"
+            class="h-9 w-auto"
+            onerror="
+              this.onerror = null;
+              this.style.display = 'none';
+              this.nextElementSibling.style.display = 'flex';
+            "
+          />
+          <div
+            class="hidden w-8 h-8 rounded-full bg-gradient-to-br from-[#C4923A] to-[#8B4513] items-center justify-center"
+          >
+            <i class="fas fa-leaf text-white text-xs"></i>
+          </div>
+        </a>
+        <ul
+          class="hidden md:flex items-center gap-7 text-[13px] text-[#4a4a4a] font-medium"
+        >
+          <li>
+            <a href="index.html" class="hover:text-[#B85C38] transition-colors"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a href="about.html" class="hover:text-[#B85C38] transition-colors"
+              >About</a
+            >
+          </li>
+          <li><a href="classes.html" class="text-[#B85C38]">Classes</a></li>
+          <li>
+            <a
+              href="instructors.html"
+              class="hover:text-[#B85C38] transition-colors"
+              >Instructors</a
+            >
+          </li>
+          <li>
+            <a
+              href="calendar.html"
+              class="hover:text-[#B85C38] transition-colors"
+              >Calendar</a
+            >
+          </li>
+          <li>
+            <a
+              href="bundles.html"
+              class="hover:text-[#B85C38] transition-colors"
+              >Bundles</a
+            >
+          </li>
+          <li>
+            <a href="blog.html" class="hover:text-[#B85C38] transition-colors"
+              >Blog</a
+            >
+          </li>
+        </ul>
+        <div class="hidden md:flex items-center gap-3">
+          <a
+            href="login.html"
+            class="text-[13px] font-medium text-[#4a4a4a] hover:text-[#B85C38] transition-colors"
+            >Sign In</a
+          >
+          <a href="register.html" class="btn-grad btn-grad-sm">Join Us</a>
+        </div>
+        <button
+          id="menu-btn"
+          class="md:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#f5f0e8] text-[#4a4a4a]"
+        >
+          <i class="fas fa-bars text-lg"></i>
+        </button>
+      </div>
+    </nav>
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 z-[500] bg-black/40 opacity-0 pointer-events-none translate-x-full transition-all duration-400"
+    >
+      <div
+        class="absolute right-0 top-0 bottom-0 w-72 bg-[#faf7f2] shadow-2xl flex flex-col p-8"
+      >
+        <div class="flex items-center justify-between mb-10">
+          <span
+            class="font-['Playfair_Display'] text-xl font-semibold text-[#B85C38]"
+            >Menu</span
+          >
+          <button
+            id="menu-close"
+            class="w-9 h-9 flex items-center justify-center rounded-full bg-[#f5f0e8] text-[#4a4a4a]"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <nav class="flex flex-col gap-5 text-[15px] font-medium text-[#4a4a4a]">
+          <a href="index.html" class="hover:text-[#B85C38]">Home</a>
+          <a href="about.html" class="hover:text-[#B85C38]">About</a>
+          <a href="classes.html" class="text-[#B85C38]">Classes</a>
+          <a href="instructors.html" class="hover:text-[#B85C38]"
+            >Instructors</a
+          >
+          <a href="calendar.html" class="hover:text-[#B85C38]">Calendar</a>
+          <a href="bundles.html" class="hover:text-[#B85C38]">Bundles</a>
+          <a href="blog.html" class="hover:text-[#B85C38]">Blog</a>
+        </nav>
+        <div class="mt-auto flex flex-col gap-3">
+          <a href="login.html" class="btn-outline text-center">Sign In</a>
+          <a href="register.html" class="btn-grad text-center">Join Us</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="py-16 px-6 text-center reveal">
+      <div class="max-w-2xl mx-auto">
+        <h1 class="font-['Playfair_Display'] text-5xl font-semibold mb-4">
+          Weekly Class Schedule
+        </h1>
+        <p class="text-[#7a7a7a] text-sm leading-relaxed">
+          Thoughtfully designed classes to nurture your body, calm your mind,
+          and nourish your spirit
+        </p>
+      </div>
+    </section>
+
+    <!-- WEEK NAV -->
+    <section class="px-6 pb-6">
+      <div class="max-w-5xl mx-auto flex items-center justify-between">
+        <button
+          class="flex items-center gap-2 border border-[#e8e0d0] text-sm px-4 py-2 rounded-full hover:bg-[#f5f0e8] transition-colors"
+        >
+          <i class="fas fa-chevron-left text-xs"></i> Previous Week
+        </button>
+        <span class="text-sm font-medium text-[#4a4a4a]">APR 7 — 13, 2026</span>
+        <button
+          class="flex items-center gap-2 border border-[#e8e0d0] text-sm px-4 py-2 rounded-full hover:bg-[#f5f0e8] transition-colors"
+        >
+          Next Week <i class="fas fa-chevron-right text-xs"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- SCHEDULE -->
+    <section class="px-6 pb-24">
+      <div class="max-w-5xl mx-auto space-y-10">
+        <!-- Template macro for a day -->
+        <!-- MONDAY -->
+        <div class="reveal">
+          <div class="flex items-center gap-3 mb-4">
+            <div
+              class="w-7 h-7 bg-[#C4923A] text-white rounded-full flex items-center justify-center text-xs font-bold"
+            >
+              M
+            </div>
+            <div>
+              <p class="font-semibold text-sm">Monday</p>
+              <p class="text-xs text-[#7a7a7a]">April 7, 2026</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="class-card p-0">
+              <div class="relative h-28 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1588286840104-8957b019727f?auto=format&fit=crop&q=80&w=400"
+                  class="w-full h-full object-cover"
+                  alt="Yoga"
+                />
+                <span class="absolute top-2 left-2 badge-live">Live</span>
+              </div>
+              <div class="p-3">
+                <p class="font-semibold text-sm">Yoga</p>
+                <p class="text-xs text-[#7a7a7a] mt-1">07:00 – 08:00</p>
+                <p class="text-xs text-[#7a7a7a]">Maya Anindita</p>
+                <p class="text-xs text-[#7a7a7a]">12 / 15 spots</p>
+                <a
+                  href="bundles.html"
+                  class="block mt-2 text-center text-xs bg-[#f5f0e8] text-[#B85C38] py-1.5 rounded-lg hover:bg-[#C4923A] hover:text-white transition-colors"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+            <div class="class-card p-0">
+              <div class="relative h-28 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=400"
+                  class="w-full h-full object-cover"
+                  alt="Pilates"
+                />
+              </div>
+              <div class="p-3">
+                <p class="font-semibold text-sm">Mat Pilates</p>
+                <p class="text-xs text-[#7a7a7a] mt-1">09:00 – 10:00</p>
+                <p class="text-xs text-[#7a7a7a]">Sarah Kusuma</p>
+                <p class="text-xs text-[#7a7a7a]">8 / 15 spots</p>
+                <a
+                  href="bundles.html"
+                  class="block mt-2 text-center text-xs bg-[#f5f0e8] text-[#B85C38] py-1.5 rounded-lg hover:bg-[#C4923A] hover:text-white transition-colors"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+            <div class="class-card p-0">
+              <div class="relative h-28 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=400"
+                  class="w-full h-full object-cover"
+                  alt="Meditation"
+                />
+                <span class="absolute top-2 left-2 badge-full">Full</span>
+              </div>
+              <div class="p-3">
+                <p class="font-semibold text-sm">Meditation</p>
+                <p class="text-xs text-[#7a7a7a] mt-1">17:00 – 18:00</p>
+                <p class="text-xs text-[#7a7a7a]">Devi Lakshmi</p>
+                <p class="text-xs text-[#7a7a7a]">15 / 15 spots</p>
+                <button
+                  disabled
+                  class="block w-full mt-2 text-center text-xs bg-[#e8e0d0] text-[#9ca3af] py-1.5 rounded-lg cursor-not-allowed"
+                >
+                  Full
+                </button>
+              </div>
+            </div>
+            <div class="class-card p-0">
+              <div class="relative h-28 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1601925228088-8e65c372e4c4?auto=format&fit=crop&q=80&w=400"
+                  class="w-full h-full object-cover"
+                  alt="Slow Flow"
+                />
+              </div>
+              <div class="p-3">
+                <p class="font-semibold text-sm">Slow Flow Yoga</p>
+                <p class="text-xs text-[#7a7a7a] mt-1">19:00 – 20:00</p>
+                <p class="text-xs text-[#7a7a7a]">Rina Permata</p>
+                <p class="text-xs text-[#7a7a7a]">5 / 12 spots</p>
+                <a
+                  href="bundles.html"
+                  class="block mt-2 text-center text-xs bg-[#f5f0e8] text-[#B85C38] py-1.5 rounded-lg hover:bg-[#C4923A] hover:text-white transition-colors"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TUESDAY -->
+        <div class="reveal">
+          <div class="flex items-center gap-3 mb-4">
+            <div
+              class="w-7 h-7 bg-[#C4923A] text-white rounded-full flex items-center justify-center text-xs font-bold"
+            >
+              T
+            </div>
+            <div>
+              <p class="font-semibold text-sm">Tuesday</p>
+              <p class="text-xs text-[#7a7a7a]">April 8, 2026</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="class-card p-0">
+              <div class="relative h-28 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1616699002805-0741e1e4a9c5?auto=format&fit=crop&q=80&w=400"
+                  class="w-full h-full object-cover"
+                  alt="Yoga"
+                />
+              </div>
+              <div class="p-3">
+                <p class="font-semibold text-sm">Power Yoga</p>
+                <p class="text-xs text-[#7a7a7a] mt-1">07:00 – 08:30</p>
+                <p class="text-xs text-[#7a7a7a]">Maya Anindita</p>
+                <p class="text-xs text-[#7a7a7a]">9 / 15 spots</p>
+                <a
+                  href="bundles.html"
+                  class="block mt-2 text-center text-xs bg-[#f5f0e8] text-[#B85C38] py-1.5 rounded-lg hover:bg-[#C4923A] hover:text-white transition-colors"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+            <div class="class-card p-0">
+              <div class="relative h-28 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=400"
+                  class="w-full h-full object-cover"
+                  alt="Pilates"
+                />
+                <span class="absolute top-2 left-2 badge-live">Live</span>
+              </div>
+              <div class="p-3">
+                <p class="font-semibold text-sm">Heavy Pilates</p>
+                <p class="text-xs text-[#7a7a7a] mt-1">09:00 – 10:30</p>
+                <p class="text-xs text-[#7a7a7a]">Sarah Kusuma</p>
+                <p class="text-xs text-[#7a7a7a]">11 / 15 spots</p>
+                <a
+                  href="bundles.html"
+                  class="block mt-2 text-center text-xs bg-[#f5f0e8] text-[#B85C38] py-1.5 rounded-lg hover:bg-[#C4923A] hover:text-white transition-colors"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+            <div class="class-card p-0">
+              <div class="relative h-28 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1545389336-cf090694435e?auto=format&fit=crop&q=80&w=400"
+                  class="w-full h-full object-cover"
+                  alt="Yin"
+                />
+              </div>
+              <div class="p-3">
+                <p class="font-semibold text-sm">Yin Yoga</p>
+                <p class="text-xs text-[#7a7a7a] mt-1">17:30 – 18:30</p>
+                <p class="text-xs text-[#7a7a7a]">Rina Permata</p>
+                <p class="text-xs text-[#7a7a7a]">6 / 12 spots</p>
+                <a
+                  href="bundles.html"
+                  class="block mt-2 text-center text-xs bg-[#f5f0e8] text-[#B85C38] py-1.5 rounded-lg hover:bg-[#C4923A] hover:text-white transition-colors"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+            <div class="class-card p-0">
+              <div class="relative h-28 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?auto=format&fit=crop&q=80&w=400"
+                  class="w-full h-full object-cover"
+                  alt="Slow Flow"
+                />
+              </div>
+              <div class="p-3">
+                <p class="font-semibold text-sm">Slow Flow Yoga</p>
+                <p class="text-xs text-[#7a7a7a] mt-1">19:00 – 20:00</p>
+                <p class="text-xs text-[#7a7a7a]">Maya Anindita</p>
+                <p class="text-xs text-[#7a7a7a]">3 / 12 spots</p>
+                <a
+                  href="bundles.html"
+                  class="block mt-2 text-center text-xs bg-[#f5f0e8] text-[#B85C38] py-1.5 rounded-lg hover:bg-[#C4923A] hover:text-white transition-colors"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- WED - SUN condensed -->
+        <div class="reveal">
+          <div class="flex items-center gap-3 mb-4">
+            <div
+              class="w-7 h-7 bg-[#C4923A] text-white rounded-full flex items-center justify-center text-xs font-bold"
+            >
+              W
+            </div>
+            <div>
+              <p class="font-semibold text-sm">Wednesday</p>
+              <p class="text-xs text-[#7a7a7a]">April 9, 2026</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="class-card p-0">
+              <div class="h-28 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1588286840104-8957b019727f?auto=format&fit=crop&q=80&w=400"
+                  class="w-full h-full object-cover"
+                  alt="Yoga"
+                />
+              </div>
+              <div class="p-3">
+                <p class="font-semibold text-sm">Yoga Flow</p>
+                <p class="text-xs text-[#7a7a7a] mt-1">07:00 – 08:00</p>
+                <p class="text-xs text-[#7a7a7a]">Devi Lakshmi</p>
+                <p class="text-xs text-[#7a7a7a]">10 / 15 spots</p>
+                <a
+                  href="bundles.html"
+                  class="block mt-2 text-center text-xs bg-[#f5f0e8] text-[#B85C38] py-1.5 rounded-lg hover:bg-[#C4923A] hover:text-white transition-colors"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+            <div class="class-card p-0">
+              <div class="h-28 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=400"
+                  class="w-full h-full object-cover"
+                  alt="Pilates"
+                />
+              </div>
+              <div class="p-3">
+                <p class="font-semibold text-sm">Mat Pilates</p>
+                <p class="text-xs text-[#7a7a7a] mt-1">09:00 – 10:00</p>
+                <p class="text-xs text-[#7a7a7a]">Sarah Kusuma</p>
+                <p class="text-xs text-[#7a7a7a]">7 / 15 spots</p>
+                <a
+                  href="bundles.html"
+                  class="block mt-2 text-center text-xs bg-[#f5f0e8] text-[#B85C38] py-1.5 rounded-lg hover:bg-[#C4923A] hover:text-white transition-colors"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+            <div class="class-card p-0">
+              <div class="h-28 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=400"
+                  class="w-full h-full object-cover"
+                  alt="Meditation"
+                />
+              </div>
+              <div class="p-3">
+                <p class="font-semibold text-sm">Meditation</p>
+                <p class="text-xs text-[#7a7a7a] mt-1">18:00 – 19:00</p>
+                <p class="text-xs text-[#7a7a7a]">Devi Lakshmi</p>
+                <p class="text-xs text-[#7a7a7a]">4 / 10 spots</p>
+                <a
+                  href="bundles.html"
+                  class="block mt-2 text-center text-xs bg-[#f5f0e8] text-[#B85C38] py-1.5 rounded-lg hover:bg-[#C4923A] hover:text-white transition-colors"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+            <div class="class-card p-0">
+              <div class="h-28 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1601925228088-8e65c372e4c4?auto=format&fit=crop&q=80&w=400"
+                  class="w-full h-full object-cover"
+                  alt="Yoga"
+                />
+              </div>
+              <div class="p-3">
+                <p class="font-semibold text-sm">Slow Flow</p>
+                <p class="text-xs text-[#7a7a7a] mt-1">19:30 – 20:30</p>
+                <p class="text-xs text-[#7a7a7a]">Maya Anindita</p>
+                <p class="text-xs text-[#7a7a7a]">2 / 12 spots</p>
+                <a
+                  href="bundles.html"
+                  class="block mt-2 text-center text-xs bg-[#f5f0e8] text-[#B85C38] py-1.5 rounded-lg hover:bg-[#C4923A] hover:text-white transition-colors"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- THURSDAY -->
+        <div class="reveal">
+          <div class="flex items-center gap-3 mb-4">
+            <div
+              class="w-7 h-7 bg-[#C4923A] text-white rounded-full flex items-center justify-center text-xs font-bold"
+            >
+              T
+            </div>
+            <div>
+              <p class="font-semibold text-sm">Thursday</p>
+              <p class="text-xs text-[#7a7a7a]">April 10, 2026</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="class-card p-0">
+              <div class="h-28 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1616699002805-0741e1e4a9c5?auto=format&fit=crop&q=80&w=400"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-3">
+                <p class="font-semibold text-sm">Power Yoga</p>
+                <p class="text-xs text-[#7a7a7a] mt-1">06:30 – 08:00</p>
+                <p class="text-xs text-[#7a7a7a]">Rina Permata</p>
+                <p class="text-xs text-[#7a7a7a]">14 / 15 spots</p>
+                <a
+                  href="bundles.html"
+                  class="block mt-2 text-center text-xs bg-[#f5f0e8] text-[#B85C38] py-1.5 rounded-lg hover:bg-[#C4923A] hover:text-white transition-colors"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+            <div class="class-card p-0">
+              <div class="h-28 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=400"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-3">
+                <p class="font-semibold text-sm">Mat Pilates</p>
+                <p class="text-xs text-[#7a7a7a] mt-1">09:00 – 10:00</p>
+                <p class="text-xs text-[#7a7a7a]">Sarah Kusuma</p>
+                <p class="text-xs text-[#7a7a7a]">5 / 15 spots</p>
+                <a
+                  href="bundles.html"
+                  class="block mt-2 text-center text-xs bg-[#f5f0e8] text-[#B85C38] py-1.5 rounded-lg hover:bg-[#C4923A] hover:text-white transition-colors"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+            <div class="class-card p-0">
+              <div class="relative h-28 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1545389336-cf090694435e?auto=format&fit=crop&q=80&w=400"
+                  class="w-full h-full object-cover"
+                /><span class="absolute top-2 left-2 badge-live">Live</span>
+              </div>
+              <div class="p-3">
+                <p class="font-semibold text-sm">Yoga Nidra</p>
+                <p class="text-xs text-[#7a7a7a] mt-1">17:00 – 18:00</p>
+                <p class="text-xs text-[#7a7a7a]">Devi Lakshmi</p>
+                <p class="text-xs text-[#7a7a7a]">8 / 12 spots</p>
+                <a
+                  href="bundles.html"
+                  class="block mt-2 text-center text-xs bg-[#f5f0e8] text-[#B85C38] py-1.5 rounded-lg hover:bg-[#C4923A] hover:text-white transition-colors"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+            <div class="class-card p-0">
+              <div class="h-28 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?auto=format&fit=crop&q=80&w=400"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-3">
+                <p class="font-semibold text-sm">Yin & Restore</p>
+                <p class="text-xs text-[#7a7a7a] mt-1">19:00 – 20:30</p>
+                <p class="text-xs text-[#7a7a7a]">Maya Anindita</p>
+                <p class="text-xs text-[#7a7a7a]">6 / 12 spots</p>
+                <a
+                  href="bundles.html"
+                  class="block mt-2 text-center text-xs bg-[#f5f0e8] text-[#B85C38] py-1.5 rounded-lg hover:bg-[#C4923A] hover:text-white transition-colors"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FRIDAY -->
+        <div class="reveal">
+          <div class="flex items-center gap-3 mb-4">
+            <div
+              class="w-7 h-7 bg-[#C4923A] text-white rounded-full flex items-center justify-center text-xs font-bold"
+            >
+              F
+            </div>
+            <div>
+              <p class="font-semibold text-sm">Friday</p>
+              <p class="text-xs text-[#7a7a7a]">April 11, 2026</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="class-card p-0">
+              <div class="h-28 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1588286840104-8957b019727f?auto=format&fit=crop&q=80&w=400"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-3">
+                <p class="font-semibold text-sm">Yoga</p>
+                <p class="text-xs text-[#7a7a7a] mt-1">07:00 – 08:00</p>
+                <p class="text-xs text-[#7a7a7a]">Maya Anindita</p>
+                <p class="text-xs text-[#7a7a7a]">11 / 15 spots</p>
+                <a
+                  href="bundles.html"
+                  class="block mt-2 text-center text-xs bg-[#f5f0e8] text-[#B85C38] py-1.5 rounded-lg hover:bg-[#C4923A] hover:text-white transition-colors"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+            <div class="class-card p-0">
+              <div class="h-28 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=400"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-3">
+                <p class="font-semibold text-sm">Pilates Core</p>
+                <p class="text-xs text-[#7a7a7a] mt-1">09:30 – 10:30</p>
+                <p class="text-xs text-[#7a7a7a]">Sarah Kusuma</p>
+                <p class="text-xs text-[#7a7a7a]">9 / 15 spots</p>
+                <a
+                  href="bundles.html"
+                  class="block mt-2 text-center text-xs bg-[#f5f0e8] text-[#B85C38] py-1.5 rounded-lg hover:bg-[#C4923A] hover:text-white transition-colors"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+            <div class="class-card p-0">
+              <div class="relative h-28 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1601925228088-8e65c372e4c4?auto=format&fit=crop&q=80&w=400"
+                  class="w-full h-full object-cover"
+                /><span class="absolute top-2 left-2 badge-live">Live</span>
+              </div>
+              <div class="p-3">
+                <p class="font-semibold text-sm">Meditation</p>
+                <p class="text-xs text-[#7a7a7a] mt-1">17:00 – 18:00</p>
+                <p class="text-xs text-[#7a7a7a]">Devi Lakshmi</p>
+                <p class="text-xs text-[#7a7a7a]">7 / 10 spots</p>
+                <a
+                  href="bundles.html"
+                  class="block mt-2 text-center text-xs bg-[#f5f0e8] text-[#B85C38] py-1.5 rounded-lg hover:bg-[#C4923A] hover:text-white transition-colors"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+            <div class="class-card p-0">
+              <div class="h-28 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1616699002805-0741e1e4a9c5?auto=format&fit=crop&q=80&w=400"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-3">
+                <p class="font-semibold text-sm">Slow Flow Yoga</p>
+                <p class="text-xs text-[#7a7a7a] mt-1">19:00 – 20:00</p>
+                <p class="text-xs text-[#7a7a7a]">Rina Permata</p>
+                <p class="text-xs text-[#7a7a7a]">4 / 12 spots</p>
+                <a
+                  href="bundles.html"
+                  class="block mt-2 text-center text-xs bg-[#f5f0e8] text-[#B85C38] py-1.5 rounded-lg hover:bg-[#C4923A] hover:text-white transition-colors"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SATURDAY -->
+        <div class="reveal">
+          <div class="flex items-center gap-3 mb-4">
+            <div
+              class="w-7 h-7 bg-[#C4923A] text-white rounded-full flex items-center justify-center text-xs font-bold"
+            >
+              S
+            </div>
+            <div>
+              <p class="font-semibold text-sm">Saturday</p>
+              <p class="text-xs text-[#7a7a7a]">April 12, 2026</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="class-card p-0">
+              <div class="h-28 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=400"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-3">
+                <p class="font-semibold text-sm">Weekend Yoga</p>
+                <p class="text-xs text-[#7a7a7a] mt-1">08:00 – 09:30</p>
+                <p class="text-xs text-[#7a7a7a]">Maya Anindita</p>
+                <p class="text-xs text-[#7a7a7a]">13 / 15 spots</p>
+                <a
+                  href="bundles.html"
+                  class="block mt-2 text-center text-xs bg-[#f5f0e8] text-[#B85C38] py-1.5 rounded-lg hover:bg-[#C4923A] hover:text-white transition-colors"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+            <div class="class-card p-0">
+              <div class="relative h-28 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1588286840104-8957b019727f?auto=format&fit=crop&q=80&w=400"
+                  class="w-full h-full object-cover"
+                /><span class="absolute top-2 left-2 badge-live">Live</span>
+              </div>
+              <div class="p-3">
+                <p class="font-semibold text-sm">Pilates + Stretch</p>
+                <p class="text-xs text-[#7a7a7a] mt-1">10:00 – 11:30</p>
+                <p class="text-xs text-[#7a7a7a]">Sarah Kusuma</p>
+                <p class="text-xs text-[#7a7a7a]">10 / 15 spots</p>
+                <a
+                  href="bundles.html"
+                  class="block mt-2 text-center text-xs bg-[#f5f0e8] text-[#B85C38] py-1.5 rounded-lg hover:bg-[#C4923A] hover:text-white transition-colors"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+            <div class="class-card p-0">
+              <div class="h-28 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=400"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-3">
+                <p class="font-semibold text-sm">Sound Bath</p>
+                <p class="text-xs text-[#7a7a7a] mt-1">14:00 – 15:30</p>
+                <p class="text-xs text-[#7a7a7a]">Devi Lakshmi</p>
+                <p class="text-xs text-[#7a7a7a]">8 / 10 spots</p>
+                <a
+                  href="bundles.html"
+                  class="block mt-2 text-center text-xs bg-[#f5f0e8] text-[#B85C38] py-1.5 rounded-lg hover:bg-[#C4923A] hover:text-white transition-colors"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+            <div class="class-card p-0">
+              <div class="h-28 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1545389336-cf090694435e?auto=format&fit=crop&q=80&w=400"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-3">
+                <p class="font-semibold text-sm">Yin Yoga</p>
+                <p class="text-xs text-[#7a7a7a] mt-1">16:00 – 17:00</p>
+                <p class="text-xs text-[#7a7a7a]">Rina Permata</p>
+                <p class="text-xs text-[#7a7a7a]">3 / 12 spots</p>
+                <a
+                  href="bundles.html"
+                  class="block mt-2 text-center text-xs bg-[#f5f0e8] text-[#B85C38] py-1.5 rounded-lg hover:bg-[#C4923A] hover:text-white transition-colors"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUNDAY -->
+        <div class="reveal">
+          <div class="flex items-center gap-3 mb-4">
+            <div
+              class="w-7 h-7 bg-[#C4923A] text-white rounded-full flex items-center justify-center text-xs font-bold"
+            >
+              S
+            </div>
+            <div>
+              <p class="font-semibold text-sm">Sunday</p>
+              <p class="text-xs text-[#7a7a7a]">April 13, 2026</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="class-card p-0">
+              <div class="h-28 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1616699002805-0741e1e4a9c5?auto=format&fit=crop&q=80&w=400"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-3">
+                <p class="font-semibold text-sm">Meditation</p>
+                <p class="text-xs text-[#7a7a7a] mt-1">08:00 – 09:00</p>
+                <p class="text-xs text-[#7a7a7a]">Devi Lakshmi</p>
+                <p class="text-xs text-[#7a7a7a]">6 / 10 spots</p>
+                <a
+                  href="bundles.html"
+                  class="block mt-2 text-center text-xs bg-[#f5f0e8] text-[#B85C38] py-1.5 rounded-lg hover:bg-[#C4923A] hover:text-white transition-colors"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+            <div class="class-card p-0">
+              <div class="h-28 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?auto=format&fit=crop&q=80&w=400"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-3">
+                <p class="font-semibold text-sm">Yin Yoga</p>
+                <p class="text-xs text-[#7a7a7a] mt-1">10:00 – 11:30</p>
+                <p class="text-xs text-[#7a7a7a]">Rina Permata</p>
+                <p class="text-xs text-[#7a7a7a]">5 / 12 spots</p>
+                <a
+                  href="bundles.html"
+                  class="block mt-2 text-center text-xs bg-[#f5f0e8] text-[#B85C38] py-1.5 rounded-lg hover:bg-[#C4923A] hover:text-white transition-colors"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+            <div class="class-card p-0">
+              <div class="relative h-28 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1588286840104-8957b019727f?auto=format&fit=crop&q=80&w=400"
+                  class="w-full h-full object-cover"
+                /><span class="absolute top-2 left-2 badge-live">Live</span>
+              </div>
+              <div class="p-3">
+                <p class="font-semibold text-sm">Community Yoga</p>
+                <p class="text-xs text-[#7a7a7a] mt-1">16:00 – 17:30</p>
+                <p class="text-xs text-[#7a7a7a]">Maya Anindita</p>
+                <p class="text-xs text-[#7a7a7a]">12 / 20 spots</p>
+                <a
+                  href="bundles.html"
+                  class="block mt-2 text-center text-xs bg-[#f5f0e8] text-[#B85C38] py-1.5 rounded-lg hover:bg-[#C4923A] hover:text-white transition-colors"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+            <div class="class-card p-0">
+              <div class="h-28 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=400"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-3">
+                <p class="font-semibold text-sm">Slow Flow Yoga</p>
+                <p class="text-xs text-[#7a7a7a] mt-1">18:30 – 19:30</p>
+                <p class="text-xs text-[#7a7a7a]">Sarah Kusuma</p>
+                <p class="text-xs text-[#7a7a7a]">7 / 12 spots</p>
+                <a
+                  href="bundles.html"
+                  class="block mt-2 text-center text-xs bg-[#f5f0e8] text-[#B85C38] py-1.5 rounded-lg hover:bg-[#C4923A] hover:text-white transition-colors"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BOTTOM -->
+    <section
+      class="py-20 px-6 bg-gradient-to-br from-[#8B4513] to-[#C4923A] text-white text-center"
+    >
+      <div class="max-w-2xl mx-auto reveal">
+        <h2 class="font-['Playfair_Display'] text-3xl font-semibold mb-3">
+          Not sure which class is right for you?
+        </h2>
+        <p class="text-white/70 text-sm mb-8 leading-relaxed">
+          We're here to help you find the perfect fit for your wellness journey.
+          Feel free to reach out.
+        </p>
+        <a
+          href="https://wa.me/6281234567890"
+          class="inline-flex items-center gap-2 bg-white text-[#8B4513] px-8 py-3 rounded-full text-sm font-semibold hover:bg-[#f5f0e8] transition-colors"
+        >
+          <i class="fab fa-whatsapp text-base"></i> Class Finding
+        </a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#f5f0e8] border-t border-[#e8e0d0] py-16 px-6">
+      <div
+        class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 mb-10"
+      >
+        <div>
+          <h4
+            class="font-['Playfair_Display'] text-xl font-semibold text-[#B85C38] mb-3"
+          >
+            Ferensa Studio
+          </h4>
+          <p class="text-sm text-[#7a7a7a] leading-relaxed max-w-xs">
+            A place where community and connection flow as freely as our breath.
+          </p>
+          <div class="flex gap-4 mt-5 text-[#B85C38]">
+            <a href="#"><i class="fab fa-instagram"></i></a
+            ><a href="#"><i class="fab fa-facebook"></i></a
+            ><a href="#"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-sm font-semibold text-[#1a1a1a] mb-4">Our Classes</h4>
+          <ul class="space-y-2 text-sm text-[#7a7a7a]">
+            <li><a href="classes.html" class="text-[#B85C38]">Yoga</a></li>
+            <li>
+              <a href="classes.html" class="hover:text-[#B85C38]"
+                >Mat Pilates</a
+              >
+            </li>
+            <li>
+              <a href="classes.html" class="hover:text-[#B85C38]"
+                >Creative Workshops</a
+              >
+            </li>
+            <li>
+              <a href="classes.html" class="hover:text-[#B85C38]"
+                >Seasonal Events</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-sm font-semibold text-[#1a1a1a] mb-4">Contact Us</h4>
+          <ul class="space-y-3 text-sm text-[#7a7a7a]">
+            <li class="flex gap-2 items-start">
+              <i class="fas fa-map-marker-alt text-[#C4923A] mt-0.5"></i> Depok,
+              West Java, Indonesia
+            </li>
+            <li class="flex gap-2 items-center">
+              <i class="fas fa-phone text-[#C4923A]"></i> +62 812 3456 7890
+            </li>
+            <li class="flex gap-2 items-center">
+              <i class="fas fa-envelope text-[#C4923A]"></i>
+              hello@ferensastudio.com
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div
+        class="max-w-6xl mx-auto border-t border-[#e8e0d0] pt-6 text-center text-xs text-[#7a7a7a]"
+      >
+        &copy; 2026 Ferensa Studio. All rights reserved.
+      </div>
+    </footer>
+
+    <button
+      id="to-top"
+      class="fixed bottom-8 right-8 w-10 h-10 bg-[#C4923A] text-white rounded-full flex items-center justify-center shadow-lg z-50"
+    >
+      <i class="fas fa-arrow-up text-sm"></i>
+    </button>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

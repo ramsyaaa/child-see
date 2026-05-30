@@ -1,0 +1,353 @@
+/**
+ * Enhanced Image Upload Styles
+ * Drag & Drop Interface for Auction Lot Forms
+ */
+
+/* Drop Area Styles */
+.image-drop-area {
+    border: 2px dashed #dee2e6;
+    border-radius: 8px;
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #f8f9fa;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-drop-area:hover {
+    border-color: #007bff;
+    background-color: #e3f2fd;
+}
+
+.image-drop-area.drag-over {
+    border-color: #28a745;
+    background-color: #d4edda;
+    transform: scale(1.02);
+}
+
+.image-drop-area .drop-content {
+    pointer-events: none;
+}
+
+.image-drop-area .drop-content i {
+    color: #6c757d;
+    margin-bottom: 15px;
+}
+
+.image-drop-area .drop-content h5 {
+    color: #495057;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.image-drop-area .drop-content p {
+    margin-bottom: 5px;
+}
+
+/* Thumbnail Specific Styles */
+.thumbnail-drop {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.thumbnail-preview {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.thumbnail-preview img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Gallery Specific Styles */
+.gallery-drop {
+    margin-bottom: 20px;
+}
+
+.gallery-preview-container {
+    margin-top: 20px;
+}
+
+.gallery-item {
+    position: relative;
+    cursor: move;
+}
+
+.gallery-item .image-preview {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.gallery-item .image-preview:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+/* Image Overlay */
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-preview:hover .image-overlay {
+    opacity: 1;
+}
+
+.image-overlay .btn {
+    margin: 0 5px;
+}
+
+.drag-handle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    cursor: move;
+    font-size: 18px;
+    opacity: 0.8;
+}
+
+.drag-handle:hover {
+    opacity: 1;
+}
+
+/* Sort Order Badge */
+.sort-order-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #007bff;
+    color: white;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Loading States */
+.image-drop-area.uploading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.image-drop-area.uploading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    margin: -15px 0 0 -15px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Progress Bar */
+.upload-progress {
+    margin-top: 15px;
+    display: none;
+}
+
+.upload-progress.show {
+    display: block;
+}
+
+.progress {
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    transition: width 0.3s ease;
+}
+
+/* Error States */
+.image-upload-error {
+    margin-bottom: 20px;
+    border-left: 4px solid #dc3545;
+}
+
+.image-drop-area.error {
+    border-color: #dc3545;
+    background-color: #f8d7da;
+}
+
+/* Success States */
+.image-drop-area.success {
+    border-color: #28a745;
+    background-color: #d4edda;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .image-drop-area {
+        padding: 30px 15px;
+        min-height: 150px;
+    }
+    
+    .gallery-item {
+        margin-bottom: 15px;
+    }
+    
+    .gallery-item img {
+        height: 120px;
+    }
+    
+    .thumbnail-preview img {
+        height: 150px;
+    }
+}
+
+@media (max-width: 576px) {
+    .image-drop-area {
+        padding: 20px 10px;
+        min-height: 120px;
+    }
+    
+    .image-drop-area .drop-content i {
+        font-size: 2rem;
+    }
+    
+    .image-drop-area .drop-content h5 {
+        font-size: 1rem;
+    }
+    
+    .gallery-item img {
+        height: 100px;
+    }
+    
+    .thumbnail-preview img {
+        height: 120px;
+    }
+}
+
+/* Sortable Styles */
+.sortable-ghost {
+    opacity: 0.4;
+}
+
+.sortable-chosen {
+    transform: scale(1.05);
+}
+
+.sortable-drag {
+    transform: rotate(5deg);
+}
+
+/* File Input Hidden */
+input[type="file"].enhanced-upload {
+    display: none !important;
+}
+
+/* Validation Feedback */
+.image-validation-feedback {
+    display: block;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+    color: #dc3545;
+}
+
+.image-validation-feedback.valid {
+    color: #28a745;
+}
+
+/* Image Counter */
+.image-counter {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+}
+
+/* Thumbnail Selection for Gallery */
+.gallery-item.primary-image {
+    border: 3px solid #007bff;
+}
+
+.gallery-item.primary-image::after {
+    content: 'Primary';
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    background: #007bff;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+/* Animation for adding/removing items */
+.gallery-item {
+    animation: fadeInUp 0.3s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.gallery-item.removing {
+    animation: fadeOutDown 0.3s ease forwards;
+}
+
+@keyframes fadeOutDown {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}

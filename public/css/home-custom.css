@@ -1,0 +1,355 @@
+/* Ferensa Studio Landing Page Custom Styles */
+/* Warm Coral Theme Integration */
+
+:root {
+    --coral-primary: #a74737;
+    --coral-hover: #e65a3d;
+    --coral-light: #ffb8a5;
+    --coral-dark: #cc5841;
+    --sage-green: #97b5a9;
+    --soft-rose: #e3b7b4;
+    --pastel-yellow: #f5dd89;
+    --broken-white: #fff6df;
+}
+
+/* Master Classes Section */
+.master-class-card {
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.master-class-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(255, 111, 81, 0.2);
+    border-color: var(--coral-primary);
+}
+
+.master-class-card .class-color-bar {
+    height: 6px;
+    width: 100%;
+}
+
+.master-class-card .card-body {
+    padding: 1.5rem;
+}
+
+.master-class-card .class-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #a74737;
+    margin-bottom: 0.5rem;
+}
+
+.master-class-card .class-category {
+    color: var(--coral-primary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.master-class-card .class-description {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 1rem 0;
+}
+
+.master-class-card .class-details {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.master-class-card .class-detail-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.master-class-card .class-detail-item i {
+    color: var(--coral-primary);
+}
+
+/* Upcoming Classes Section */
+.upcoming-class-card {
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.upcoming-class-card:hover {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+}
+
+.upcoming-class-card .class-header {
+    padding: 1rem;
+    border-left: 4px solid;
+}
+
+.upcoming-class-card .class-title {
+    font-size: 1.1rem;
+    font-family: var(--pbmit-body-typography-font-family)
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.25rem;
+}
+
+.upcoming-class-card .class-instructor {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.upcoming-class-card .class-info {
+    padding: 0 1rem 1rem 1rem;
+}
+
+.upcoming-class-card .info-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.upcoming-class-card .info-row i {
+    color: var(--coral-primary);
+    width: 20px;
+}
+
+.upcoming-class-card .slots-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.upcoming-class-card .slots-available {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.upcoming-class-card .slots-limited {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.upcoming-class-card .slots-full {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.upcoming-class-card .btn-book {
+    width: 100%;
+    background-color: var(--coral-primary);
+    color: white;
+    border: none;
+    padding: 0.6rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.upcoming-class-card .btn-book:hover {
+    background-color: var(--coral-hover);
+    transform: scale(1.02);
+}
+
+/* Instructor Cards */
+.instructor-card {
+    text-align: center;
+    padding: 1.5rem;
+    border-radius: 15px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.instructor-card:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+    border-color: var(--coral-primary);
+}
+
+.instructor-card .instructor-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    background: linear-gradient(135deg, var(--coral-light), var(--sage-green));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: white;
+    font-weight: 700;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.instructor-card .instructor-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.25rem;
+}
+
+.instructor-card .instructor-specialization {
+    color: var(--coral-primary);
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.instructor-card .instructor-bio {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Section Headers */
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-header .section-subtitle {
+    color: var(--coral-primary);
+    font-size: 0.95rem;
+    font-weight: 700;
+    /* text-transform: uppercase; */
+    font-size: 30px;
+    font-family: var(--pbmit-body-typography-font-family) !important;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+
+.section-header .section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.section-header .section-description {
+    color: #666;
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Buttons */
+.btn-coral {
+    background-color: var(--coral-primary);
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-coral:hover {
+    background-color: var(--coral-hover);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 111, 81, 0.3);
+}
+
+.btn-coral-outline {
+    background-color: transparent;
+    color: var(--coral-primary);
+    border: 2px solid var(--coral-primary);
+    padding: 0.75rem 2rem;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-coral-outline:hover {
+    background-color: var(--coral-primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 111, 81, 0.3);
+}
+
+/* Stats Section */
+.stats-card {
+    text-align: center;
+    padding: 2rem;
+    border-radius: 15px;
+    background: linear-gradient(
+        135deg,
+        var(--coral-primary),
+        var(--coral-hover)
+    );
+    color: white;
+    box-shadow: 0 5px 20px rgba(255, 111, 81, 0.3);
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 1.1rem;
+    font-weight: 500;
+    opacity: 0.95;
+}
+
+/* Pricing Cards */
+.pricing-highlight {
+    background: linear-gradient(
+        135deg,
+        var(--coral-primary),
+        var(--coral-hover)
+    ) !important;
+    color: white !important;
+}
+
+.pricing-highlight .pbminfotech-ptable-heading,
+.pricing-highlight .pbminfotech-ptable-desc,
+.pricing-highlight .pbminfotech-ptable-frequency {
+    color: white !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .section-header .section-title {
+        font-size: 2rem;
+    }
+
+    .instructor-card .instructor-avatar {
+        width: 100px;
+        height: 100px;
+        font-size: 2.5rem;
+    }
+
+    .stats-card .stat-number {
+        font-size: 2.5rem;
+    }
+}

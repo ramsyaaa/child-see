@@ -1,0 +1,275 @@
+@font-face {
+	font-family: "flaticon";
+	src: url("../fonts/flaticon.ttf") format("truetype"),
+url("../fonts/flaticon.woff") format("woff"),
+url("../fonts/flaticon.woff2") format("woff2"),
+url("../fonts/flaticon.eot") format("embedded-opentype"),
+url("../fonts/flaticon.svg") format("svg");
+}
+
+i[class^="pbmit-yoge-icon-"]:before, i[class*=" pbmit-yoge-icon-"]:before {
+	font-family: "flaticon" !important;
+	font-style: normal;
+	font-weight: normal !important;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.pbmit-yoge-icon-subscribe:before {
+	content: "\f101";
+}
+.pbmit-yoge-icon-yoga-pose:before {
+	content: "\f102";
+}
+.pbmit-yoge-icon-yoga-pose-1:before {
+	content: "\f103";
+}
+.pbmit-yoge-icon-yoga-pose-2:before {
+	content: "\f104";
+}
+.pbmit-yoge-icon-yoga-pose-3:before {
+	content: "\f105";
+}
+.pbmit-yoge-icon-yoga-pose-4:before {
+	content: "\f106";
+}
+.pbmit-yoge-icon-yoga-pose-5:before {
+	content: "\f107";
+}
+.pbmit-yoge-icon-yoga-pose-6:before {
+	content: "\f108";
+}
+.pbmit-yoge-icon-yoga-pose-7:before {
+	content: "\f109";
+}
+.pbmit-yoge-icon-yoga-pose-8:before {
+	content: "\f10a";
+}
+.pbmit-yoge-icon-yoga-pose-9:before {
+	content: "\f10b";
+}
+.pbmit-yoge-icon-yoga-pose-10:before {
+	content: "\f10c";
+}
+.pbmit-yoge-icon-yoga-pose-11:before {
+	content: "\f10d";
+}
+.pbmit-yoge-icon-yoga-pose-12:before {
+	content: "\f10e";
+}
+.pbmit-yoge-icon-yoga-pose-13:before {
+	content: "\f10f";
+}
+.pbmit-yoge-icon-yoga-pose-14:before {
+	content: "\f110";
+}
+.pbmit-yoge-icon-yoga-pose-15:before {
+	content: "\f111";
+}
+.pbmit-yoge-icon-yoga-pose-16:before {
+	content: "\f112";
+}
+.pbmit-yoge-icon-yoga-pose-17:before {
+	content: "\f113";
+}
+.pbmit-yoge-icon-yoga-pose-18:before {
+	content: "\f114";
+}
+.pbmit-yoge-icon-yoga-pose-19:before {
+	content: "\f115";
+}
+.pbmit-yoge-icon-yoga-pose-20:before {
+	content: "\f116";
+}
+.pbmit-yoge-icon-yoga-pose-21:before {
+	content: "\f117";
+}
+.pbmit-yoge-icon-yoga-pose-22:before {
+	content: "\f118";
+}
+.pbmit-yoge-icon-yoga-pose-23:before {
+	content: "\f119";
+}
+.pbmit-yoge-icon-yoga-pose-24:before {
+	content: "\f11a";
+}
+.pbmit-yoge-icon-yoga-pose-25:before {
+	content: "\f11b";
+}
+.pbmit-yoge-icon-yoga-pose-26:before {
+	content: "\f11c";
+}
+.pbmit-yoge-icon-yoga-pose-27:before {
+	content: "\f11d";
+}
+.pbmit-yoge-icon-yoga-pose-28:before {
+	content: "\f11e";
+}
+.pbmit-yoge-icon-yoga-pose-29:before {
+	content: "\f11f";
+}
+.pbmit-yoge-icon-yoga-pose-30:before {
+	content: "\f120";
+}
+.pbmit-yoge-icon-yoga-pose-31:before {
+	content: "\f121";
+}
+.pbmit-yoge-icon-yoga-pose-32:before {
+	content: "\f122";
+}
+.pbmit-yoge-icon-yoga-pose-33:before {
+	content: "\f123";
+}
+.pbmit-yoge-icon-yoga-pose-34:before {
+	content: "\f124";
+}
+.pbmit-yoge-icon-yoga-pose-35:before {
+	content: "\f125";
+}
+.pbmit-yoge-icon-yoga-pose-36:before {
+	content: "\f126";
+}
+.pbmit-yoge-icon-yoga-pose-37:before {
+	content: "\f127";
+}
+.pbmit-yoge-icon-yoga-pose-38:before {
+	content: "\f128";
+}
+.pbmit-yoge-icon-yoga-pose-39:before {
+	content: "\f129";
+}
+.pbmit-yoge-icon-yoga-pose-40:before {
+	content: "\f12a";
+}
+.pbmit-yoge-icon-yoga-pose-41:before {
+	content: "\f12b";
+}
+.pbmit-yoge-icon-yoga-pose-42:before {
+	content: "\f12c";
+}
+.pbmit-yoge-icon-yoga-pose-43:before {
+	content: "\f12d";
+}
+.pbmit-yoge-icon-yoga-pose-44:before {
+	content: "\f12e";
+}
+.pbmit-yoge-icon-yoga-pose-45:before {
+	content: "\f12f";
+}
+.pbmit-yoge-icon-meditate:before {
+	content: "\f130";
+}
+.pbmit-yoge-icon-tea:before {
+	content: "\f131";
+}
+.pbmit-yoge-icon-yoga:before {
+	content: "\f132";
+}
+.pbmit-yoge-icon-buddha:before {
+	content: "\f133";
+}
+.pbmit-yoge-icon-yoga-1:before {
+	content: "\f134";
+}
+.pbmit-yoge-icon-om:before {
+	content: "\f135";
+}
+.pbmit-yoge-icon-candle:before {
+	content: "\f136";
+}
+.pbmit-yoge-icon-yoga-2:before {
+	content: "\f137";
+}
+.pbmit-yoge-icon-lotus:before {
+	content: "\f138";
+}
+.pbmit-yoge-icon-yoga-mat:before {
+	content: "\f139";
+}
+.pbmit-yoge-icon-hand:before {
+	content: "\f13a";
+}
+.pbmit-yoge-icon-yoga-3:before {
+	content: "\f13b";
+}
+.pbmit-yoge-icon-yin-yang:before {
+	content: "\f13c";
+}
+.pbmit-yoge-icon-diffuser:before {
+	content: "\f13d";
+}
+.pbmit-yoge-icon-book:before {
+	content: "\f13e";
+}
+.pbmit-yoge-icon-hot-stone:before {
+	content: "\f13f";
+}
+.pbmit-yoge-icon-hamsa:before {
+	content: "\f140";
+}
+.pbmit-yoge-icon-food:before {
+	content: "\f141";
+}
+.pbmit-yoge-icon-yoga-4:before {
+	content: "\f142";
+}
+.pbmit-yoge-icon-yoga-5:before {
+	content: "\f143";
+}
+.pbmit-yoge-icon-hand-1:before {
+	content: "\f144";
+}
+.pbmit-yoge-icon-yoga-mat-1:before {
+	content: "\f145";
+}
+.pbmit-yoge-icon-bolster:before {
+	content: "\f146";
+}
+.pbmit-yoge-icon-calendar:before {
+	content: "\f147";
+}
+.pbmit-yoge-icon-yoga-6:before {
+	content: "\f148";
+}
+.pbmit-yoge-icon-incense:before {
+	content: "\f149";
+}
+.pbmit-yoge-icon-sport-bag:before {
+	content: "\f14a";
+}
+.pbmit-yoge-icon-water-bottle:before {
+	content: "\f14b";
+}
+.pbmit-yoge-icon-yoga-ball:before {
+	content: "\f14c";
+}
+.pbmit-yoge-icon-certificate:before {
+	content: "\f14d";
+}
+.pbmit-yoge-icon-share:before {
+	content: "\f14e";
+}
+.pbmit-yoge-icon-phone-call:before {
+	content: "\f14f";
+}
+.pbmit-yoge-icon-email:before {
+	content: "\f150";
+}
+.pbmit-yoge-icon-location:before {
+	content: "\f151";
+}
+.pbmit-yoge-icon-down-arrow:before {
+	content: "\f152";
+}
+.pbmit-yoge-icon-play:before {
+	content: "\f153";
+}
+.pbmit-yoge-icon-up-arrow:before {
+	content: "\f154";
+}
+.pbmit-yoge-icon-down-arrow-1:before {
+	content: "\f155";
+}
