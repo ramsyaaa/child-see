@@ -1,5 +1,5 @@
-@extends('home.layout.master')
-@section('title', 'Classes — InkluSyncID')
+﻿@extends('home.layout.master')
+@section('title', 'Classes — Child See')
 
 @push('styles')
 <style>

@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Admin Login - InkluSyncID</title>
+    <title>Admin Login - Child See</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,minimal-ui" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -102,7 +102,7 @@
                             <i class="fas fa-user-shield"></i>
                         </div>
                         <h2>Admin Portal</h2>
-                        <p class="mb-0">InkluSyncID Operations</p>
+                        <p class="mb-0">Child See Operations</p>
                     </div>
                     <div class="auth-body">
                         <form method="POST" action="{{ route('admin.login.submit') }}">

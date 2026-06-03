@@ -1,4 +1,4 @@
-@extends('superadmin.layout.master')
+﻿@extends('superadmin.layout.master')
 @section('page-title', 'Master Pertanyaan')
 
 @section('page-banner')
@@ -6,7 +6,7 @@
     <div>
         <ul class="inklu-breadcrumb">
             <li><a href="{{ route('superadmin.dashboard') }}"><i class="ti ti-home-2"></i></a></li>
-            <li><a href="{{ route('superadmin.dashboard') }}">InkluSyncID</a></li>
+            <li><a href="{{ route('superadmin.dashboard') }}">Child See</a></li>
             <li class="active">Master Pertanyaan</li>
         </ul>
         <h2>Master Pertanyaan</h2>

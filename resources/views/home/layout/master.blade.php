@@ -1,9 +1,9 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="id" class="scroll-smooth">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>@yield('title', ($site['seo_title'] ?? '') ?: 'InkluSyncID — Identifikasi Anak Berkebutuhan Khusus')</title>
+    <title>@yield('title', ($site['seo_title'] ?? '') ?: 'Child See — Identifikasi Anak Berkebutuhan Khusus')</title>
     <meta name="description" content="@yield('description', ($site['seo_description'] ?? '') ?: 'Platform identifikasi awal Anak Berkebutuhan Khusus (ABK) tingkat Sekolah Dasar untuk guru dan orang tua.')" />
     @if(!empty($site['seo_keywords']))
     <meta name="keywords" content="{{ $site['seo_keywords'] }}" />
@@ -12,8 +12,8 @@
 
     {{-- Open Graph --}}
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="{{ $site['site_name'] ?? 'InkluSyncID' }}" />
-    <meta property="og:title" content="@yield('og_title', $site['seo_title'] ?? 'InkluSyncID')" />
+    <meta property="og:site_name" content="{{ $site['site_name'] ?? 'Child See' }}" />
+    <meta property="og:title" content="@yield('og_title', $site['seo_title'] ?? 'Child See')" />
     <meta property="og:description" content="@yield('og_description', $site['seo_description'] ?? '')" />
     @if(!empty($site['og_image']))
     <meta property="og:image" content="{{ asset('storage/' . $site['og_image']) }}" />

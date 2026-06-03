@@ -1,5 +1,5 @@
-@extends('home.layout.master')
-@section('title', 'Profil Anak | InkluSyncID')
+﻿@extends('home.layout.master')
+@section('title', 'Profil Anak | Child See')
 
 @section('content')
 <div class="page-fade">

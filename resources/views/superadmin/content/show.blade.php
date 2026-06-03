@@ -1,4 +1,4 @@
-@extends('superadmin.layout.master')
+﻿@extends('superadmin.layout.master')
 @section('page-title', $cmsPage->title . ' — Konten')
 
 @section('page-banner')
@@ -160,10 +160,10 @@
                         </p>
                         <p class="mb-0 mt-1" id="serp-title"
                            style="color:#1a0dab;font-size:1rem;line-height:1.3;font-weight:500;">
-                            {{ $cmsPage->seo_title ?: $cmsPage->title . ' — InkluSyncID' }}
+                            {{ $cmsPage->seo_title ?: $cmsPage->title . ' — Child See' }}
                         </p>
                         <p class="mb-0" style="color:#006621;font-size:0.75rem;">
-                            inklusyncid.id/{{ $cmsPage->slug }}
+                            Child See.id/{{ $cmsPage->slug }}
                         </p>
                         <p class="mb-0 text-muted" id="serp-desc" style="font-size:0.8rem;line-height:1.4;">
                             {{ $cmsPage->seo_description ?: 'Belum ada deskripsi.' }}
@@ -194,7 +194,7 @@
             const l = titleInput.value.length;
             titleLen.textContent = l;
             titleLen.style.color = l > 140 ? '#dc3545' : '';
-            serpTitle.textContent = titleInput.value || '{{ addslashes($cmsPage->title) }} — InkluSyncID';
+            serpTitle.textContent = titleInput.value || '{{ addslashes($cmsPage->title) }} — Child See';
         });
     }
     if (descInput) {

@@ -1,5 +1,5 @@
-@extends('home.layout.master')
-@section('title', 'Langkah 4 — Tes Identifikasi | InkluSyncID')
+﻿@extends('home.layout.master')
+@section('title', 'Langkah 4 — Tes Identifikasi | Child See')
 
 @section('content')
 @php

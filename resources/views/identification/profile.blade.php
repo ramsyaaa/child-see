@@ -1,5 +1,5 @@
-@extends('home.layout.master')
-@section('title', 'Langkah 1 — Pengisian Profil | InkluSyncID')
+﻿@extends('home.layout.master')
+@section('title', 'Langkah 1 — Pengisian Profil | Child See')
 
 @section('content')
 @php $currentStep = 1; @endphp

@@ -1,5 +1,5 @@
-@extends('home.layout.master')
-@section('title', 'Instructors — InkluSyncID')
+﻿@extends('home.layout.master')
+@section('title', 'Instructors — Child See')
 
 @section('content')
 
@@ -67,7 +67,7 @@
   <div class="max-w-2xl mx-auto text-center reveal">
     <h2 class="text-3xl font-semibold mb-3" style="font-family:'Playfair Display',serif">Interested in Teaching With Us?</h2>
     <p class="text-[#7a7a7a] text-sm leading-relaxed mb-8">We are always looking for passionate, experienced instructors who share our values of intentionality, community, and authentic growth.</p>
-    <a href="mailto:hello@inklusyncid.id" class="inline-block bg-[#C4923A] text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-[#A07830] transition-colors">Get In Touch</a>
+    <a href="mailto:hello@Child See.id" class="inline-block bg-[#C4923A] text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-[#A07830] transition-colors">Get In Touch</a>
   </div>
 </section>
 

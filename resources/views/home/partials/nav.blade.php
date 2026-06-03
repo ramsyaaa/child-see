@@ -3,7 +3,7 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
         {{-- Logo --}}
         <a href="{{ route('home') }}" class="flex items-center gap-3">
-            <span class="relative grid place-items-center w-10 h-10 rounded-full" style="background:#5C477F;">
+            <span class="relative grid place-items-center w-10 h-10 rounded-full" style="background:#8E77AB;">
                 <svg viewBox="0 0 40 40" class="w-8 h-8">
                     <circle cx="20" cy="20" r="14" fill="none" stroke="#BAA6D6" stroke-width="1.4"/>
                     <circle cx="20" cy="20" r="7"  fill="rgba(186,166,214,0.3)"/>
@@ -33,12 +33,12 @@
 
         <div class="flex items-center gap-2">
             @auth
-                <a href="{{ route('member.assessment.start') }}" class="hidden md:inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold text-white" style="background:linear-gradient(135deg,#4A3769,#5C477F);">
+                <a href="{{ route('member.assessment.start') }}" class="hidden md:inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold text-white" style="background:linear-gradient(135deg,#4A3769,#8E77AB);">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
                     Mulai Asesmen
                 </a>
             @else
-                <a href="{{ route('register') }}" class="hidden md:inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold text-white" style="background:linear-gradient(135deg,#4A3769,#5C477F);">
+                <a href="{{ route('register') }}" class="hidden md:inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold text-white" style="background:linear-gradient(135deg,#4A3769,#8E77AB);">
                     Mulai Gratis
                 </a>
             @endauth
@@ -63,10 +63,10 @@
             <a href="{{ route('about') }}">Tentang</a>
             @auth
                 <a href="{{ route('member.dashboard') }}">Dashboard</a>
-                <a href="{{ route('member.assessment.start') }}" style="color:#5C477F;font-weight:600;">Mulai Asesmen</a>
+                <a href="{{ route('member.assessment.start') }}" style="color:#8E77AB;font-weight:600;">Mulai Asesmen</a>
             @else
                 <a href="{{ route('login') }}">Masuk</a>
-                <a href="{{ route('register') }}" style="color:#5C477F;font-weight:600;">Daftar Gratis</a>
+                <a href="{{ route('register') }}" style="color:#8E77AB;font-weight:600;">Daftar Gratis</a>
             @endauth
         </nav>
     </div>

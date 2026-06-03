@@ -1,5 +1,5 @@
-@extends('home.layout.master')
-@section('title', 'Langkah 2 — Persetujuan | InkluSyncID')
+﻿@extends('home.layout.master')
+@section('title', 'Langkah 2 — Persetujuan | Child See')
 
 @section('content')
 @php $profile = session('inklu_profile'); @endphp
@@ -20,7 +20,7 @@
                 </p>
                 <ul class="space-y-2 text-[15px] mt-3" style="color:rgba(74,55,105,0.80);">
                     <li class="flex gap-3"><span class="mt-1.5 w-1.5 h-1.5 rounded-full flex-none inline-block" style="background:#BAA6D6;"></span>Data yang Anda isikan digunakan semata-mata untuk identifikasi awal dan tidak dibagikan ke pihak ketiga tanpa izin.</li>
-                    <li class="flex gap-3"><span class="mt-1.5 w-1.5 h-1.5 rounded-full flex-none inline-block" style="background:#BAA6D6;"></span>Hasil identifikasi InkluSyncID bukan diagnosis klinis; keputusan akhir tetap berada pada tenaga profesional.</li>
+                    <li class="flex gap-3"><span class="mt-1.5 w-1.5 h-1.5 rounded-full flex-none inline-block" style="background:#BAA6D6;"></span>Hasil identifikasi Child See bukan diagnosis klinis; keputusan akhir tetap berada pada tenaga profesional.</li>
                     <li class="flex gap-3"><span class="mt-1.5 w-1.5 h-1.5 rounded-full flex-none inline-block" style="background:#BAA6D6;"></span>Anda telah membaca dan memahami instrumen yang akan diberikan pada langkah berikutnya.</li>
                     <li class="flex gap-3"><span class="mt-1.5 w-1.5 h-1.5 rounded-full flex-none inline-block" style="background:#BAA6D6;"></span>Anda memberikan persetujuan atas nama wali sah dari anak bernama <strong>{{ $profile['namaAnak'] }}</strong>.</li>
                 </ul>

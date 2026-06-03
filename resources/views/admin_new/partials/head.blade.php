@@ -1,12 +1,12 @@
-<head>
-    <title>InkluSyncID - Admin</title>
+﻿<head>
+    <title>Child See - Admin</title>
     <!-- [Meta] -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,minimal-ui" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="InkluSyncID Booking System - Admin Dashboard" />
+    <meta name="description" content="Child See Booking System - Admin Dashboard" />
     <meta name="keywords" content="Fitness Studio, Booking System, Admin Dashboard" />
-    <meta name="author" content="InkluSyncID" />
+    <meta name="author" content="Child See" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- [Favicon] icon -->
     <link rel="icon" href="{{ asset('favicon.png') }}" type="image/x-icon" />
@@ -37,7 +37,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css">
 
-    <!-- InkluSyncID Custom Styles -->
+    <!-- Child See Custom Styles -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
         :root {

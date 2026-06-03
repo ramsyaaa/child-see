@@ -17,17 +17,15 @@ class AssessmentController extends Controller
 
     public function selectChild()
     {
-        $child      = Child::where('user_id', auth()->id())->first();
+        $children   = Child::where('user_id', auth()->id())->get();
+        $child      = $children->first(); // backward-compat for single-child views
         $categories = Category::active()->get();
 
-        return view('member.assessment.select-child', compact('child', 'categories'));
+        return view('member.assessment.select-child', compact('children', 'child', 'categories'));
     }
 
     public function start(Request $r)
     {
-        // child_id may come from form or be auto-resolved from single child
-        $child = Child::where('user_id', auth()->id())->firstOrFail();
-
         $r->validate([
             'category_id' => [
                 'required',
@@ -38,7 +36,15 @@ class AssessmentController extends Controller
                     }
                 },
             ],
+            'child_id' => 'nullable|integer',
         ]);
+
+        // If user has multiple children, child_id must be provided and owned by user
+        if ($r->filled('child_id')) {
+            $child = Child::where('id', $r->child_id)->where('user_id', auth()->id())->firstOrFail();
+        } else {
+            $child = Child::where('user_id', auth()->id())->firstOrFail();
+        }
 
         $category = Category::findOrFail($r->category_id);
 

@@ -24,7 +24,13 @@ class RoleMiddleware
         $user = Auth::user();
 
         // Check if user has the required role (case-insensitive)
-        if (strtolower($user->role) !== strtolower($role)) {
+        // Organization users share the member area
+        $userRole  = strtolower($user->role);
+        $requiredRole = strtolower($role);
+        $allowed = $userRole === $requiredRole
+            || ($requiredRole === 'member' && $userRole === 'organization');
+
+        if (!$allowed) {
             abort(403, 'Unauthorized access. You do not have permission to access this area.');
         }
 

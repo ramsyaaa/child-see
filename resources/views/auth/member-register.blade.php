@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Member Registration - InkluSyncID</title>
+    <title>Member Registration - Child See</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,minimal-ui" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -109,7 +109,7 @@
                         <div class="logo-circle">
                             <i class="fas fa-user-plus"></i>
                         </div>
-                        <h2>Join InkluSyncID</h2>
+                        <h2>Join Child See</h2>
                         <p class="mb-0">Start your wellness journey today</p>
                     </div>
                     <div class="auth-body">

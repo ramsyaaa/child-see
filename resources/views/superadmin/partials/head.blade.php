@@ -1,10 +1,10 @@
-<head>
+﻿<head>
     <title>@yield('page-title', 'Dashboard') — Child See</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,minimal-ui" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="Child See — Panel Superadmin" />
-    <meta name="author" content="InkluSyncID" />
+    <meta name="author" content="Child See" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css">
 
     <style>
-        /* ── InkluSyncID Design Tokens ── */
+        /* ── Child See Design Tokens ── */
         :root {
             --inklu-indigo:   #4A3769;
             --inklu-violet:   #5C477F;
@@ -61,9 +61,9 @@
         /* ── Top header ── */
         .pc-header { background: #fff !important; border-bottom: 1px solid var(--inklu-border) !important; }
 
-        /* ── InkluSyncID Page Banner (replaces vendor .page-header) ── */
+        /* ── Child See Page Banner (replaces vendor .page-header) ── */
         .inklu-page-banner {
-            background: linear-gradient(135deg, var(--inklu-sidebar) 0%, var(--inklu-indigo) 55%, var(--inklu-violet) 100%);
+            background: linear-gradient(135deg, #4A3769 0%, #6B5A8E 55%, #8E77AB 100%);
             border-radius: 14px;
             margin-bottom: 24px;
             padding: 18px 24px;
@@ -185,7 +185,7 @@
 
         /* ── Inklu stat card ── */
         .inklu-stat-card {
-            background: linear-gradient(135deg, var(--inklu-sidebar) 0%, var(--inklu-indigo) 100%);
+            background: linear-gradient(135deg, #4A3769 0%, #8E77AB 100%);
             border-radius: 14px !important;
             color: #fff;
             padding: 22px 24px;
@@ -218,7 +218,7 @@
             top: auto !important;
             right: auto !important;
             display: block !important;
-            background: linear-gradient(135deg, var(--inklu-sidebar) 0%, var(--inklu-indigo) 55%, var(--inklu-violet) 100%) !important;
+            background: linear-gradient(135deg, #4A3769 0%, #6B5A8E 55%, #8E77AB 100%) !important;
             border-radius: 14px !important;
             margin-bottom: 24px !important;
             padding: 0 !important;
@@ -229,11 +229,24 @@
         .pc-content .page-header .page-block { padding: 18px 24px !important; }
         .pc-content .page-header .breadcrumb { margin-bottom: 4px !important; font-size: 12px !important; }
         .pc-content .page-header .breadcrumb-item,
-        .pc-content .page-header .breadcrumb-item a { color: rgba(245,245,246,.6) !important; text-decoration: none !important; }
+        .pc-content .page-header .breadcrumb-item a { color: rgba(245,245,246,.65) !important; text-decoration: none !important; }
         .pc-content .page-header .breadcrumb-item + .breadcrumb-item::before { color: rgba(245,245,246,.3) !important; }
-        .pc-content .page-header li.breadcrumb-item[aria-current] { color: rgba(245,245,246,.9) !important; }
-        .pc-content .page-header h2 { color: #fff !important; font-family: 'Playfair Display SC', serif !important; font-size: 1.4rem !important; font-weight: 700 !important; margin-bottom: 0 !important; }
+        .pc-content .page-header li.breadcrumb-item[aria-current],
+        .pc-content .page-header li.breadcrumb-item.active { color: rgba(245,245,246,.95) !important; }
+        .pc-content .page-header h2,
+        .pc-content .page-header h5 { color: #fff !important; font-family: 'Playfair Display SC', serif !important; font-size: 1.25rem !important; font-weight: 700 !important; margin-bottom: 0 !important; }
         .pc-content .page-header p.text-muted { color: rgba(245,245,246,.6) !important; }
+        /* Also update token colors to match the softer palette */
+        :root {
+            --inklu-primary: #8E77AB;
+            --inklu-accent:  #B9A5D6;
+            --inklu-blue:    #8499B6;
+            --inklu-sky:     #C6D9E8;
+        }
+        .btn-primary { background: var(--inklu-primary) !important; border-color: var(--inklu-primary) !important; }
+        .btn-primary:hover { background: var(--inklu-indigo) !important; border-color: var(--inklu-indigo) !important; }
+        .btn-outline-primary { color: var(--inklu-primary) !important; border-color: var(--inklu-primary) !important; }
+        .btn-outline-primary:hover { background: var(--inklu-primary) !important; color: #fff !important; }
         @media (max-width: 575px) {
             .pc-content .page-header .page-block { padding: 14px 16px !important; }
             .pc-content .page-header h2 { font-size: 1.1rem !important; }

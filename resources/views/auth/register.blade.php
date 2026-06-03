@@ -1,9 +1,9 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Daftar — InkluSyncID</title>
+    <title>Daftar — Child See</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;700&family=Josefin+Sans:wght@300;400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css'])
@@ -23,7 +23,7 @@
                     <circle cx="24" cy="24" r="8" fill="#BAA6D6" opacity="0.5"/>
                     <circle cx="24" cy="24" r="3" fill="#BAA6D6"/>
                 </svg>
-                <span style="font-family:'Playfair Display SC',serif;color:#F5F5F6;font-size:1.1rem;letter-spacing:0.06em;">InkluSyncID</span>
+                <span style="font-family:'Playfair Display SC',serif;color:#F5F5F6;font-size:1.1rem;letter-spacing:0.06em;">Child See</span>
             </a>
         </div>
         <div style="position:relative;z-index:1;">
@@ -47,7 +47,7 @@
         <div class="auth-panel-mobile" style="display:none;margin-bottom:1.5rem;">
             <a href="{{ route('home') }}" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;">
                 <svg width="24" height="24" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="#5C477F" stroke-width="2"/><circle cx="24" cy="24" r="15" stroke="#5C477F" stroke-width="1.5"/><circle cx="24" cy="24" r="3" fill="#5C477F"/></svg>
-                <span style="font-family:'Playfair Display SC',serif;color:#4A3769;font-size:1rem;">InkluSyncID</span>
+                <span style="font-family:'Playfair Display SC',serif;color:#4A3769;font-size:1rem;">Child See</span>
             </a>
         </div>
 

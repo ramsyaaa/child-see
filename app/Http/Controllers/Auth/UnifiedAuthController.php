@@ -133,10 +133,11 @@ class UnifiedAuthController extends Controller
         $role = strtolower($user->role);
         
         return match($role) {
-            'superadmin' => redirect()->route('superadmin.dashboard'),
-            'admin' => redirect()->route('member.dashboard'),
-            'member' => redirect()->route('member.dashboard'),
-            default => redirect()->route('member.dashboard'),
+            'superadmin'   => redirect()->route('superadmin.dashboard'),
+            'admin'        => redirect()->route('member.dashboard'),
+            'member'       => redirect()->route('member.dashboard'),
+            'organization' => redirect()->route('member.dashboard'),
+            default        => redirect()->route('member.dashboard'),
         };
     }
 

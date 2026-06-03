@@ -1,5 +1,5 @@
-@extends('home.layout.master')
-@section('title', 'Bundles & Packages — InkluSyncID')
+﻿@extends('home.layout.master')
+@section('title', 'Bundles & Packages — Child See')
 
 @section('content')
 

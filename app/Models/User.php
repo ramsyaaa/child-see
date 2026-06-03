@@ -32,7 +32,10 @@ class User extends Authenticatable
         'rejection_reason',
         'nik',
         'ktp_photo',
-        'npwp'
+        'npwp',
+        'organization_name',
+        'organization_type',
+        'child_quota',
     ];
 
     /**
@@ -343,6 +346,22 @@ class User extends Authenticatable
         return strtolower($this->role) === 'member';
     }
 
+    public function isOrganization()
+    {
+        return strtolower($this->role) === 'organization';
+    }
+
+    public function getRoleLabel(): string
+    {
+        return match(strtoupper($this->role)) {
+            'SUPERADMIN'   => 'Superadmin',
+            'ADMIN'        => 'Admin',
+            'MEMBER'       => 'Orang Tua / Guru',
+            'ORGANIZATION' => 'Organisasi / Sekolah',
+            default        => $this->role,
+        };
+    }
+
     /**
      * Get the password attribute (for compatibility with password_hash column)
      */
@@ -366,5 +385,10 @@ class User extends Authenticatable
     public function identificationResults()
     {
         return $this->hasMany(\App\Models\IdentificationResult::class);
+    }
+
+    public function children()
+    {
+        return $this->hasMany(\App\Models\Child::class);
     }
 }

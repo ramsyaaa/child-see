@@ -1,4 +1,4 @@
-<!-- [ Header Topbar ] start -->
+﻿<!-- [ Header Topbar ] start -->
 <header class="pc-header">
     <div class="header-wrapper">
         <!-- Mobile sidebar toggle -->
@@ -21,7 +21,7 @@
                             <li class="breadcrumb-item">
                                 <a href="{{ route('superadmin.dashboard') }}" style="color:var(--inklu-lavender,#BAA6D6);">
                                     <i class="ti ti-home-2" style="font-size:0.85rem;"></i>
-                                    <span class="ms-1">InkluSyncID</span>
+                                    <span class="ms-1">Child See</span>
                                 </a>
                             </li>
                             <li class="breadcrumb-item active" style="color:rgba(46,32,70,.5);">

@@ -12,7 +12,7 @@
 @endif
 
 {{-- Welcome + child card --}}
-<div class="rounded-2xl p-6 mb-6 text-white relative overflow-hidden" style="background:linear-gradient(135deg,#2E2046,#5C477F)">
+<div class="rounded-2xl p-6 mb-6 text-white relative overflow-hidden" style="background:linear-gradient(135deg,#4A3769,#8E77AB)">
   <div class="relative z-10 flex flex-col sm:flex-row sm:items-center gap-4">
     <div class="flex-1">
       <p class="text-white/60 text-sm mb-1">Selamat datang,</p>

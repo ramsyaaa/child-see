@@ -9,21 +9,39 @@ use Illuminate\Support\Facades\Storage;
 
 class ChildController extends Controller
 {
+    private function userQuota(): int
+    {
+        return (int) (auth()->user()->child_quota ?? 1);
+    }
+
+    private function childCount(): int
+    {
+        return Child::where('user_id', auth()->id())->count();
+    }
+
     public function index()
     {
-        $child = Child::where('user_id', auth()->id())
+        $children = Child::where('user_id', auth()->id())
             ->with(['assessments' => fn($q) => $q->where('status', 'completed')->with('category')->latest()->limit(3)])
-            ->first();
+            ->get();
 
-        return view('member.children.index', compact('child'));
+        $quota      = $this->userQuota();
+        $childCount = $children->count();
+
+        // Keep backward-compat: pass $child (first) for single-child views
+        $child = $children->first();
+
+        return view('member.children.index', compact('children', 'child', 'quota', 'childCount'));
     }
 
     public function create()
     {
-        // Only 1 child allowed per user
-        if (Child::where('user_id', auth()->id())->exists()) {
-            return redirect()->route('member.children.index')
-                ->with('info', 'Setiap akun hanya dapat memiliki satu data anak. Edit data anak yang sudah ada.');
+        $quota = $this->userQuota();
+        if ($this->childCount() >= $quota) {
+            $msg = $quota === 1
+                ? 'Setiap akun hanya dapat memiliki satu data anak. Edit data anak yang sudah ada.'
+                : "Anda telah mencapai batas maksimal {$quota} data anak.";
+            return redirect()->route('member.children.index')->with('info', $msg);
         }
 
         return view('member.children.create');
@@ -46,10 +64,10 @@ class ChildController extends Controller
             'photo'        => 'nullable|image|max:2048',
         ]);
 
-        // Enforce single child per user
-        if (Child::where('user_id', auth()->id())->exists()) {
+        $quota = $this->userQuota();
+        if ($this->childCount() >= $quota) {
             return redirect()->route('member.children.index')
-                ->with('info', 'Setiap akun hanya dapat memiliki satu data anak.');
+                ->with('info', "Anda telah mencapai batas maksimal {$quota} data anak.");
         }
 
         $validated['user_id'] = auth()->id();

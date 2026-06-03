@@ -1,5 +1,5 @@
-@extends('superadmin.layout.master')
-@section('page-title', 'Dashboard InkluSyncID')
+﻿@extends('superadmin.layout.master')
+@section('page-title', 'Dashboard Child See')
 
 @section('page-banner')
 <div class="inklu-page-banner">
@@ -8,7 +8,7 @@
             <li><a href="{{ route('superadmin.dashboard') }}"><i class="ti ti-home-2"></i></a></li>
             <li class="active">Dashboard</li>
         </ul>
-        <h2>Dashboard InkluSyncID</h2>
+        <h2>Dashboard Child See</h2>
         <p class="inklu-subtitle">Ringkasan aktivitas identifikasi anak berkebutuhan khusus</p>
     </div>
 </div>

@@ -1,8 +1,8 @@
-<nav class="pc-sidebar">
+﻿<nav class="pc-sidebar">
     <div class="navbar-wrapper">
         <div class="m-header" style="background: #3d2410 !important; border-bottom: 1px solid rgba(255,255,255,.08);">
             <a href="{{ url('/admin/dashboard') }}" class="b-brand text-white">
-                <img src="{{ asset('logo.png') }}" style="max-width: 100%; height: auto;" alt="InkluSyncID" />
+                <img src="{{ asset('logo.png') }}" style="max-width: 100%; height: auto;" alt="Child See" />
             </a>
         </div>
         <div class="navbar-content">

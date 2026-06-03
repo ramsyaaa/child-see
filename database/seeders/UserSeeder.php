@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 namespace Database\Seeders;
 
@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
         User::updateOrCreate(['username' => 'superadmin'], [
             'name'      => 'Super Admin',
             'full_name' => 'Super Admin',
-            'email'     => 'superadmin@inklusyncid.id',
+            'email'     => 'superadmin@Child See.id',
             'password'  => Hash::make('password'),
             'phone'     => '+62812345678901',
             'role'      => 'SUPERADMIN',
@@ -23,8 +23,8 @@ class UserSeeder extends Seeder
 
         // Admins
         $admins = [
-            ['name' => 'Admin InkluSync', 'full_name' => 'Admin InkluSync', 'username' => 'admin',      'email' => 'admin@inklusyncid.id',  'phone' => '+62812345678902'],
-            ['name' => 'Siti Nurhaliza',  'full_name' => 'Siti Nurhaliza',  'username' => 'siti.admin', 'email' => 'siti@inklusyncid.id',   'phone' => '+62812345678903'],
+            ['name' => 'Admin InkluSync', 'full_name' => 'Admin InkluSync', 'username' => 'admin',      'email' => 'admin@Child See.id',  'phone' => '+62812345678902'],
+            ['name' => 'Siti Nurhaliza',  'full_name' => 'Siti Nurhaliza',  'username' => 'siti.admin', 'email' => 'siti@Child See.id',   'phone' => '+62812345678903'],
         ];
         foreach ($admins as $a) {
             User::updateOrCreate(['username' => $a['username']], array_merge($a, [
@@ -55,9 +55,9 @@ class UserSeeder extends Seeder
         }
 
         echo "\n✅ Users seeded:\n";
-        echo "   Superadmin — username: superadmin / email: superadmin@inklusyncid.id / password: password\n";
-        echo "   Admin      — username: admin      / email: admin@inklusyncid.id\n";
-        echo "   Admin      — username: siti.admin / email: siti@inklusyncid.id\n";
+        echo "   Superadmin — username: superadmin / email: superadmin@Child See.id / password: password\n";
+        echo "   Admin      — username: admin      / email: admin@Child See.id\n";
+        echo "   Admin      — username: siti.admin / email: siti@Child See.id\n";
         echo "   8 Members  — e.g. username: andi.wijaya / email: andi.wijaya@gmail.com\n\n";
     }
 }

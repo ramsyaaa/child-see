@@ -95,6 +95,39 @@
                     </a>
                 </li>
 
+                {{-- ── Konten Landing ── --}}
+                <li class="pc-item pc-caption"><label>Konten Landing</label></li>
+                <li class="pc-item {{ request()->routeIs('superadmin.landing.index') ? 'active' : '' }}">
+                    <a href="{{ route('superadmin.landing.index') }}" class="pc-link">
+                        <span class="pc-micon"><i class="fas fa-globe"></i></span>
+                        <span class="pc-mtext">Ringkasan Landing</span>
+                    </a>
+                </li>
+                <li class="pc-item {{ request()->routeIs('superadmin.landing.facts*') ? 'active' : '' }}">
+                    <a href="{{ route('superadmin.landing.facts') }}" class="pc-link">
+                        <span class="pc-micon"><i class="fas fa-lightbulb"></i></span>
+                        <span class="pc-mtext">Fakta Unik</span>
+                    </a>
+                </li>
+                <li class="pc-item {{ request()->routeIs('superadmin.landing.team*') ? 'active' : '' }}">
+                    <a href="{{ route('superadmin.landing.team') }}" class="pc-link">
+                        <span class="pc-micon"><i class="fas fa-user-friends"></i></span>
+                        <span class="pc-mtext">Tim Pengembang</span>
+                    </a>
+                </li>
+                <li class="pc-item {{ request()->routeIs('superadmin.landing.hki*') ? 'active' : '' }}">
+                    <a href="{{ route('superadmin.landing.hki') }}" class="pc-link">
+                        <span class="pc-micon"><i class="fas fa-certificate"></i></span>
+                        <span class="pc-mtext">HKI / Paten</span>
+                    </a>
+                </li>
+                <li class="pc-item {{ request()->routeIs('superadmin.landing.partners*') ? 'active' : '' }}">
+                    <a href="{{ route('superadmin.landing.partners') }}" class="pc-link">
+                        <span class="pc-micon"><i class="fas fa-handshake"></i></span>
+                        <span class="pc-mtext">Partner</span>
+                    </a>
+                </li>
+
                 {{-- ── Pengaturan ── --}}
                 <li class="pc-item pc-caption"><label>Pengaturan</label></li>
                 <li class="pc-item {{ request()->routeIs('superadmin.settings*') ? 'active' : '' }}">
@@ -106,7 +139,7 @@
                 <li class="pc-item {{ request()->routeIs('superadmin.content*') ? 'active' : '' }}">
                     <a href="{{ route('superadmin.content.index') }}" class="pc-link">
                         <span class="pc-micon"><i class="fas fa-file-alt"></i></span>
-                        <span class="pc-mtext">Konten Halaman</span>
+                        <span class="pc-mtext">Konten CMS</span>
                     </a>
                 </li>
             </ul>

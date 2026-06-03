@@ -1,4 +1,4 @@
-{{-- InkluSyncID Footer --}}
+﻿{{-- Child See Footer --}}
 <footer class="mt-20">
     <div class="footer-border"></div>
     <div style="background:#4A3769;color:#F5F5F6;">

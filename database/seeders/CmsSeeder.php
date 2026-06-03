@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 namespace Database\Seeders;
 
@@ -18,26 +18,26 @@ class CmsSeeder extends Seeder
             [
                 'slug'            => 'home',
                 'title'           => 'Beranda',
-                'seo_title'       => 'InkluSyncID — Identifikasi Anak Berkebutuhan Khusus',
-                'seo_description' => 'InkluSyncID membantu orang tua dan guru mengidentifikasi potensi kebutuhan khusus anak secara dini melalui tes berbasis bukti ilmiah.',
+                'seo_title'       => 'Child See — Identifikasi Anak Berkebutuhan Khusus',
+                'seo_description' => 'Child See membantu orang tua dan guru mengidentifikasi potensi kebutuhan khusus anak secara dini melalui tes berbasis bukti ilmiah.',
                 'seo_keywords'    => 'identifikasi ABK, anak berkebutuhan khusus, deteksi dini, inklusif, sekolah dasar',
                 'sections' => [
                     ['section_key' => 'hero', 'label' => 'Hero Utama', 'sort_order' => 10, 'content' => [
                         'eyebrow'           => 'Deteksi Dini, Tumbuh Optimal',
                         'heading'           => 'Kenali Kebutuhan Anak Lebih Awal',
-                        'body'              => 'InkluSyncID membantu orang tua dan guru mengenali tanda-tanda kebutuhan khusus anak melalui tes terstruktur yang mudah dipahami.',
+                        'body'              => 'Child See membantu orang tua dan guru mengenali tanda-tanda kebutuhan khusus anak melalui tes terstruktur yang mudah dipahami.',
                         'cta_primary_label' => 'Mulai Identifikasi',
                         'cta_secondary_label' => 'Pelajari Lebih Lanjut',
                     ]],
                     ['section_key' => 'about_snapshot', 'label' => 'Tentang Kami (Snapshot)', 'sort_order' => 20, 'content' => [
-                        'eyebrow'    => 'Tentang InkluSyncID',
+                        'eyebrow'    => 'Tentang Child See',
                         'heading'    => 'Kami Ada untuk Mendukung Tumbuh Kembang Anak',
-                        'body_1'     => 'InkluSyncID adalah platform identifikasi anak berkebutuhan khusus berbasis web yang dirancang untuk membantu orang tua, guru, dan tenaga pendidik mengenali potensi hambatan perkembangan anak secara dini.',
+                        'body_1'     => 'Child See adalah platform identifikasi anak berkebutuhan khusus berbasis web yang dirancang untuk membantu orang tua, guru, dan tenaga pendidik mengenali potensi hambatan perkembangan anak secara dini.',
                         'body_2'     => 'Kami menyediakan instrumen skrining terstandar untuk hambatan penglihatan, pendengaran, dan intelektual pada anak usia sekolah dasar.',
                         'cta_label'  => 'Lihat Cara Kerja',
                     ]],
                     ['section_key' => 'how_it_works', 'label' => 'Cara Kerja', 'sort_order' => 30, 'content' => [
-                        'heading'       => 'Cara Kerja InkluSyncID',
+                        'heading'       => 'Cara Kerja Child See',
                         'step_1_title'  => 'Daftar Akun',
                         'step_1_body'   => 'Buat akun gratis sebagai orang tua atau guru untuk mulai menggunakan layanan identifikasi.',
                         'step_2_title'  => 'Isi Kuesioner',
@@ -60,14 +60,14 @@ class CmsSeeder extends Seeder
             [
                 'slug'            => 'about',
                 'title'           => 'Tentang Kami',
-                'seo_title'       => 'Tentang InkluSyncID | Misi & Visi',
-                'seo_description' => 'Kenali InkluSyncID — platform identifikasi ABK yang dibangun untuk mendukung pendidikan inklusif di Indonesia.',
-                'seo_keywords'    => 'tentang inklusyncid, platform ABK, pendidikan inklusif indonesia',
+                'seo_title'       => 'Tentang Child See | Misi & Visi',
+                'seo_description' => 'Kenali Child See — platform identifikasi ABK yang dibangun untuk mendukung pendidikan inklusif di Indonesia.',
+                'seo_keywords'    => 'tentang Child See, platform ABK, pendidikan inklusif indonesia',
                 'sections' => [
                     ['section_key' => 'hero', 'label' => 'Hero', 'sort_order' => 10, 'content' => [
                         'eyebrow' => 'Tentang Kami',
                         'heading' => 'Menuju Pendidikan Inklusif yang Lebih Baik',
-                        'body'    => 'InkluSyncID lahir dari kepedulian terhadap anak-anak berkebutuhan khusus yang sering kali tidak teridentifikasi sejak dini.',
+                        'body'    => 'Child See lahir dari kepedulian terhadap anak-anak berkebutuhan khusus yang sering kali tidak teridentifikasi sejak dini.',
                     ]],
                     ['section_key' => 'mission', 'label' => 'Misi & Visi', 'sort_order' => 20, 'content' => [
                         'vision_heading' => 'Visi',
@@ -95,7 +95,7 @@ class CmsSeeder extends Seeder
             [
                 'slug'            => 'identifikasi',
                 'title'           => 'Jenis Identifikasi',
-                'seo_title'       => 'Jenis Identifikasi ABK | InkluSyncID',
+                'seo_title'       => 'Jenis Identifikasi ABK | Child See',
                 'seo_description' => 'Pelajari tiga jenis identifikasi anak berkebutuhan khusus: hambatan penglihatan, pendengaran, dan intelektual.',
                 'seo_keywords'    => 'identifikasi penglihatan, identifikasi pendengaran, identifikasi intelektual, ABK',
                 'sections' => [
@@ -145,9 +145,9 @@ class CmsSeeder extends Seeder
             [
                 'slug'            => 'kontak',
                 'title'           => 'Hubungi Kami',
-                'seo_title'       => 'Hubungi InkluSyncID | Kontak & Dukungan',
-                'seo_description' => 'Hubungi tim InkluSyncID untuk pertanyaan, dukungan, atau kolaborasi seputar identifikasi anak berkebutuhan khusus.',
-                'seo_keywords'    => 'kontak inklusyncid, hubungi kami, dukungan ABK',
+                'seo_title'       => 'Hubungi Child See | Kontak & Dukungan',
+                'seo_description' => 'Hubungi tim Child See untuk pertanyaan, dukungan, atau kolaborasi seputar identifikasi anak berkebutuhan khusus.',
+                'seo_keywords'    => 'kontak Child See, hubungi kami, dukungan ABK',
                 'sections' => [
                     ['section_key' => 'hero', 'label' => 'Hero', 'sort_order' => 10, 'content' => [
                         'eyebrow' => 'Kami Siap Membantu',
@@ -155,10 +155,10 @@ class CmsSeeder extends Seeder
                         'body'    => 'Ada pertanyaan atau butuh bantuan? Tim kami siap membantu Anda.',
                     ]],
                     ['section_key' => 'contact_info', 'label' => 'Informasi Kontak', 'sort_order' => 20, 'content' => [
-                        'email'     => 'info@inklusyncid.id',
+                        'email'     => 'info@Child See.id',
                         'phone'     => '+62 812-3456-7890',
                         'address'   => 'Jakarta, Indonesia',
-                        'instagram' => '@inklusyncid',
+                        'instagram' => '@Child See',
                         'hours'     => 'Senin – Jumat, 08.00 – 17.00 WIB',
                     ]],
                 ],

@@ -13,6 +13,7 @@ use App\Http\Controllers\Superadmin\DomainController;
 use App\Http\Controllers\Superadmin\QuestionnaireController;
 use App\Http\Controllers\Superadmin\AssessmentRuleController;
 use App\Http\Controllers\Superadmin\AssessmentAdminController;
+use App\Http\Controllers\Superadmin\LandingContentController;
 use App\Http\Controllers\Member\DashboardController as MemberDashboardController;
 use App\Http\Controllers\Member\ChildController;
 use App\Http\Controllers\Member\AssessmentController;
@@ -68,8 +69,10 @@ Route::prefix('superadmin')->name('superadmin.')->group(function () {
         Route::get('/assessments', [AssessmentAdminController::class, 'index'])->name('assessments.index');
         Route::get('/assessments/{assessment}', [AssessmentAdminController::class, 'show'])->name('assessments.show');
 
-        // Members
+        // Members (unified — covers all roles)
         Route::get('/members', [MemberController::class, 'index'])->name('members.index');
+        Route::get('/members/create', [MemberController::class, 'create'])->name('members.create');
+        Route::post('/members', [MemberController::class, 'store'])->name('members.store');
         Route::get('/members/{member}', [MemberController::class, 'show'])->name('members.show');
         Route::get('/members/{member}/edit', [MemberController::class, 'edit'])->name('members.edit');
         Route::put('/members/{member}', [MemberController::class, 'update'])->name('members.update');
@@ -85,6 +88,43 @@ Route::prefix('superadmin')->name('superadmin.')->group(function () {
         // Settings
         Route::get('/settings', [\App\Http\Controllers\Superadmin\SettingsController::class, 'index'])->name('settings.index');
         Route::post('/settings', [\App\Http\Controllers\Superadmin\SettingsController::class, 'update'])->name('settings.update');
+
+        // Landing Content Management
+        Route::get('/landing', [LandingContentController::class, 'index'])->name('landing.index');
+        Route::get('/landing/facts', [LandingContentController::class, 'facts'])->name('landing.facts');
+        Route::get('/landing/facts/create', [LandingContentController::class, 'factsCreate'])->name('landing.facts.create');
+        Route::post('/landing/facts', [LandingContentController::class, 'factsStore'])->name('landing.facts.store');
+        Route::get('/landing/facts/{fact}/edit', [LandingContentController::class, 'factsEdit'])->name('landing.facts.edit');
+        Route::put('/landing/facts/{fact}', [LandingContentController::class, 'factsUpdate'])->name('landing.facts.update');
+        Route::delete('/landing/facts/{fact}', [LandingContentController::class, 'factsDestroy'])->name('landing.facts.destroy');
+
+        Route::get('/landing/team', [LandingContentController::class, 'team'])->name('landing.team');
+        Route::get('/landing/team/create', [LandingContentController::class, 'teamCreate'])->name('landing.team.create');
+        Route::post('/landing/team', [LandingContentController::class, 'teamStore'])->name('landing.team.store');
+        Route::get('/landing/team/{member}/edit', [LandingContentController::class, 'teamEdit'])->name('landing.team.edit');
+        Route::put('/landing/team/{member}', [LandingContentController::class, 'teamUpdate'])->name('landing.team.update');
+        Route::delete('/landing/team/{member}', [LandingContentController::class, 'teamDestroy'])->name('landing.team.destroy');
+
+        Route::get('/landing/hki', [LandingContentController::class, 'hki'])->name('landing.hki');
+        Route::get('/landing/hki/create', [LandingContentController::class, 'hkiCreate'])->name('landing.hki.create');
+        Route::post('/landing/hki', [LandingContentController::class, 'hkiStore'])->name('landing.hki.store');
+        Route::get('/landing/hki/{hki}/edit', [LandingContentController::class, 'hkiEdit'])->name('landing.hki.edit');
+        Route::put('/landing/hki/{hki}', [LandingContentController::class, 'hkiUpdate'])->name('landing.hki.update');
+        Route::delete('/landing/hki/{hki}', [LandingContentController::class, 'hkiDestroy'])->name('landing.hki.destroy');
+
+        Route::get('/landing/partners', [LandingContentController::class, 'partners'])->name('landing.partners');
+        Route::get('/landing/partners/create', [LandingContentController::class, 'partnersCreate'])->name('landing.partners.create');
+        Route::post('/landing/partners', [LandingContentController::class, 'partnersStore'])->name('landing.partners.store');
+        Route::get('/landing/partners/{partner}/edit', [LandingContentController::class, 'partnersEdit'])->name('landing.partners.edit');
+        Route::put('/landing/partners/{partner}', [LandingContentController::class, 'partnersUpdate'])->name('landing.partners.update');
+        Route::delete('/landing/partners/{partner}', [LandingContentController::class, 'partnersDestroy'])->name('landing.partners.destroy');
+
+        // Organization users (superadmin only can create/manage)
+        Route::get('/organizations', [\App\Http\Controllers\Superadmin\MemberController::class, 'organizations'])->name('organizations.index');
+        Route::get('/organizations/create', [\App\Http\Controllers\Superadmin\MemberController::class, 'organizationCreate'])->name('organizations.create');
+        Route::post('/organizations', [\App\Http\Controllers\Superadmin\MemberController::class, 'organizationStore'])->name('organizations.store');
+        Route::get('/organizations/{member}/quota', [\App\Http\Controllers\Superadmin\MemberController::class, 'quotaEdit'])->name('organizations.quota');
+        Route::put('/organizations/{member}/quota', [\App\Http\Controllers\Superadmin\MemberController::class, 'quotaUpdate'])->name('organizations.quota.update');
     });
 });
 

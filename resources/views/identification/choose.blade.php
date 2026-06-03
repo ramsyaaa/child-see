@@ -1,5 +1,5 @@
-@extends('home.layout.master')
-@section('title', 'Langkah 3 — Pilih Jenis Identifikasi | InkluSyncID')
+﻿@extends('home.layout.master')
+@section('title', 'Langkah 3 — Pilih Jenis Identifikasi | Child See')
 
 @section('content')
 @php $profile = session('inklu_profile'); @endphp

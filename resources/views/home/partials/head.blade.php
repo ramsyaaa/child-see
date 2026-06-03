@@ -1,4 +1,4 @@
-<head>
+﻿<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -8,12 +8,12 @@
         $seoKeywords    = !empty($cmsSeo['seo_keywords'])    ? $cmsSeo['seo_keywords']    : null;
         $ogImage        = !empty($cmsSeo['og_image'])        ? asset('storage/'.$cmsSeo['og_image']) : asset('logo.png');
         $canonicalUrl   = url()->current();
-        $siteName       = config('app.name', 'InkluSyncID');
+        $siteName       = config('app.name', 'Child See');
     @endphp
 
-    <title>{{ $seoTitle ?? 'InkluSyncID — Your Wellness Sanctuary' }}</title>
+    <title>{{ $seoTitle ?? 'Child See — Your Wellness Sanctuary' }}</title>
 
-    <meta name="description" content="{{ $seoDescription ?? 'InkluSyncID — a private, thoughtfully designed space dedicated to wellness, creativity, and connection in Depok, West Java.' }}" />
+    <meta name="description" content="{{ $seoDescription ?? 'Child See — a private, thoughtfully designed space dedicated to wellness, creativity, and connection in Depok, West Java.' }}" />
     @if($seoKeywords)
         <meta name="keywords" content="{{ $seoKeywords }}" />
     @endif

@@ -1,5 +1,5 @@
-@extends('home.layout.master')
-@section('title', 'Hasil Identifikasi — {{ $result["typeName"] }} | InkluSyncID')
+﻿@extends('home.layout.master')
+@section('title', 'Hasil Identifikasi — {{ $result["typeName"] }} | Child See')
 
 @section('content')
 <div class="page-fade">
@@ -63,7 +63,7 @@
                     <h3 class="font-display text-2xl leading-tight" style="color:#4A3769;">Apa artinya hasil ini?</h3>
                     <p class="mt-3 text-[15px] leading-relaxed" style="color:rgba(74,55,105,0.80);">{{ $disabilityShort[$result['type']] }}</p>
                     <p class="mt-3 text-[15px] leading-relaxed" style="color:rgba(74,55,105,0.70);">
-                        Berdasarkan {{ count($result['answers']) }} butir pengamatan, InkluSyncID memperhitungkan
+                        Berdasarkan {{ count($result['answers']) }} butir pengamatan, Child See memperhitungkan
                         skor indikasi sebesar <strong>{{ $result['score'] }}/100</strong> dan mengklasifikasikannya
                         sebagai <strong style="color:{{ $result['color'] }};">{{ strtolower($result['summary']) }}</strong>. Hasil ini
                         bukan diagnosis klinis, melainkan petunjuk awal untuk langkah tindak lanjut.
@@ -94,7 +94,7 @@
                     <div class="card p-5" style="background:#F5F5F6;">
                         <div class="font-mono text-[11px] uppercase mb-2" style="letter-spacing:0.18em;color:#9F86C4;">Jenis Identifikasi</div>
                         <div class="font-display text-lg leading-tight" style="color:#4A3769;">{{ $result['typeName'] }}</div>
-                        <div class="text-xs mt-1" style="color:rgba(74,55,105,0.60);">Dari instrumen InkluSyncID terstandar.</div>
+                        <div class="text-xs mt-1" style="color:rgba(74,55,105,0.60);">Dari instrumen Child See terstandar.</div>
                     </div>
                     <div class="card p-5" style="background:#F5F5F6;">
                         <div class="font-mono text-[11px] uppercase mb-2" style="letter-spacing:0.18em;color:#9F86C4;">Konsultasi Lebih Lanjut</div>

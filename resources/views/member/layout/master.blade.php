@@ -15,7 +15,7 @@
     .sidebar { width: 260px; background: #2E2046; min-height: 100vh; flex-shrink: 0; position: fixed; left: 0; top: 0; bottom: 0; z-index: 50; transition: transform .3s; overflow-y: auto; }
     .sidebar-link { display: flex; align-items: center; gap: 12px; padding: 10px 20px; color: rgba(255,255,255,.65); font-size: 14px; font-weight: 500; border-radius: 10px; margin: 2px 12px; transition: all .2s; text-decoration: none; }
     .sidebar-link:hover { background: rgba(90,71,127,.5); color: #fff; }
-    .sidebar-link.active { background: rgba(90,71,127,.6); color: #BAA6D6; }
+    .sidebar-link.active { background: rgba(142,119,171,.3); color: #B9A5D6; }
     .sidebar-link i { width: 18px; text-align: center; font-size: 15px; }
     .sidebar-section { padding: 6px 20px; font-size: 10px; font-weight: 700; color: rgba(255,255,255,.3); letter-spacing: .1em; text-transform: uppercase; margin-top: 8px; }
     .main-content { margin-left: 260px; min-height: 100vh; display: flex; flex-direction: column; }
@@ -23,13 +23,13 @@
     .dash-card { background: #fff; border: 1px solid rgba(186,166,214,.2); border-radius: 16px; padding: 24px; transition: all .2s; }
     .dash-card:hover { box-shadow: 0 4px 20px rgba(46,32,70,.08); }
     .form-input { width: 100%; padding: 10px 14px; border: 1.5px solid rgba(186,166,214,.4); border-radius: 10px; font-size: 14px; color: #1a1a1a; background: #F5F5F6; outline: none; transition: all .2s; font-family: 'Josefin Sans', sans-serif; }
-    .form-input:focus { border-color: #5C477F; background: #fff; box-shadow: 0 0 0 3px rgba(92,71,127,.12); }
+    .form-input:focus { border-color: #8E77AB; background: #fff; box-shadow: 0 0 0 3px rgba(142,119,171,.15); }
     .badge-low { background: #dcfce7; color: #166534; font-size: 11px; font-weight: 600; padding: 2px 10px; border-radius: 999px; }
     .badge-medium { background: #fef9c3; color: #854d0e; font-size: 11px; font-weight: 600; padding: 2px 10px; border-radius: 999px; }
     .badge-high { background: #fee2e2; color: #991b1b; font-size: 11px; font-weight: 600; padding: 2px 10px; border-radius: 999px; }
     .badge-none { background: #f3f4f6; color: #6b7280; font-size: 11px; font-weight: 600; padding: 2px 10px; border-radius: 999px; }
-    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: #4A3769; color: #fff; padding: 10px 20px; border-radius: 10px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all .2s; border: none; cursor: pointer; font-family: 'Josefin Sans', sans-serif; }
-    .btn-primary:hover { background: #5C477F; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: #8E77AB; color: #fff; padding: 10px 20px; border-radius: 10px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all .2s; border: none; cursor: pointer; font-family: 'Josefin Sans', sans-serif; }
+    .btn-primary:hover { background: #4A3769; }
     .btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: #F0EEF5; color: #4A3769; padding: 10px 20px; border-radius: 10px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all .2s; border: 1px solid rgba(186,166,214,.4); cursor: pointer; font-family: 'Josefin Sans', sans-serif; }
     .btn-secondary:hover { background: #BAA6D6; color: #fff; }
     @media (max-width: 768px) {
@@ -50,7 +50,7 @@
 {{-- Sidebar --}}
 <aside class="sidebar" id="sidebar">
   <div class="flex items-center gap-3 px-6 py-5 border-b border-white/10">
-    <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:#BAA6D6">
+    <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:#8E77AB">
       <i class="fas fa-eye text-white text-base"></i>
     </div>
     <div>
