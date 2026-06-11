@@ -104,7 +104,7 @@
     </div>
 
     <div class="col-lg-4">
-        <div class="card" id="preview-yn">
+        <div class="card" id="panel-yn">
             <div class="card-header"><h5 class="mb-0" style="color:#4A3769;">Pratinjau Pilihan Jawaban</h5></div>
             <div class="card-body">
                 <p class="text-muted small mb-3">Tipe <strong>Ya/Tidak</strong> menggunakan 3 opsi standar:</p>
@@ -119,13 +119,19 @@
                         <span>Iya</span><span class="badge bg-danger">2</span>
                     </div>
                 </div>
-                <small class="text-muted d-block mt-2">Pilihan ini hanya baca-saja dan ditentukan sistem.</small>
+                <small class="text-muted d-block mt-2">Pilihan ini ditentukan sistem secara otomatis.</small>
             </div>
         </div>
-        <div class="card" id="preview-other" style="display:none;">
-            <div class="card-header"><h5 class="mb-0" style="color:#4A3769;">Pilihan Jawaban</h5></div>
+        <div class="card" id="panel-custom" style="display:none;">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0" style="color:#4A3769;">Pilihan Jawaban</h5>
+                <button type="button" class="btn btn-sm btn-outline-primary" onclick="addOption()">
+                    <i class="ti ti-plus me-1"></i>Tambah
+                </button>
+            </div>
             <div class="card-body">
-                <p class="text-muted small">Tipe <strong>Skala</strong> / <strong>Teks Bebas</strong> tidak menggunakan pilihan jawaban tetap.</p>
+                <p class="text-muted small mb-3">Edit opsi jawaban beserta skor masing-masing.</p>
+                <div id="options-container" class="d-flex flex-column gap-2"></div>
             </div>
         </div>
     </div>
@@ -150,16 +156,45 @@
     filterDomains();
 
     const typeSel = document.getElementById('sel-type');
-    const preYn = document.getElementById('preview-yn');
-    const preOther = document.getElementById('preview-other');
-    function togglePreview() {
+    window.togglePanel = function() {
         const isYn = typeSel.value === 'yes_no';
-        preYn.style.display = isYn ? 'block' : 'none';
-        preOther.style.display = isYn ? 'none' : 'block';
-    }
-    typeSel.addEventListener('change', togglePreview);
-    togglePreview();
+        document.getElementById('panel-yn').style.display = isYn ? 'block' : 'none';
+        document.getElementById('panel-custom').style.display = isYn ? 'none' : 'block';
+    };
+    typeSel.addEventListener('change', togglePanel);
+    togglePanel();
 })();
+
+var optionIndex = 0;
+function addOption(label, value, score) {
+    const idx = optionIndex++;
+    const container = document.getElementById('options-container');
+    const row = document.createElement('div');
+    row.className = 'border rounded p-2';
+    row.id = 'opt-row-' + idx;
+    row.innerHTML = `
+        <div class="d-flex gap-2 align-items-center mb-1">
+            <input type="text" name="answer_options[${idx}][label]" class="form-control form-control-sm"
+                   placeholder="Label (mis. Tidak Pernah)" value="${label || ''}" required>
+            <button type="button" class="btn btn-sm btn-outline-danger" onclick="document.getElementById('opt-row-${idx}').remove()">
+                <i class="ti ti-trash"></i>
+            </button>
+        </div>
+        <div class="d-flex gap-2">
+            <input type="text" name="answer_options[${idx}][value]" class="form-control form-control-sm"
+                   placeholder="Nilai (opsional)" value="${value || ''}">
+            <input type="number" name="answer_options[${idx}][score]" class="form-control form-control-sm"
+                   placeholder="Skor" value="${score !== undefined ? score : ''}" step="0.01">
+        </div>`;
+    container.appendChild(row);
+}
+
+// Populate existing options on page load
+@if($questionnaire->question_type !== 'yes_no')
+@foreach($questionnaire->answerOptions as $opt)
+addOption({{ json_encode($opt->label) }}, {{ json_encode($opt->value) }}, {{ $opt->score }});
+@endforeach
+@endif
 </script>
 
 @endsection

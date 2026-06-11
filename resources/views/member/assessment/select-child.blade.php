@@ -120,29 +120,47 @@
         <p class="text-sm text-gray-500">Pilih jenis hambatan yang ingin diidentifikasi.</p>
       </div>
 
+      @php
+        $iconMap = [
+          'brain'=>'fa-brain','eye'=>'fa-eye','book'=>'fa-book-open','clock'=>'fa-clock',
+          'dna'=>'fa-dna','accessibility'=>'fa-wheelchair','ear'=>'fa-assistive-listening-systems',
+          'message'=>'fa-comment-medical','puzzle'=>'fa-puzzle-piece','zap'=>'fa-bolt',
+          'heart'=>'fa-heart-pulse','layers'=>'fa-layer-group','pencil'=>'fa-pen-nib',
+          'calculator'=>'fa-calculator',
+        ];
+      @endphp
       @if($categories->isNotEmpty())
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
-          @foreach($categories as $category)
-            <label class="category-card cursor-pointer block">
-              <input type="radio" name="category_id" value="{{ $category->id }}" class="sr-only category-radio">
-              <div class="category-card-inner p-4 rounded-xl border-2 transition-all h-full" style="border-color:rgba(186,166,214,.3);background:#F5F5F6">
-                <div class="flex items-start gap-3">
-                  <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5" style="background:{{ $category->color ?? '#8E77AB' }}20">
-                    @php
-                      $icons = ['brain'=>'fa-brain','eye'=>'fa-eye','book'=>'fa-book-open','clock'=>'fa-clock'];
-                      $ico = $icons[$category->icon] ?? 'fa-clipboard-list';
-                    @endphp
-                    <i class="fas {{ $ico }}" style="color:{{ $category->color ?? '#8E77AB' }}"></i>
-                  </div>
-                  <div>
-                    <p class="text-sm font-semibold text-[#2E2046]">{{ $category->name }}</p>
-                    @if($category->description)
-                      <p class="text-xs text-gray-500 mt-1 leading-relaxed">{{ Str::limit($category->description, 90) }}</p>
-                    @endif
-                  </div>
-                </div>
+        <div class="mb-6 space-y-5">
+          @foreach($groupedCategories as $groupKey => $groupCats)
+            <div>
+              <div class="flex items-center gap-2 mb-2">
+                <div class="h-px flex-1" style="background:rgba(186,166,214,.25)"></div>
+                <span class="text-xs font-bold uppercase tracking-wider px-2" style="color:#8499B6;white-space:nowrap;">
+                  {{ $groupLabels[$groupKey] ?? ucwords(str_replace('_',' ',$groupKey)) }}
+                </span>
+                <div class="h-px flex-1" style="background:rgba(186,166,214,.25)"></div>
               </div>
-            </label>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                @foreach($groupCats as $category)
+                  <label class="category-card cursor-pointer block">
+                    <input type="radio" name="category_id" value="{{ $category->id }}" class="sr-only category-radio">
+                    <div class="category-card-inner p-3 rounded-xl border-2 transition-all h-full" style="border-color:rgba(186,166,214,.3);background:#F5F5F6">
+                      <div class="flex items-start gap-3">
+                        <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5" style="background:{{ $category->color ?? '#8E77AB' }}20">
+                          <i class="fas {{ $iconMap[$category->icon] ?? 'fa-clipboard-list' }}" style="font-size:.85rem;color:{{ $category->color ?? '#8E77AB' }}"></i>
+                        </div>
+                        <div class="min-w-0">
+                          <p class="text-sm font-semibold text-[#2E2046] leading-tight">{{ $category->name }}</p>
+                          @if($category->description)
+                            <p class="text-xs text-gray-400 mt-0.5 leading-relaxed">{{ Str::limit($category->description, 75) }}</p>
+                          @endif
+                        </div>
+                      </div>
+                    </div>
+                  </label>
+                @endforeach
+              </div>
+            </div>
           @endforeach
         </div>
         <div class="flex justify-end">

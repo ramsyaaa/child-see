@@ -31,7 +31,7 @@ class AssessmentService {
         $assessment->answers()->delete();
         foreach ($answers as $questionnaireId => $optionId) {
             $option = AnswerOption::find($optionId);
-            if (!$option) continue;
+            if (!$option || (int)$option->questionnaire_id !== (int)$questionnaireId) continue;
             AssessmentAnswer::create([
                 'assessment_id'    => $assessment->id,
                 'questionnaire_id' => $questionnaireId,

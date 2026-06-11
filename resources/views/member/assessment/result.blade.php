@@ -35,6 +35,16 @@
   </div>
 </div>
 
+{{-- Result illustration --}}
+@if(!empty($assessment->category->result_illustration))
+<div class="mb-6 rounded-2xl overflow-hidden shadow-sm" style="max-height:260px">
+  <img src="{{ asset($assessment->category->result_illustration) }}"
+       alt="{{ $assessment->category->name }}"
+       class="w-full object-cover object-center"
+       style="max-height:260px;width:100%;">
+</div>
+@endif
+
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
   {{-- Domain scores --}}

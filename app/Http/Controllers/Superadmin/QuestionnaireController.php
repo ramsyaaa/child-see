@@ -97,10 +97,10 @@ class QuestionnaireController extends Controller
 
         $questionnaire->update($validated);
 
-        if ($r->has('answer_options')) {
+        if ($r->filled('answer_options') && is_array($r->answer_options)) {
             $questionnaire->answerOptions()->delete();
 
-            if (is_array($r->answer_options)) {
+            if (true) {
                 foreach ($r->answer_options as $index => $option) {
                     if (!empty($option['label'])) {
                         AnswerOption::create([

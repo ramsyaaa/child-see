@@ -15,10 +15,38 @@
   </div>
 @endif
 
-@if($child)
+@if($children->isEmpty())
+
+  {{-- No child yet --}}
+  <div class="dash-card text-center py-16">
+    <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4" style="background:#F0EEF5">
+      <i class="fas fa-child text-[#BAA6D6] text-3xl"></i>
+    </div>
+    <h3 class="font-semibold text-[#2E2046] mb-2" style="font-family:'Playfair Display',serif">Belum Ada Data Anak</h3>
+    <p class="text-sm text-gray-500 mb-6 max-w-xs mx-auto">Setiap akun dapat mendaftarkan satu data anak untuk dilakukan asesmen identifikasi.</p>
+    <a href="{{ route('member.children.create') }}" class="btn-primary">
+      <i class="fas fa-plus"></i> Tambah Data Anak
+    </a>
+  </div>
+
+@else
+
+  {{-- Add another child button (only if quota allows) --}}
+  @if($childCount < $quota)
+    <div class="mb-5 flex justify-end">
+      <a href="{{ route('member.children.create') }}" class="btn-primary text-sm px-4 py-2">
+        <i class="fas fa-plus"></i> Tambah Anak
+      </a>
+    </div>
+  @endif
+
+  @foreach($children as $child)
 
   {{-- Profile card --}}
   <div class="dash-card mb-6">
+    @if($children->count() > 1)
+      <div class="text-xs font-semibold uppercase tracking-wider mb-4" style="color:#8499B6;">Anak {{ $loop->iteration }}</div>
+    @endif
     <div class="flex flex-col sm:flex-row gap-6">
       {{-- Avatar --}}
       <div class="flex flex-col items-center gap-3 flex-shrink-0">
@@ -95,7 +123,7 @@
   </div>
 
   {{-- Assessment history for this child --}}
-  <div class="dash-card mb-6">
+  <div class="dash-card mb-4">
     <div class="flex items-center justify-between mb-5">
       <h3 class="font-semibold text-[#2E2046]" style="font-family:'Playfair Display',serif">Riwayat Asesmen</h3>
       <a href="{{ route('member.assessment.start') }}" class="btn-primary text-sm px-4 py-2">
@@ -134,7 +162,7 @@
   </div>
 
   {{-- Danger zone --}}
-  <div class="dash-card" style="border-color:rgba(220,38,38,.2);">
+  <div class="dash-card mb-8" style="border-color:rgba(220,38,38,.2);">
     <h4 class="text-sm font-semibold text-red-700 mb-2">Hapus Data Anak</h4>
     <p class="text-xs text-gray-500 mb-4">Menghapus data anak akan menghapus juga seluruh riwayat asesmen. Tindakan ini tidak dapat dibatalkan.</p>
     <form action="{{ route('member.children.destroy', $child) }}" method="POST"
@@ -146,19 +174,7 @@
     </form>
   </div>
 
-@else
-
-  {{-- No child yet --}}
-  <div class="dash-card text-center py-16">
-    <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4" style="background:#F0EEF5">
-      <i class="fas fa-child text-[#BAA6D6] text-3xl"></i>
-    </div>
-    <h3 class="font-semibold text-[#2E2046] mb-2" style="font-family:'Playfair Display',serif">Belum Ada Data Anak</h3>
-    <p class="text-sm text-gray-500 mb-6 max-w-xs mx-auto">Setiap akun dapat mendaftarkan satu data anak untuk dilakukan asesmen identifikasi.</p>
-    <a href="{{ route('member.children.create') }}" class="btn-primary">
-      <i class="fas fa-plus"></i> Tambah Data Anak
-    </a>
-  </div>
+  @endforeach
 
 @endif
 

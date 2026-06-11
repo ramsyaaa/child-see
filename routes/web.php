@@ -60,10 +60,10 @@ Route::prefix('superadmin')->name('superadmin.')->group(function () {
         Route::get('/dashboard', [SuperadminDashboardController::class, 'index'])->name('dashboard');
 
         // Child See — Master Data
-        Route::resource('categories', CategoryController::class);
-        Route::resource('domains', DomainController::class);
-        Route::resource('questionnaires', QuestionnaireController::class);
-        Route::resource('rules', AssessmentRuleController::class);
+        Route::resource('categories', CategoryController::class)->except(['show']);
+        Route::resource('domains', DomainController::class)->except(['show']);
+        Route::resource('questionnaires', QuestionnaireController::class)->except(['show']);
+        Route::resource('rules', AssessmentRuleController::class)->except(['show']);
 
         // Child See — Assessments (read-only admin view)
         Route::get('/assessments', [AssessmentAdminController::class, 'index'])->name('assessments.index');
@@ -135,7 +135,7 @@ Route::prefix('member')->name('member.')->middleware(['auth', 'role:member'])->g
     Route::get('/dashboard', [MemberDashboardController::class, 'index'])->name('dashboard');
 
     // Children
-    Route::resource('children', ChildController::class);
+    Route::resource('children', ChildController::class)->except(['show']);
 
     // Assessment flow
     Route::get('/assessment/start', [AssessmentController::class, 'selectChild'])->name('assessment.start');

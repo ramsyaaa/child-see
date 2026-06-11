@@ -23,14 +23,16 @@ class CategoryController extends Controller
     public function store(Request $r)
     {
         $validated = $r->validate([
-            'name'        => 'required|string|max:255',
-            'slug'        => 'required|string|max:255|unique:categories,slug',
-            'type'        => 'required|string|max:100',
-            'description' => 'nullable|string',
-            'icon'        => 'nullable|string|max:100',
-            'color'       => 'nullable|string|max:20',
-            'sort_order'  => 'nullable|integer',
-            'is_active'   => 'nullable|boolean',
+            'name'                => 'required|string|max:255',
+            'slug'                => 'required|string|max:255|unique:categories,slug',
+            'type'                => 'required|string|max:100',
+            'group'               => 'nullable|string|max:100',
+            'description'         => 'nullable|string',
+            'icon'                => 'nullable|string|max:100',
+            'color'               => 'nullable|string|max:20',
+            'result_illustration' => 'nullable|string|max:500',
+            'sort_order'          => 'nullable|integer',
+            'is_active'           => 'nullable|boolean',
         ]);
 
         $validated['is_active'] = $r->boolean('is_active');
@@ -49,14 +51,16 @@ class CategoryController extends Controller
     public function update(Request $r, Category $category)
     {
         $validated = $r->validate([
-            'name'        => 'required|string|max:255',
-            'slug'        => 'required|string|max:255|unique:categories,slug,' . $category->id,
-            'type'        => 'required|string|max:100',
-            'description' => 'nullable|string',
-            'icon'        => 'nullable|string|max:100',
-            'color'       => 'nullable|string|max:20',
-            'sort_order'  => 'nullable|integer',
-            'is_active'   => 'nullable|boolean',
+            'name'                => 'required|string|max:255',
+            'slug'                => 'required|string|max:255|unique:categories,slug,' . $category->id,
+            'type'                => 'required|string|max:100',
+            'group'               => 'nullable|string|max:100',
+            'description'         => 'nullable|string',
+            'icon'                => 'nullable|string|max:100',
+            'color'               => 'nullable|string|max:20',
+            'result_illustration' => 'nullable|string|max:500',
+            'sort_order'          => 'nullable|integer',
+            'is_active'           => 'nullable|boolean',
         ]);
 
         $validated['is_active'] = $r->boolean('is_active');
@@ -69,9 +73,9 @@ class CategoryController extends Controller
 
     public function destroy(Category $category)
     {
-        if ($category->questionnaires()->exists()) {
+        if ($category->questionnaires()->exists() || $category->domains()->exists()) {
             return redirect()->back()
-                ->with('error', 'Kategori tidak dapat dihapus karena memiliki kuesioner terkait.');
+                ->with('error', 'Kategori tidak dapat dihapus karena memiliki domain atau kuesioner terkait.');
         }
 
         $category->delete();

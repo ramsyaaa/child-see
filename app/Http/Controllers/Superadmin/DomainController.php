@@ -75,6 +75,11 @@ class DomainController extends Controller
 
     public function destroy(Domain $domain)
     {
+        if ($domain->questionnaires()->exists()) {
+            return redirect()->back()
+                ->with('error', 'Domain tidak dapat dihapus karena memiliki pertanyaan terkait. Hapus pertanyaan terlebih dahulu.');
+        }
+
         $domain->delete();
 
         return redirect()->route('superadmin.domains.index')

@@ -51,21 +51,52 @@
                         <option value="">-- Pilih Tipe --</option>
                         <option value="intelektual" @selected(old('type', $category->type)=='intelektual')>Intelektual</option>
                         <option value="sensorik"    @selected(old('type', $category->type)=='sensorik')>Sensorik</option>
-                        <option value="akademik"    @selected(old('type', $category->type)=='akademik')>Akademik</option>
-                        <option value="motorik"     @selected(old('type', $category->type)=='motorik')>Motorik</option>
+                        <option value="akademik"    @selected(old('type', $category->type)=='akademik')>Akademik / Belajar</option>
+                        <option value="fisik"       @selected(old('type', $category->type)=='fisik')>Fisik</option>
+                        <option value="mental"      @selected(old('type', $category->type)=='mental')>Mental</option>
+                        <option value="majemuk"     @selected(old('type', $category->type)=='majemuk')>Majemuk</option>
+                        <option value="kombinasi"   @selected(old('type', $category->type)=='kombinasi')>Kombinasi</option>
+                        <option value="emosional"   @selected(old('type', $category->type)=='emosional')>Emosional</option>
                     </select>
                     @error('type')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Grup Tampilan</label>
+                    <select name="group" class="form-select @error('group') is-invalid @enderror">
+                        <option value="">-- Tanpa Grup --</option>
+                        <option value="fisik"                @selected(old('group', $category->group)=='fisik')>Disabilitas Fisik</option>
+                        <option value="intelektual_genetik"  @selected(old('group', $category->group)=='intelektual_genetik')>Intelektual — Nampak Fisik (Genetik)</option>
+                        <option value="intelektual"          @selected(old('group', $category->group)=='intelektual')>Disabilitas Intelektual</option>
+                        <option value="hambatan_belajar"     @selected(old('group', $category->group)=='hambatan_belajar')>Hambatan Belajar Spesifik</option>
+                        <option value="sensorik_penglihatan" @selected(old('group', $category->group)=='sensorik_penglihatan')>Sensorik — Penglihatan</option>
+                        <option value="sensorik_pendengaran" @selected(old('group', $category->group)=='sensorik_pendengaran')>Sensorik — Pendengaran</option>
+                        <option value="sensorik_wicara"      @selected(old('group', $category->group)=='sensorik_wicara')>Sensorik — Wicara</option>
+                        <option value="mental_autism"        @selected(old('group', $category->group)=='mental_autism')>Mental — Spektrum Autisme</option>
+                        <option value="mental_adhd"          @selected(old('group', $category->group)=='mental_adhd')>Mental — ADHD</option>
+                        <option value="mental_emosi"         @selected(old('group', $category->group)=='mental_emosi')>Mental — Emosi & Perilaku</option>
+                        <option value="majemuk"              @selected(old('group', $category->group)=='majemuk')>Disabilitas Majemuk</option>
+                    </select>
+                    @error('group')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
                 <div class="col-md-3">
                     <label class="form-label fw-semibold">Ikon</label>
                     <select name="icon" class="form-select @error('icon') is-invalid @enderror">
                         <option value="">-- Pilih Ikon --</option>
-                        <option value="brain"   @selected(old('icon', $category->icon)=='brain')>Brain (Otak)</option>
-                        <option value="eye"     @selected(old('icon', $category->icon)=='eye')>Eye (Mata)</option>
-                        <option value="book"    @selected(old('icon', $category->icon)=='book')>Book (Buku)</option>
-                        <option value="clock"   @selected(old('icon', $category->icon)=='clock')>Clock (Jam)</option>
-                        <option value="heart"   @selected(old('icon', $category->icon)=='heart')>Heart (Hati)</option>
-                        <option value="star"    @selected(old('icon', $category->icon)=='star')>Star (Bintang)</option>
+                        <option value="brain"         @selected(old('icon', $category->icon)=='brain')>Brain (Otak)</option>
+                        <option value="eye"           @selected(old('icon', $category->icon)=='eye')>Eye (Mata)</option>
+                        <option value="book"          @selected(old('icon', $category->icon)=='book')>Book (Buku)</option>
+                        <option value="clock"         @selected(old('icon', $category->icon)=='clock')>Clock (Jam)</option>
+                        <option value="heart"         @selected(old('icon', $category->icon)=='heart')>Heart (Hati)</option>
+                        <option value="dna"           @selected(old('icon', $category->icon)=='dna')>DNA (Genetik)</option>
+                        <option value="accessibility" @selected(old('icon', $category->icon)=='accessibility')>Accessibility (Fisik)</option>
+                        <option value="ear"           @selected(old('icon', $category->icon)=='ear')>Ear (Pendengaran)</option>
+                        <option value="message"       @selected(old('icon', $category->icon)=='message')>Message (Wicara)</option>
+                        <option value="puzzle"        @selected(old('icon', $category->icon)=='puzzle')>Puzzle (Autisme)</option>
+                        <option value="zap"           @selected(old('icon', $category->icon)=='zap')>Zap (ADHD)</option>
+                        <option value="pencil"        @selected(old('icon', $category->icon)=='pencil')>Pencil (Menulis)</option>
+                        <option value="calculator"    @selected(old('icon', $category->icon)=='calculator')>Calculator (Matematika)</option>
+                        <option value="layers"        @selected(old('icon', $category->icon)=='layers')>Layers (Majemuk)</option>
+                        <option value="star"          @selected(old('icon', $category->icon)=='star')>Star (Berbakat)</option>
                     </select>
                     @error('icon')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
@@ -79,6 +110,20 @@
                     <label class="form-label fw-semibold">Deskripsi</label>
                     <textarea name="description" rows="3" class="form-control @error('description') is-invalid @enderror">{{ old('description', $category->description) }}</textarea>
                     @error('description')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                </div>
+                <div class="col-12">
+                    <label class="form-label fw-semibold">Ilustrasi Hasil Asesmen</label>
+                    @if($category->result_illustration)
+                        <div class="mb-2">
+                            <img src="{{ asset($category->result_illustration) }}" alt="Ilustrasi"
+                                 style="height:80px;border-radius:8px;object-fit:cover;border:1px solid rgba(142,119,171,.2);">
+                        </div>
+                    @endif
+                    <input type="text" name="result_illustration" class="form-control @error('result_illustration') is-invalid @enderror"
+                        value="{{ old('result_illustration', $category->result_illustration) }}"
+                        placeholder="assets/img/hasil-analisa/NamaFile.jpg">
+                    <small class="text-muted">Path relatif dari <code>public/</code>. Kosongkan jika tidak ada gambar.</small>
+                    @error('result_illustration')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
                 <div class="col-md-3">
                     <label class="form-label fw-semibold">Urutan Tampil</label>

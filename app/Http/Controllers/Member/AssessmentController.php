@@ -18,10 +18,30 @@ class AssessmentController extends Controller
     public function selectChild()
     {
         $children   = Child::where('user_id', auth()->id())->get();
-        $child      = $children->first(); // backward-compat for single-child views
+        $child      = $children->first();
         $categories = Category::active()->get();
 
-        return view('member.assessment.select-child', compact('children', 'child', 'categories'));
+        $groupLabels = [
+            'fisik'                => 'Disabilitas Fisik',
+            'intelektual_genetik'  => 'Disabilitas Intelektual — Nampak Fisik',
+            'intelektual'          => 'Disabilitas Intelektual',
+            'hambatan_belajar'     => 'Hambatan Belajar Spesifik',
+            'sensorik_penglihatan' => 'Disabilitas Sensorik — Penglihatan',
+            'sensorik_pendengaran' => 'Disabilitas Sensorik — Pendengaran',
+            'sensorik_wicara'      => 'Disabilitas Sensorik — Wicara',
+            'mental_autism'        => 'Disabilitas Mental — Spektrum Autisme',
+            'mental_adhd'          => 'Disabilitas Mental — ADHD',
+            'mental_emosi'         => 'Disabilitas Mental — Emosi & Perilaku',
+            'majemuk'              => 'Disabilitas Majemuk',
+        ];
+
+        // Preserve big-category order by sorting groups by their first appearance order
+        $groupOrder = array_keys($groupLabels);
+        $groupedCategories = $categories->groupBy(fn($c) => $c->group ?? 'lainnya')
+            ->sortKeysUsing(fn($a, $b) => (array_search($a, $groupOrder) ?? 99) <=> (array_search($b, $groupOrder) ?? 99));
+
+        return view('member.assessment.select-child',
+            compact('children', 'child', 'categories', 'groupedCategories', 'groupLabels'));
     }
 
     public function start(Request $r)

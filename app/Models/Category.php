@@ -4,7 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Model {
-    protected $fillable = ['name','slug','type','description','icon','color','sort_order','is_active'];
+    protected $fillable = ['name','slug','type','group','description','icon','color','result_illustration','sort_order','is_active'];
     protected $casts = ['is_active' => 'boolean'];
 
     public function domains(): HasMany { return $this->hasMany(Domain::class)->orderBy('sort_order'); }
