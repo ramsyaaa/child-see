@@ -31,14 +31,26 @@
 
 @else
 
-  {{-- Add another child button (only if quota allows) --}}
-  @if($childCount < $quota)
-    <div class="mb-5 flex justify-end">
+  {{-- Toolbar --}}
+  <div class="mb-5 flex flex-wrap items-center justify-between gap-3">
+    <div class="flex flex-wrap gap-2">
+      <a href="{{ route('export.children.excel') }}"
+         class="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-xl transition-all"
+         style="background:#1D6F42;color:#fff">
+        <i class="fas fa-file-excel"></i> Export Excel
+      </a>
+      <a href="{{ route('export.children.pdf-zip') }}"
+         class="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-xl transition-all"
+         style="background:#dc3545;color:#fff">
+        <i class="fas fa-file-archive"></i> Export PDF (ZIP)
+      </a>
+    </div>
+    @if($childCount < $quota)
       <a href="{{ route('member.children.create') }}" class="btn-primary text-sm px-4 py-2">
         <i class="fas fa-plus"></i> Tambah Anak
       </a>
-    </div>
-  @endif
+    @endif
+  </div>
 
   @foreach($children as $child)
 
@@ -50,11 +62,21 @@
     <div class="flex flex-col sm:flex-row gap-6">
       {{-- Avatar --}}
       <div class="flex flex-col items-center gap-3 flex-shrink-0">
-        <div class="w-20 h-20 rounded-2xl flex items-center justify-center text-white font-bold text-3xl" style="background:linear-gradient(135deg,#4A3769,#BAA6D6)">
-          {{ strtoupper(substr($child->full_name, 0, 1)) }}
-        </div>
+        @if($child->photo_url)
+          <img src="{{ $child->photo_url }}" alt="{{ $child->full_name }}"
+               class="w-20 h-20 rounded-2xl object-cover" style="border:2px solid rgba(186,166,214,.3)">
+        @else
+          <div class="w-20 h-20 rounded-2xl flex items-center justify-center text-white font-bold text-3xl" style="background:linear-gradient(135deg,#4A3769,#BAA6D6)">
+            {{ strtoupper(substr($child->full_name, 0, 1)) }}
+          </div>
+        @endif
         <a href="{{ route('member.children.edit', $child) }}" class="btn-secondary text-xs px-4 py-2">
           <i class="fas fa-edit"></i> Edit Profil
+        </a>
+        <a href="{{ route('member.children.pdf', $child) }}" target="_blank"
+           class="inline-flex items-center gap-1 text-xs font-semibold px-3 py-1.5 rounded-xl transition-all"
+           style="background:#fee2e2;color:#991b1b;border:1px solid #fecaca">
+          <i class="fas fa-file-pdf"></i> PDF
         </a>
       </div>
 

@@ -18,6 +18,7 @@ use App\Http\Controllers\Member\DashboardController as MemberDashboardController
 use App\Http\Controllers\Member\ChildController;
 use App\Http\Controllers\Member\AssessmentController;
 use App\Http\Controllers\Member\ProfileController as MemberProfileController;
+use App\Http\Controllers\Member\ExportController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -144,6 +145,12 @@ Route::prefix('member')->name('member.')->middleware(['auth', 'role:member'])->g
     Route::post('/assessment/{assessment}/submit', [AssessmentController::class, 'submit'])->name('assessment.submit');
     Route::get('/assessment/{assessment}/result', [AssessmentController::class, 'result'])->name('assessment.result');
     Route::get('/assessment/history', [AssessmentController::class, 'history'])->name('assessment.history');
+
+    // Export
+    Route::get('/assessment/{assessment}/pdf', [ExportController::class, 'assessmentPdf'])->name('assessment.pdf');
+    Route::get('/children/{child}/pdf', [ExportController::class, 'childPdf'])->name('children.pdf');
+    Route::get('/export/children/excel', [ExportController::class, 'childrenExcel'])->name('export.children.excel');
+    Route::get('/export/children/pdf-zip', [ExportController::class, 'childrenPdfZip'])->name('export.children.pdf-zip');
 
     // Profile
     Route::get('/profile', [MemberProfileController::class, 'index'])->name('profile.index');

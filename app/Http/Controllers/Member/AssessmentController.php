@@ -110,7 +110,7 @@ class AssessmentController extends Controller
     {
         abort_unless($assessment->user_id === auth()->id(), 403);
 
-        $assessment->load(['child', 'category', 'domainScores.domain', 'answers']);
+        $assessment->load(['child', 'category', 'domainScores.domain', 'answers.questionnaire.domain', 'answers.answerOption']);
 
         return view('member.assessment.result', compact('assessment'));
     }
