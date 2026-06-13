@@ -170,7 +170,7 @@ body { font-family: 'DejaVu Sans', sans-serif; font-size:10pt; color:#2E2046; ba
             <div class="card">
                 <div class="card-title">Profil Anak</div>
                 <div style="text-align:center;margin-bottom:8pt">
-                    @if($child->photo)
+                    @if($child->photo && file_exists(storage_path('app/public/' . $child->photo)))
                         <img src="{{ storage_path('app/public/' . $child->photo) }}" class="child-photo" alt="{{ $child->full_name }}">
                     @else
                         <span class="child-avatar">{{ strtoupper(substr($child->full_name,0,1)) }}</span>

@@ -25,7 +25,7 @@ class ExportController extends Controller
 
         $pdf = Pdf::loadView('member.exports.assessment-pdf', compact('assessment'))
             ->setPaper('a4', 'portrait')
-            ->setOptions(['defaultFont' => 'sans-serif', 'isRemoteEnabled' => true]);
+            ->setOptions(['defaultFont' => 'sans-serif', 'isRemoteEnabled' => true, 'isLocalFileEnabled' => true]);
 
         $filename = 'Asesmen-' . $assessment->assessment_code . '-' . Str::slug($assessment->child->full_name) . '.pdf';
 
@@ -45,7 +45,7 @@ class ExportController extends Controller
 
         $pdf = Pdf::loadView('member.exports.child-pdf', compact('child', 'assessments'))
             ->setPaper('a4', 'portrait')
-            ->setOptions(['defaultFont' => 'sans-serif', 'isRemoteEnabled' => true]);
+            ->setOptions(['defaultFont' => 'sans-serif', 'isRemoteEnabled' => true, 'isLocalFileEnabled' => true]);
 
         $filename = 'Laporan-' . Str::slug($child->full_name) . '.pdf';
 
@@ -85,7 +85,7 @@ class ExportController extends Controller
             $assessments = $child->assessments;
             $pdf = Pdf::loadView('member.exports.child-pdf', compact('child', 'assessments'))
                 ->setPaper('a4', 'portrait')
-                ->setOptions(['defaultFont' => 'sans-serif', 'isRemoteEnabled' => true]);
+                ->setOptions(['defaultFont' => 'sans-serif', 'isRemoteEnabled' => true, 'isLocalFileEnabled' => true]);
 
             $pdfContent = $pdf->output();
             $filename = Str::slug($child->full_name) . '.pdf';

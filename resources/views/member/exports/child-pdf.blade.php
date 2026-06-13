@@ -102,7 +102,7 @@ body { font-family: 'DejaVu Sans', sans-serif; font-size:10pt; color:#2E2046; ba
     {{-- Child profile --}}
     <div class="profile-banner">
         <div class="profile-photo-cell">
-            @if($child->photo)
+            @if($child->photo && file_exists(storage_path('app/public/' . $child->photo)))
                 <img src="{{ storage_path('app/public/' . $child->photo) }}" class="profile-photo" alt="{{ $child->full_name }}">
             @else
                 <div class="profile-avatar">{{ strtoupper(substr($child->full_name,0,1)) }}</div>

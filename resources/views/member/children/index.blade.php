@@ -34,12 +34,12 @@
   {{-- Toolbar --}}
   <div class="mb-5 flex flex-wrap items-center justify-between gap-3">
     <div class="flex flex-wrap gap-2">
-      <a href="{{ route('export.children.excel') }}"
+      <a href="{{ route('member.export.children.excel') }}"
          class="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-xl transition-all"
          style="background:#1D6F42;color:#fff">
         <i class="fas fa-file-excel"></i> Export Excel
       </a>
-      <a href="{{ route('export.children.pdf-zip') }}"
+      <a href="{{ route('member.export.children.pdf-zip') }}"
          class="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-xl transition-all"
          style="background:#dc3545;color:#fff">
         <i class="fas fa-file-archive"></i> Export PDF (ZIP)
