@@ -137,22 +137,22 @@
                     @forelse($members as $m)
                     <tr style="border-color:rgba(142,119,171,.1);">
                         <td style="padding:.6rem .75rem;color:#9ca3af;font-size:.8rem;">{{ $members->firstItem() + $loop->index }}</td>
-                        <td style="padding:.6rem .75rem;">
+                        <td style="padding:.6rem .75rem;max-width:220px;">
                             <div style="display:flex;align-items:center;gap:.6rem;">
                                 <div style="width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,#4A3769,#8E77AB);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;font-weight:700;font-size:.82rem;">
                                     {{ strtoupper(substr($m->name,0,1)) }}
                                 </div>
-                                <div>
-                                    <div style="font-weight:600;color:#1f2937;font-size:.86rem;">{{ $m->name }}</div>
-                                    <div style="font-size:.75rem;color:#9ca3af;">{{ $m->email }}</div>
-                                    @if($m->username)<div style="font-size:.72rem;color:#b9a5d6;">@{{ $m->username }}</div>@endif
+                                <div style="min-width:0;overflow:hidden;">
+                                    <div style="font-weight:600;color:#1f2937;font-size:.86rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="{{ $m->name }}">{{ $m->name }}</div>
+                                    <div style="font-size:.75rem;color:#9ca3af;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="{{ $m->email }}">{{ $m->email }}</div>
+                                    @if($m->username)<div style="font-size:.72rem;color:#b9a5d6;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">@{{ $m->username }}</div>@endif
                                 </div>
                             </div>
                         </td>
                         @if($tab==='organization')
-                            <td style="padding:.6rem .75rem;">
-                                <div style="font-size:.85rem;color:#1f2937;">{{ $m->organization_name ?? '—' }}</div>
-                                <div style="font-size:.75rem;color:#9ca3af;">{{ $m->organization_type ?? '' }}</div>
+                            <td style="padding:.6rem .75rem;max-width:160px;">
+                                <div style="font-size:.85rem;color:#1f2937;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="{{ $m->organization_name }}">{{ $m->organization_name ?? '—' }}</div>
+                                <div style="font-size:.75rem;color:#9ca3af;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ $m->organization_type ?? '' }}</div>
                             </td>
                             <td style="padding:.6rem .75rem;">
                                 <span style="display:inline-flex;align-items:center;gap:.25rem;padding:.2rem .55rem;border-radius:6px;background:#8E77AB12;color:#6B5A8E;font-size:.78rem;font-weight:600;border:1px solid #8E77AB22;">

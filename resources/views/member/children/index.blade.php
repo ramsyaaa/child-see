@@ -81,10 +81,10 @@
       </div>
 
       {{-- Detail --}}
-      <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
-        <div>
+      <div class="flex-1 min-w-0 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
+        <div class="min-w-0">
           <p class="text-xs text-gray-400 uppercase tracking-wider mb-0.5">Nama Lengkap</p>
-          <p class="text-sm font-semibold text-[#2E2046]">{{ $child->full_name }}</p>
+          <p class="text-sm font-semibold text-[#2E2046] break-words">{{ $child->full_name }}</p>
         </div>
         @if($child->nick_name)
         <div>

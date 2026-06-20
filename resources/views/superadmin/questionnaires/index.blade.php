@@ -82,8 +82,8 @@
                     @forelse($questionnaires as $q)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td style="max-width:300px;">
-                            <span title="{{ $q->question }}">{{ \Illuminate\Support\Str::limit($q->question, 80) }}</span>
+                        <td style="max-width:280px;white-space:normal;overflow-wrap:break-word;word-break:break-word;">
+                            <span title="{{ $q->question }}">{{ \Illuminate\Support\Str::limit($q->question, 70) }}</span>
                         </td>
                         <td>
                             @if($q->category)

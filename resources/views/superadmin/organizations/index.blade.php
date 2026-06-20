@@ -23,8 +23,8 @@
           @forelse($organizations as $org)
           <tr>
             <td>{{ $organizations->firstItem() + $loop->index }}</td>
-            <td>{{ $org->name }}<br><small class="text-muted">{{ $org->email }}</small></td>
-            <td>{{ $org->organization_name ?? '—' }}</td>
+            <td style="max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="{{ $org->name }} ({{ $org->email }})">{{ $org->name }}<br><small class="text-muted">{{ $org->email }}</small></td>
+            <td style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="{{ $org->organization_name }}">{{ $org->organization_name ?? '—' }}</td>
             <td><span class="badge bg-light text-dark">{{ $org->organization_type ?? '—' }}</span></td>
             <td>
               <span class="badge" style="background:#8E77AB;color:#fff;">{{ $org->child_quota }} anak</span>

@@ -61,6 +61,11 @@
         /* ── Top header ── */
         .pc-header { background: #fff !important; border-bottom: 1px solid var(--inklu-border) !important; }
 
+        /* ── Global overflow guard ── */
+        html, body { overflow-x: hidden; max-width: 100%; }
+        .pc-container { max-width: 100%; overflow-x: hidden; }
+        .pc-content { max-width: 100%; }
+
         /* ── Child See Page Banner (replaces vendor .page-header) ── */
         .inklu-page-banner {
             background: linear-gradient(135deg, #4A3769 0%, #6B5A8E 55%, #8E77AB 100%);
@@ -76,6 +81,17 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 10px;
+            max-width: 100%;
+        }
+        .inklu-page-banner > div:first-child {
+            min-width: 0;
+            max-width: 100%;
+            flex: 1 1 auto;
+        }
+        .inklu-page-banner h2,
+        .inklu-page-banner .inklu-subtitle {
+            overflow-wrap: break-word;
+            word-break: break-word;
         }
         .inklu-page-banner::after {
             content: '';
@@ -95,6 +111,8 @@
             padding: 0;
             margin: 0 0 6px 0;
             font-size: 11px;
+            max-width: 100%;
+            overflow-wrap: break-word;
         }
         .inklu-page-banner .inklu-breadcrumb li { display: flex; align-items: center; gap: 4px; }
         .inklu-page-banner .inklu-breadcrumb li::after { content: '/'; color: rgba(245,245,246,.3); margin-left: 4px; }

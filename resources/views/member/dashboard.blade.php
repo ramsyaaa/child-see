@@ -14,13 +14,13 @@
 {{-- Welcome + child card --}}
 <div class="rounded-2xl p-6 mb-6 text-white relative overflow-hidden" style="background:linear-gradient(135deg,#4A3769,#8E77AB)">
   <div class="relative z-10 flex flex-col sm:flex-row sm:items-center gap-4">
-    <div class="flex-1">
+    <div class="flex-1 min-w-0">
       <p class="text-white/60 text-sm mb-1">Selamat datang,</p>
-      <h1 class="text-2xl font-semibold mb-1" style="font-family:'Playfair Display',serif">
+      <h1 class="text-2xl font-semibold mb-1 break-words" style="font-family:'Playfair Display',serif">
         {{ Auth::user()->full_name ?? Auth::user()->name }}
       </h1>
       @if($child)
-        <p class="text-white/70 text-sm">Memantau perkembangan <strong class="text-white">{{ $child->full_name }}</strong></p>
+        <p class="text-white/70 text-sm break-words">Memantau perkembangan <strong class="text-white">{{ $child->full_name }}</strong></p>
       @else
         <p class="text-white/70 text-sm">Tambahkan data anak untuk mulai melakukan asesmen.</p>
       @endif
