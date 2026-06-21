@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Masuk — Child See</title>
+    <link rel="icon" href="{{ !empty($site['site_logo']) ? asset('storage/'.$site['site_logo']) : asset('favicon-childsee.png') }}" type="image/x-icon" />
+    @if(!empty($site['og_image']))
+    <meta property="og:image" content="{{ asset('storage/'.$site['og_image']) }}" />
+    @endif
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;700&family=Josefin+Sans:wght@300;400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css'])
@@ -82,11 +86,7 @@
                     </button>
                 </div>
             </div>
-            <div style="display:flex;align-items:center;justify-content:space-between;font-family:'Josefin Sans';font-size:0.85rem;">
-                <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;color:rgba(74,55,105,0.75);">
-                    <input type="checkbox" name="remember" style="accent-color:#5C477F;width:15px;height:15px;">
-                    Ingat saya
-                </label>
+            <div style="display:flex;align-items:center;justify-content:flex-end;font-family:'Josefin Sans';font-size:0.85rem;">
                 @if(Route::has('password.request'))
                 <a href="{{ route('password.request') }}" style="color:#5C477F;text-decoration:none;font-weight:600;">Lupa kata sandi?</a>
                 @endif

@@ -45,7 +45,7 @@ class LandingContentController extends Controller
     public function teamCreate()   { return view('superadmin.landing.team.form', ['member' => null]); }
     public function teamStore(Request $r)
     {
-        $r->validate(['name' => 'required|string|max:255', 'role_label' => 'nullable|string|max:150', 'affiliation' => 'nullable|string|max:255', 'group' => 'required|in:dosen,mahasiswa,eksternal', 'photo' => 'nullable|image|max:2048', 'sort_order' => 'integer']);
+        $r->validate(['name' => 'required|string|max:255', 'role_label' => 'nullable|string|max:150', 'affiliation' => 'nullable|string|max:255', 'group' => 'required|in:dosen,mahasiswa,eksternal', 'photo' => 'nullable|image|max:5120', 'sort_order' => 'integer']);
         $data = $r->only('name', 'role_label', 'affiliation', 'group', 'sort_order') + ['is_active' => $r->boolean('is_active', true)];
         if ($r->hasFile('photo')) $data['photo'] = $r->file('photo')->store('team', 'public');
         LandingTeamMember::create($data);
@@ -54,7 +54,7 @@ class LandingContentController extends Controller
     public function teamEdit(LandingTeamMember $member) { return view('superadmin.landing.team.form', compact('member')); }
     public function teamUpdate(Request $r, LandingTeamMember $member)
     {
-        $r->validate(['name' => 'required|string|max:255', 'role_label' => 'nullable|string|max:150', 'affiliation' => 'nullable|string|max:255', 'group' => 'required|in:dosen,mahasiswa,eksternal', 'photo' => 'nullable|image|max:2048', 'sort_order' => 'integer']);
+        $r->validate(['name' => 'required|string|max:255', 'role_label' => 'nullable|string|max:150', 'affiliation' => 'nullable|string|max:255', 'group' => 'required|in:dosen,mahasiswa,eksternal', 'photo' => 'nullable|image|max:5120', 'sort_order' => 'integer']);
         $data = $r->only('name', 'role_label', 'affiliation', 'group', 'sort_order') + ['is_active' => $r->boolean('is_active')];
 
         if ($r->hasFile('photo')) {
@@ -80,7 +80,7 @@ class LandingContentController extends Controller
     public function hkiCreate()   { return view('superadmin.landing.hki.form', ['hki' => null]); }
     public function hkiStore(Request $r)
     {
-        $r->validate(['title' => 'required|string|max:255', 'description' => 'nullable|string', 'image' => 'nullable|image|max:4096', 'certificate_number' => 'nullable|string|max:150', 'issued_date' => 'nullable|date']);
+        $r->validate(['title' => 'required|string|max:255', 'description' => 'nullable|string', 'image' => 'nullable|image|max:5120', 'certificate_number' => 'nullable|string|max:150', 'issued_date' => 'nullable|date']);
         $data = $r->only('title', 'description', 'certificate_number', 'issued_date') + ['is_active' => $r->boolean('is_active', true)];
         if ($r->hasFile('image')) $data['image'] = $r->file('image')->store('hki', 'public');
         LandingHki::create($data);
@@ -89,7 +89,7 @@ class LandingContentController extends Controller
     public function hkiEdit(LandingHki $hki) { return view('superadmin.landing.hki.form', compact('hki')); }
     public function hkiUpdate(Request $r, LandingHki $hki)
     {
-        $r->validate(['title' => 'required|string|max:255', 'description' => 'nullable|string', 'image' => 'nullable|image|max:4096', 'certificate_number' => 'nullable|string|max:150', 'issued_date' => 'nullable|date']);
+        $r->validate(['title' => 'required|string|max:255', 'description' => 'nullable|string', 'image' => 'nullable|image|max:5120', 'certificate_number' => 'nullable|string|max:150', 'issued_date' => 'nullable|date']);
         $data = $r->only('title', 'description', 'certificate_number', 'issued_date') + ['is_active' => $r->boolean('is_active')];
         if ($r->hasFile('image')) {
             if ($hki->image) Storage::disk('public')->delete($hki->image);
@@ -110,7 +110,7 @@ class LandingContentController extends Controller
     public function partnersCreate()   { return view('superadmin.landing.partners.form', ['partner' => null]); }
     public function partnersStore(Request $r)
     {
-        $r->validate(['name' => 'required|string|max:255', 'logo' => 'nullable|image|max:2048', 'website_url' => 'nullable|url|max:500', 'description' => 'nullable|string', 'sort_order' => 'integer']);
+        $r->validate(['name' => 'required|string|max:255', 'logo' => 'nullable|image|max:5120', 'website_url' => 'nullable|url|max:500', 'description' => 'nullable|string', 'sort_order' => 'integer']);
         $data = $r->only('name', 'website_url', 'description', 'sort_order') + ['is_active' => $r->boolean('is_active', true)];
         if ($r->hasFile('logo')) $data['logo'] = $r->file('logo')->store('partners', 'public');
         LandingPartner::create($data);
@@ -119,7 +119,7 @@ class LandingContentController extends Controller
     public function partnersEdit(LandingPartner $partner) { return view('superadmin.landing.partners.form', compact('partner')); }
     public function partnersUpdate(Request $r, LandingPartner $partner)
     {
-        $r->validate(['name' => 'required|string|max:255', 'logo' => 'nullable|image|max:2048', 'website_url' => 'nullable|url|max:500', 'description' => 'nullable|string', 'sort_order' => 'integer']);
+        $r->validate(['name' => 'required|string|max:255', 'logo' => 'nullable|image|max:5120', 'website_url' => 'nullable|url|max:500', 'description' => 'nullable|string', 'sort_order' => 'integer']);
         $data = $r->only('name', 'website_url', 'description', 'sort_order') + ['is_active' => $r->boolean('is_active')];
         if ($r->hasFile('logo')) {
             if ($partner->logo) Storage::disk('public')->delete($partner->logo);

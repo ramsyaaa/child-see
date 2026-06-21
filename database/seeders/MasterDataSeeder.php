@@ -59,7 +59,7 @@ class MasterDataSeeder extends Seeder
             'description'          => 'Hambatan intelektual yang mempengaruhi kemampuan kognitif, sosial, dan adaptif anak.',
             'icon'                 => 'brain',
             'color'                => '#A86916',
-            'result_illustration'  => 'assets/img/hasil-analisa/Tunagrahita.jpg',
+            'result_illustration'  => 'assets/img/hasil-analisa/Tunagrahita.png',
             'sort_order'           => 30,
             'is_active'            => true,
         ]);
@@ -136,7 +136,7 @@ class MasterDataSeeder extends Seeder
             'description'         => 'Anak yang mengalami kebutaan total atau hampir total sehingga tidak dapat menggunakan penglihatannya.',
             'icon'                => 'eye',
             'color'               => '#2E5F8A',
-            'result_illustration' => 'assets/img/hasil-analisa/Tunanetra totally blind.jpg',
+            'result_illustration' => 'assets/img/hasil-analisa/Tunanetra totally blind.png',
             'sort_order'          => 50,
             'is_active'           => true,
         ]);
@@ -159,7 +159,7 @@ class MasterDataSeeder extends Seeder
             'description'         => 'Kesulitan belajar spesifik dalam membaca dan mengeja yang tidak berkaitan dengan kecerdasan.',
             'icon'                => 'book',
             'color'               => '#5C477F',
-            'result_illustration' => 'assets/img/hasil-analisa/Diseleksia.jpg',
+            'result_illustration' => 'assets/img/hasil-analisa/diseleksia.png',
             'sort_order'          => 31,
             'is_active'           => true,
         ]);
@@ -205,7 +205,7 @@ class MasterDataSeeder extends Seeder
             'description'         => 'Anak yang memiliki kemampuan akademik di bawah rata-rata namun tidak termasuk tunagrahita.',
             'icon'                => 'clock',
             'color'               => '#839986',
-            'result_illustration' => 'assets/img/hasil-analisa/Slow learner.jpg',
+            'result_illustration' => 'assets/img/hasil-analisa/Slow learner.png',
             'sort_order'          => 35,
             'is_active'           => true,
         ]);
@@ -255,7 +255,7 @@ class MasterDataSeeder extends Seeder
             'description'         => 'Hambatan fisik atau motorik yang mempengaruhi kemampuan gerak dan fungsi tubuh anak.',
             'icon'                => 'accessibility',
             'color'               => '#5B6A4A',
-            'result_illustration' => 'assets/img/hasil-analisa/Tunadaksa.jpg',
+            'result_illustration' => 'assets/img/hasil-analisa/Tunadaksa.png',
             'sort_order'          => 10,
             'is_active'           => true,
         ]);
@@ -310,7 +310,7 @@ class MasterDataSeeder extends Seeder
             'description'         => 'Kondisi genetik trisomi 21 yang menyebabkan hambatan intelektual dan ciri fisik khas.',
             'icon'                => 'dna',
             'color'               => '#6B5EA8',
-            'result_illustration' => 'assets/img/hasil-analisa/Down syndrome_.jpg',
+            'result_illustration' => 'assets/img/hasil-analisa/Down syndrome.png',
             'sort_order'          => 20,
             'is_active'           => true,
         ]);
@@ -380,7 +380,7 @@ class MasterDataSeeder extends Seeder
             'description'         => 'Kelainan genetik langka yang menyebabkan hiperfagia, hambatan intelektual, dan disregulasi emosi.',
             'icon'                => 'dna',
             'color'               => '#7A6A8E',
-            'result_illustration' => 'assets/img/hasil-analisa/Prader Willie syndrome_.jpg',
+            'result_illustration' => 'assets/img/hasil-analisa/Prader Willie syndrome.png',
             'sort_order'          => 21,
             'is_active'           => true,
         ]);
@@ -452,7 +452,7 @@ class MasterDataSeeder extends Seeder
             'description'         => 'Gangguan genetik terkait kromosom X yang menyebabkan hambatan intelektual dan hipersensitivitas sensorik.',
             'icon'                => 'dna',
             'color'               => '#8E5E7A',
-            'result_illustration' => 'assets/img/hasil-analisa/Fragile x syndrome_.jpg',
+            'result_illustration' => 'assets/img/hasil-analisa/Fragile x syndrome.png',
             'sort_order'          => 22,
             'is_active'           => true,
         ]);
@@ -524,7 +524,7 @@ class MasterDataSeeder extends Seeder
             'description'         => 'Kelainan genetik langka dengan ciri khas kepribadian sangat ramah, hambatan kognitif, dan hipersensitivitas suara.',
             'icon'                => 'dna',
             'color'               => '#6E8A9E',
-            'result_illustration' => 'assets/img/hasil-analisa/William syndrome.jpg',
+            'result_illustration' => 'assets/img/hasil-analisa/William syndrome.png',
             'sort_order'          => 23,
             'is_active'           => true,
         ]);
@@ -600,7 +600,7 @@ class MasterDataSeeder extends Seeder
             'description'         => 'Kesulitan belajar spesifik dalam menulis yang berkaitan dengan motorik halus dan representasi tulisan.',
             'icon'                => 'pencil',
             'color'               => '#8B6E4E',
-            'result_illustration' => 'assets/img/hasil-analisa/Disgrafia.jpg',
+            'result_illustration' => 'assets/img/hasil-analisa/disgrafia.png',
             'sort_order'          => 32,
             'is_active'           => true,
         ]);
@@ -648,7 +648,7 @@ class MasterDataSeeder extends Seeder
             'description'         => 'Kesulitan belajar spesifik dalam matematika dan pemrosesan angka yang tidak berkaitan dengan kecerdasan.',
             'icon'                => 'calculator',
             'color'               => '#6B8E6E',
-            'result_illustration' => 'assets/img/hasil-analisa/Diskalkulia.jpg',
+            'result_illustration' => 'assets/img/hasil-analisa/diskalkulia.png',
             'sort_order'          => 33,
             'is_active'           => true,
         ]);
@@ -700,7 +700,7 @@ class MasterDataSeeder extends Seeder
             'description'         => 'Hambatan penglihatan berat namun masih memiliki sisa penglihatan fungsional yang dapat dioptimalkan.',
             'icon'                => 'eye',
             'color'               => '#2A6A8F',
-            'result_illustration' => 'assets/img/hasil-analisa/Tunanetra low vision.jpg',
+            'result_illustration' => 'assets/img/hasil-analisa/Tunanetra low vision.png',
             'sort_order'          => 51,
             'is_active'           => true,
         ]);
@@ -748,7 +748,7 @@ class MasterDataSeeder extends Seeder
             'description'         => 'Hambatan pendengaran yang mempengaruhi komunikasi, perkembangan bahasa, dan interaksi sosial anak.',
             'icon'                => 'ear',
             'color'               => '#3D7A6E',
-            'result_illustration' => 'assets/img/hasil-analisa/Tunarungu.jpg',
+            'result_illustration' => 'assets/img/hasil-analisa/Tunarungu.png',
             'sort_order'          => 55,
             'is_active'           => true,
         ]);
@@ -798,7 +798,7 @@ class MasterDataSeeder extends Seeder
             'description'         => 'Hambatan pada kemampuan berbicara yang mempengaruhi komunikasi ekspresif anak.',
             'icon'                => 'message',
             'color'               => '#7A4E6B',
-            'result_illustration' => null,
+            'result_illustration' => 'assets/img/hasil-analisa/tunawicara.png',
             'sort_order'          => 60,
             'is_active'           => true,
         ]);
@@ -850,7 +850,7 @@ class MasterDataSeeder extends Seeder
             'description'         => 'Gangguan perkembangan spektrum yang mempengaruhi komunikasi sosial, perilaku, dan pemrosesan sensorik.',
             'icon'                => 'puzzle',
             'color'               => '#4A7A9B',
-            'result_illustration' => 'assets/img/hasil-analisa/Autism.jpg',
+            'result_illustration' => 'assets/img/hasil-analisa/autism.png',
             'sort_order'          => 70,
             'is_active'           => true,
         ]);
@@ -934,7 +934,7 @@ class MasterDataSeeder extends Seeder
             'description'         => 'Gangguan pemusatan perhatian dan hiperaktivitas yang mempengaruhi konsentrasi, impulsivitas, dan aktivitas anak.',
             'icon'                => 'zap',
             'color'               => '#8E6B2E',
-            'result_illustration' => 'assets/img/hasil-analisa/Adhd.jpg',
+            'result_illustration' => 'assets/img/hasil-analisa/adhd.png',
             'sort_order'          => 75,
             'is_active'           => true,
         ]);
@@ -1004,7 +1004,7 @@ class MasterDataSeeder extends Seeder
             'description'         => 'Hambatan regulasi emosi dan pola perilaku yang mengganggu fungsi sosial dan akademik anak.',
             'icon'                => 'heart',
             'color'               => '#8A3A3A',
-            'result_illustration' => 'assets/img/hasil-analisa/Gangguan emosi dan tingkah laku.jpg',
+            'result_illustration' => 'assets/img/hasil-analisa/Gangguan emosi dan tingkah laku.png',
             'sort_order'          => 80,
             'is_active'           => true,
         ]);
@@ -1076,7 +1076,7 @@ class MasterDataSeeder extends Seeder
             'description'         => 'Hambatan penglihatan berat yang dikombinasikan dengan hambatan intelektual atau hambatan lain yang signifikan.',
             'icon'                => 'layers',
             'color'               => '#5A4A7A',
-            'result_illustration' => 'assets/img/hasil-analisa/Mdvi.jpg',
+            'result_illustration' => 'assets/img/hasil-analisa/Mdvi.png',
             'sort_order'          => 90,
             'is_active'           => true,
         ]);
@@ -1144,7 +1144,7 @@ class MasterDataSeeder extends Seeder
             'description'         => 'Kombinasi dua atau lebih jenis hambatan secara bersamaan yang memerlukan penanganan multi-disiplin.',
             'icon'                => 'layers',
             'color'               => '#6A5A7A',
-            'result_illustration' => 'assets/img/hasil-analisa/Tunaganda.jpg',
+            'result_illustration' => 'assets/img/hasil-analisa/Tunaganda.png',
             'sort_order'          => 91,
             'is_active'           => true,
         ]);

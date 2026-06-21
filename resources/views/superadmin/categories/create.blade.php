@@ -29,7 +29,7 @@
 <div class="card">
     <div class="card-header"><h5 class="mb-0" style="color:#4A3769;">Form Kategori Baru</h5></div>
     <div class="card-body">
-        <form action="{{ route('superadmin.categories.store') }}" method="POST">
+        <form action="{{ route('superadmin.categories.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row g-3">
                 <div class="col-md-6">
@@ -114,11 +114,10 @@
                 </div>
                 <div class="col-12">
                     <label class="form-label fw-semibold">Ilustrasi Hasil Asesmen</label>
-                    <input type="text" name="result_illustration" class="form-control @error('result_illustration') is-invalid @enderror"
-                        value="{{ old('result_illustration') }}"
-                        placeholder="assets/img/hasil-analisa/NamaFile.jpg">
-                    <small class="text-muted">Path relatif dari <code>public/</code>. Kosongkan jika tidak ada gambar.</small>
-                    @error('result_illustration')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    <input type="file" name="result_illustration_file" accept="image/*"
+                        class="form-control @error('result_illustration_file') is-invalid @enderror">
+                    <small class="text-muted">Gambar ditampilkan pada halaman hasil asesmen anak. Maks. 5MB (otomatis dikompres ke ±600KB). Kosongkan jika tidak ada gambar.</small>
+                    @error('result_illustration_file')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
                 <div class="col-md-3">
                     <label class="form-label fw-semibold">Urutan Tampil</label>

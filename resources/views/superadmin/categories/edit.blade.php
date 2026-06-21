@@ -29,7 +29,7 @@
 <div class="card">
     <div class="card-header"><h5 class="mb-0" style="color:#4A3769;">Edit: {{ $category->name }}</h5></div>
     <div class="card-body">
-        <form action="{{ route('superadmin.categories.update', $category) }}" method="POST">
+        <form action="{{ route('superadmin.categories.update', $category) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="row g-3">
@@ -114,16 +114,19 @@
                 <div class="col-12">
                     <label class="form-label fw-semibold">Ilustrasi Hasil Asesmen</label>
                     @if($category->result_illustration)
-                        <div class="mb-2">
+                        <div class="mb-2 d-flex align-items-center gap-3">
                             <img src="{{ asset($category->result_illustration) }}" alt="Ilustrasi"
                                  style="height:80px;border-radius:8px;object-fit:cover;border:1px solid rgba(142,119,171,.2);">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="remove_illustration" id="remove_illustration" value="1">
+                                <label class="form-check-label small text-danger" for="remove_illustration">Hapus gambar ini</label>
+                            </div>
                         </div>
                     @endif
-                    <input type="text" name="result_illustration" class="form-control @error('result_illustration') is-invalid @enderror"
-                        value="{{ old('result_illustration', $category->result_illustration) }}"
-                        placeholder="assets/img/hasil-analisa/NamaFile.jpg">
-                    <small class="text-muted">Path relatif dari <code>public/</code>. Kosongkan jika tidak ada gambar.</small>
-                    @error('result_illustration')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    <input type="file" name="result_illustration_file" accept="image/*"
+                        class="form-control @error('result_illustration_file') is-invalid @enderror">
+                    <small class="text-muted">Maks. 5MB (otomatis dikompres ke ±600KB). Biarkan kosong untuk tidak mengubah gambar.</small>
+                    @error('result_illustration_file')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
                 <div class="col-md-3">
                     <label class="form-label fw-semibold">Urutan Tampil</label>

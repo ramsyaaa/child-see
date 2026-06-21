@@ -130,19 +130,19 @@
         @if($dosen->isNotEmpty())
         <div style="margin-bottom:3rem;">
             <p style="font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:#8499B6;font-family:monospace;text-align:center;margin-bottom:1.5rem;">Dosen Pembimbing</p>
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1.5rem;max-width:900px;margin:0 auto;">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:2rem;max-width:1000px;margin:0 auto;">
                 @foreach($dosen as $m)
                 <div style="text-align:center;">
-                    <div style="width:5rem;height:5rem;border-radius:1rem;margin:0 auto .75rem;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(135deg,#8E77AB18,#C6D9E840);border:2px solid rgba(142,119,171,.2);">
+                    <div style="width:8rem;height:8rem;border-radius:1.25rem;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(135deg,#8E77AB18,#C6D9E840);border:2px solid rgba(142,119,171,.2);">
                         @if($m->photo)
                             <img src="{{ asset('storage/'.$m->photo) }}" alt="{{ $m->name }}" style="width:100%;height:100%;object-fit:cover;">
                         @else
-                            <span style="font-size:1.5rem;font-weight:700;color:#8E77AB;">{{ strtoupper(substr($m->name,0,1)) }}</span>
+                            <span style="font-size:2.5rem;font-weight:700;color:#8E77AB;">{{ strtoupper(substr($m->name,0,1)) }}</span>
                         @endif
                     </div>
-                    <p style="font-size:.75rem;font-weight:600;color:#2E2046;line-height:1.3;margin-bottom:.25rem;">{{ $m->name }}</p>
-                    @if($m->role_label)<p style="font-size:.68rem;color:#8E77AB;margin:0;">{{ $m->role_label }}</p>@endif
-                    @if($m->affiliation)<p style="font-size:.65rem;color:rgba(38,34,58,.4);margin:0;">{{ $m->affiliation }}</p>@endif
+                    <p style="font-size:.85rem;font-weight:600;color:#2E2046;line-height:1.3;margin-bottom:.25rem;">{{ $m->name }}</p>
+                    @if($m->role_label)<p style="font-size:.72rem;color:#8E77AB;margin:0;">{{ $m->role_label }}</p>@endif
+                    @if($m->affiliation)<p style="font-size:.68rem;color:rgba(38,34,58,.4);margin:0;">{{ $m->affiliation }}</p>@endif
                 </div>
                 @endforeach
             </div>
@@ -151,19 +151,19 @@
         @php $rest = $mahasiswa->merge($eksternal); @endphp
         @if($rest->isNotEmpty())
         <div style="padding-top:1.5rem;border-top:1px solid rgba(142,119,171,.12);">
-            <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;">
+            <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;">
                 @foreach($rest as $m)
-                <div style="text-align:center;width:130px;">
-                    <div style="width:5rem;height:5rem;border-radius:1rem;margin:0 auto .75rem;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(135deg,#8499B618,#C6D9E840);border:2px solid rgba(132,153,182,.2);">
+                <div style="text-align:center;width:160px;">
+                    <div style="width:8rem;height:8rem;border-radius:1.25rem;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(135deg,#8499B618,#C6D9E840);border:2px solid rgba(132,153,182,.2);">
                         @if($m->photo)
                             <img src="{{ asset('storage/'.$m->photo) }}" alt="{{ $m->name }}" style="width:100%;height:100%;object-fit:cover;">
                         @else
-                            <span style="font-size:1.5rem;font-weight:700;color:#8499B6;">{{ strtoupper(substr($m->name,0,1)) }}</span>
+                            <span style="font-size:2.5rem;font-weight:700;color:#8499B6;">{{ strtoupper(substr($m->name,0,1)) }}</span>
                         @endif
                     </div>
-                    <p style="font-size:.75rem;font-weight:600;color:#2E2046;line-height:1.3;margin-bottom:.25rem;">{{ $m->name }}</p>
-                    @if($m->role_label)<p style="font-size:.68rem;color:#8499B6;margin-bottom:.25rem;">{{ $m->role_label }}</p>@endif
-                    <span style="font-size:.62rem;padding:.15rem .5rem;border-radius:999px;background:{{ $m->group==='mahasiswa'?'#8499B6':'#8E77AB' }}18;color:{{ $m->group==='mahasiswa'?'#8499B6':'#8E77AB' }};border:1px solid {{ $m->group==='mahasiswa'?'#8499B6':'#8E77AB' }}33;">
+                    <p style="font-size:.85rem;font-weight:600;color:#2E2046;line-height:1.3;margin-bottom:.25rem;">{{ $m->name }}</p>
+                    @if($m->role_label)<p style="font-size:.72rem;color:#8499B6;margin-bottom:.25rem;">{{ $m->role_label }}</p>@endif
+                    <span style="font-size:.65rem;padding:.15rem .5rem;border-radius:999px;background:{{ $m->group==='mahasiswa'?'#8499B6':'#8E77AB' }}18;color:{{ $m->group==='mahasiswa'?'#8499B6':'#8E77AB' }};border:1px solid {{ $m->group==='mahasiswa'?'#8499B6':'#8E77AB' }}33;">
                         {{ $m->group === 'mahasiswa' ? 'Mahasiswa' : 'Tim Eksternal' }}
                     </span>
                 </div>

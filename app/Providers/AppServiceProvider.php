@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::composer('home.*', function ($view) {
+        View::composer(['home.*', 'auth.*', 'member.*', 'superadmin.*'], function ($view) {
             try {
                 $site = SiteSettings::all_as_array();
             } catch (\Exception $e) {

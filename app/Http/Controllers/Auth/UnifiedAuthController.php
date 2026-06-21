@@ -35,7 +35,6 @@ class UnifiedAuthController extends Controller
 
         $loginField = $request->input('email');
         $password = $request->input('password');
-        $remember = $request->boolean('remember');
 
         // Determine if the input is an email or username
         $fieldType = filter_var($loginField, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
@@ -46,7 +45,7 @@ class UnifiedAuthController extends Controller
         ];
 
         // Attempt to authenticate
-        if (Auth::attempt($credentials, $remember)) {
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
             $user = Auth::user();

@@ -10,29 +10,47 @@
   $groupedAnswers = $assessment->answers->groupBy(fn($a) => $a->questionnaire?->domain?->name ?? 'Umum');
 @endphp
 
-{{-- Result banner --}}
-<div class="rounded-2xl p-6 mb-6 text-white relative overflow-hidden"
-     style="background:linear-gradient(135deg,{{ $color }},{{ $color }}bb)">
-  <div class="relative z-10">
-    <div class="flex flex-wrap items-center gap-3 mb-3">
-      <span class="font-mono text-sm font-semibold px-3 py-1 rounded-full" style="background:rgba(255,255,255,.2)">
-        {{ $assessment->assessment_code }}
-      </span>
-      <span class="text-sm text-white/70">{{ $assessment->assessment_date?->format('d M Y') ?? $assessment->created_at->format('d M Y') }}</span>
+@php $hasIllustration = !empty($assessment->category->result_illustration); @endphp
+
+{{-- Result hero: banner + illustration combined --}}
+<div class="rounded-2xl mb-6 overflow-hidden shadow-sm" style="background:linear-gradient(135deg,{{ $color }},{{ $color }}bb)">
+  <div class="flex flex-col {{ $hasIllustration ? 'md:flex-row' : '' }} items-stretch">
+
+    {{-- Text side --}}
+    <div class="relative flex-1 p-6 md:p-8 text-white overflow-hidden">
+      <div class="absolute right-4 top-1/2 -translate-y-1/2 opacity-10 text-[110px] leading-none pointer-events-none hidden md:block">
+        <i class="fas fa-clipboard-check"></i>
+      </div>
+      <div class="relative z-10">
+        <div class="flex flex-wrap items-center gap-3 mb-3">
+          <span class="font-mono text-sm font-semibold px-3 py-1 rounded-full" style="background:rgba(255,255,255,.2)">
+            {{ $assessment->assessment_code }}
+          </span>
+          <span class="text-sm text-white/70">{{ $assessment->assessment_date?->format('d M Y') ?? $assessment->created_at->format('d M Y') }}</span>
+        </div>
+        <p class="text-white/70 text-sm mb-1">Hasil Asesmen — {{ $assessment->category->name ?? '-' }}</p>
+        <h1 class="text-3xl font-bold mb-2" style="font-family:'Playfair Display',serif">
+          {{ $assessment->result_label ?? 'Dalam Proses' }}
+        </h1>
+        <div class="flex flex-wrap gap-4 text-sm text-white/80">
+          <span><i class="fas fa-child mr-2"></i>{{ $assessment->child->full_name ?? '-' }}</span>
+          @if($assessment->total_score !== null)
+            <span><i class="fas fa-chart-bar mr-2"></i>Skor Total: {{ $assessment->total_score }}</span>
+          @endif
+        </div>
+      </div>
     </div>
-    <p class="text-white/70 text-sm mb-1">Hasil Asesmen — {{ $assessment->category->name ?? '-' }}</p>
-    <h1 class="text-3xl font-bold mb-2" style="font-family:'Playfair Display',serif">
-      {{ $assessment->result_label ?? 'Dalam Proses' }}
-    </h1>
-    <div class="flex flex-wrap gap-4 text-sm text-white/80">
-      <span><i class="fas fa-child mr-2"></i>{{ $assessment->child->full_name ?? '-' }}</span>
-      @if($assessment->total_score !== null)
-        <span><i class="fas fa-chart-bar mr-2"></i>Skor Total: {{ $assessment->total_score }}</span>
-      @endif
+
+    {{-- Illustration side --}}
+    @if($hasIllustration)
+    <div class="relative flex-shrink-0 w-full md:w-[280px] lg:w-[320px]" style="min-height:200px;background:rgba(255,255,255,.06)">
+      <div class="absolute inset-0" style="background:linear-gradient(to right, {{ $color }} 0%, transparent 18%);z-index:1;"></div>
+      <img src="{{ asset($assessment->category->result_illustration) }}"
+           alt="{{ $assessment->category->name }}"
+           class="absolute inset-0 w-full h-full object-cover object-center">
     </div>
-  </div>
-  <div class="absolute right-6 top-1/2 -translate-y-1/2 opacity-10 text-[100px] leading-none pointer-events-none">
-    <i class="fas fa-clipboard-check"></i>
+    @endif
+
   </div>
 </div>
 
@@ -53,15 +71,6 @@
     <i class="fas fa-child"></i> Profil Anak
   </a>
 </div>
-
-{{-- Result illustration --}}
-@if(!empty($assessment->category->result_illustration))
-<div class="mb-6 rounded-2xl overflow-hidden shadow-sm" style="max-height:220px">
-  <img src="{{ asset($assessment->category->result_illustration) }}"
-       alt="{{ $assessment->category->name }}"
-       class="w-full object-cover object-center" style="max-height:220px;width:100%">
-</div>
-@endif
 
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
 
@@ -122,9 +131,15 @@
           <span class="font-medium text-[#2E2046]">{{ \Carbon\Carbon::parse($assessment->child->birth_date)->age }} tahun</span>
         </div>
         @endif
-        <div class="flex justify-between gap-2">
+        <div class="flex justify-between items-center gap-2">
           <span class="text-gray-500">Kategori</span>
-          <span class="font-medium text-[#2E2046] text-right">{{ $assessment->category->name ?? '-' }}</span>
+          <span class="flex items-center gap-2 font-medium text-[#2E2046] text-right">
+            @if($hasIllustration)
+              <img src="{{ asset($assessment->category->result_illustration) }}" alt=""
+                   class="w-6 h-6 rounded-full object-cover flex-shrink-0" style="border:1.5px solid {{ $color }}66">
+            @endif
+            {{ $assessment->category->name ?? '-' }}
+          </span>
         </div>
         <div class="flex justify-between gap-2">
           <span class="text-gray-500">Tanggal</span>

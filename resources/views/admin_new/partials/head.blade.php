@@ -9,7 +9,7 @@
     <meta name="author" content="Child See" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- [Favicon] icon -->
-    <link rel="icon" href="{{ asset('favicon.png') }}" type="image/x-icon" />
+    <link rel="icon" href="{{ asset('favicon-childsee.png') }}" type="image/x-icon" />
     <!-- [Font] Family -->
     <link rel="stylesheet" href="{{ asset('vendor/dashboard') }}/assets/fonts/inter/inter.css" id="main-font-link" />
     <!-- [Tabler Icons] https://tablericons.com -->
