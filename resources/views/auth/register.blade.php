@@ -11,6 +11,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;700&family=Josefin+Sans:wght@300;400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css'])
+    <style>
+        .auth-brand-logo { height: 64px; width: auto; max-width: 180px; object-fit: contain; }
+        .auth-brand-logo-mobile { height: 48px; width: auto; max-width: 150px; object-fit: contain; }
+        @media (max-width: 575px) {
+            .auth-brand-logo-mobile { height: 40px; max-width: 130px; }
+        }
+    </style>
 </head>
 <body style="background:#F5F5F6;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1.5rem;">
 
@@ -22,7 +29,7 @@
         <div style="position:relative;z-index:1;">
             <a href="{{ route('home') }}" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;">
                 @if(!empty($site['site_logo']))
-                    <img src="{{ asset('storage/'.$site['site_logo']) }}" alt="{{ $site['site_name'] ?? 'Child See' }}" style="height:32px;width:auto;object-fit:contain;">
+                    <img src="{{ asset('storage/'.$site['site_logo']) }}" alt="{{ $site['site_name'] ?? 'Child See' }}" class="auth-brand-logo">
                 @else
                     <svg width="32" height="32" viewBox="0 0 48 48" fill="none">
                         <circle cx="24" cy="24" r="22" stroke="#BAA6D6" stroke-width="2"/>
@@ -55,7 +62,7 @@
         <div class="auth-panel-mobile" style="display:none;margin-bottom:1.5rem;">
             <a href="{{ route('home') }}" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;">
                 @if(!empty($site['site_logo']))
-                    <img src="{{ asset('storage/'.$site['site_logo']) }}" alt="{{ $site['site_name'] ?? 'Child See' }}" style="height:24px;width:auto;object-fit:contain;">
+                    <img src="{{ asset('storage/'.$site['site_logo']) }}" alt="{{ $site['site_name'] ?? 'Child See' }}" class="auth-brand-logo-mobile">
                 @else
                     <svg width="24" height="24" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="#5C477F" stroke-width="2"/><circle cx="24" cy="24" r="15" stroke="#5C477F" stroke-width="1.5"/><circle cx="24" cy="24" r="3" fill="#5C477F"/></svg>
                     <span style="font-family:'Playfair Display SC',serif;color:#4A3769;font-size:1rem;">Child See</span>

@@ -26,6 +26,22 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('styles')
+
+    <style>
+        .nav-brand-row { min-height: 86px; padding-top: 10px; padding-bottom: 10px; }
+        .brand-logo-img { height: 86px; width: auto; max-width: 220px; object-fit: contain; }
+        .footer-logo-img { height: 64px; width: auto; max-width: 180px; object-fit: contain; }
+        @media (max-width: 991px) {
+            .nav-brand-row { min-height: 64px; }
+            .brand-logo-img { height: 64px; max-width: 170px; }
+            .footer-logo-img { height: 52px; max-width: 150px; }
+        }
+        @media (max-width: 575px) {
+            .nav-brand-row { min-height: 52px; }
+            .brand-logo-img { height: 52px; max-width: 130px; }
+            .footer-logo-img { height: 44px; max-width: 120px; }
+        }
+    </style>
 </head>
 <body class="min-h-screen" style="background:#F5F5F6; color:#26223A; font-family:'Josefin Sans',system-ui,sans-serif;">
 

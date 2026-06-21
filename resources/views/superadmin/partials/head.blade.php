@@ -64,6 +64,18 @@
         /* ── Top header ── */
         .pc-header { background: #fff !important; border-bottom: 1px solid var(--inklu-border) !important; }
 
+        /* ── Brand logo (dashboard sidebar) ── */
+        .pc-sidebar .m-header { height: 86px !important; }
+        .brand-logo-img { height: 86px; width: auto; max-width: 200px; object-fit: contain; }
+        @media (max-width: 991px) {
+            .pc-sidebar .m-header { height: 64px !important; }
+            .brand-logo-img { height: 64px; max-width: 160px; }
+        }
+        @media (max-width: 575px) {
+            .pc-sidebar .m-header { height: 52px !important; }
+            .brand-logo-img { height: 52px; max-width: 130px; }
+        }
+
         /* ── Global overflow guard ── */
         html, body { overflow-x: hidden; max-width: 100%; }
         .pc-container { max-width: 100%; overflow-x: hidden; }

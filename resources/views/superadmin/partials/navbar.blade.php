@@ -5,7 +5,7 @@
             <a href="{{ route('superadmin.dashboard') }}" class="b-brand text-white"
                style="display:flex;align-items:center;gap:0.6rem;padding:0 1rem;text-decoration:none;">
                 @if(!empty($site['site_logo']))
-                    <img src="{{ asset('storage/'.$site['site_logo']) }}" alt="{{ $site['site_name'] ?? 'Child See' }}" style="height:30px;width:auto;object-fit:contain;">
+                    <img src="{{ asset('storage/'.$site['site_logo']) }}" alt="{{ $site['site_name'] ?? 'Child See' }}" class="brand-logo-img">
                 @else
                     <svg width="30" height="30" viewBox="0 0 48 48" fill="none">
                         <circle cx="24" cy="24" r="22" stroke="#BAA6D6" stroke-width="2"/>

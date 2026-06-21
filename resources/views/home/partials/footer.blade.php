@@ -6,7 +6,7 @@
             <div class="md:col-span-2">
                 <div class="flex items-center gap-3 mb-4">
                     @if(!empty($site['site_logo']))
-                        <img src="{{ asset('storage/'.$site['site_logo']) }}" alt="{{ $site['site_name'] ?? 'Child See' }}" class="h-10 w-auto object-contain">
+                        <img src="{{ asset('storage/'.$site['site_logo']) }}" alt="{{ $site['site_name'] ?? 'Child See' }}" class="footer-logo-img">
                     @else
                         <span class="grid place-items-center w-10 h-10 rounded-full" style="background:rgba(245,245,246,0.10);">
                             <svg viewBox="0 0 40 40" class="w-8 h-8">

@@ -1,10 +1,10 @@
 {{-- Child See Navigation --}}
 <header class="sticky top-0 z-40" style="background:rgba(245,245,246,0.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(186,166,214,0.25);">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between {{ !empty($site['site_logo']) ? 'nav-brand-row' : 'h-16' }}">
         {{-- Logo --}}
         <a href="{{ route('home') }}" class="flex items-center gap-3">
             @if(!empty($site['site_logo']))
-                <img src="{{ asset('storage/'.$site['site_logo']) }}" alt="{{ $site['site_name'] ?? 'Child See' }}" class="h-10 w-auto object-contain">
+                <img src="{{ asset('storage/'.$site['site_logo']) }}" alt="{{ $site['site_name'] ?? 'Child See' }}" class="brand-logo-img">
             @else
                 <span class="relative grid place-items-center w-10 h-10 rounded-full" style="background:#8E77AB;">
                     <svg viewBox="0 0 40 40" class="w-8 h-8">

@@ -13,6 +13,16 @@
   <style>
     body { font-family: 'Josefin Sans', sans-serif; background: #F0EEF5; }
     .sidebar { width: 260px; background: #2E2046; min-height: 100vh; flex-shrink: 0; position: fixed; left: 0; top: 0; bottom: 0; z-index: 50; transition: transform .3s; overflow-y: auto; }
+    .sidebar-brand { min-height: 86px; }
+    .brand-logo-img { height: 86px; width: auto; max-width: 200px; object-fit: contain; }
+    @media (max-width: 991px) {
+      .sidebar-brand { min-height: 64px; }
+      .brand-logo-img { height: 64px; max-width: 160px; }
+    }
+    @media (max-width: 575px) {
+      .sidebar-brand { min-height: 52px; }
+      .brand-logo-img { height: 52px; max-width: 130px; }
+    }
     .sidebar-link { display: flex; align-items: center; gap: 12px; padding: 10px 20px; color: rgba(255,255,255,.65); font-size: 14px; font-weight: 500; border-radius: 10px; margin: 2px 12px; transition: all .2s; text-decoration: none; }
     .sidebar-link:hover { background: rgba(90,71,127,.5); color: #fff; }
     .sidebar-link.active { background: rgba(142,119,171,.3); color: #B9A5D6; }
@@ -49,9 +59,9 @@
 
 {{-- Sidebar --}}
 <aside class="sidebar" id="sidebar">
-  <div class="flex items-center gap-3 px-6 py-5 border-b border-white/10">
+  <div class="sidebar-brand flex items-center gap-3 px-6 py-5 border-b border-white/10">
     @if(!empty($site['site_logo']))
-      <img src="{{ asset('storage/'.$site['site_logo']) }}" alt="{{ $site['site_name'] ?? 'Child See' }}" class="h-8 w-auto object-contain">
+      <img src="{{ asset('storage/'.$site['site_logo']) }}" alt="{{ $site['site_name'] ?? 'Child See' }}" class="brand-logo-img">
     @else
       <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:#8E77AB">
         <i class="fas fa-eye text-white text-base"></i>
