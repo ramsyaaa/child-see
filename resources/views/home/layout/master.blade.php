@@ -9,7 +9,7 @@
     <meta name="keywords" content="{{ $site['seo_keywords'] }}" />
     @endif
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <link rel="icon" href="{{ !empty($site['site_logo']) ? asset('storage/'.$site['site_logo']) : asset('favicon-childsee.png') }}" type="image/x-icon" />
+    <link rel="icon" href="{{ faviconUrl($site ?? null) }}" type="image/x-icon" />
 
     {{-- Open Graph --}}
     <meta property="og:type" content="website" />

@@ -5,15 +5,19 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-10 py-12 grid md:grid-cols-4 gap-10">
             <div class="md:col-span-2">
                 <div class="flex items-center gap-3 mb-4">
-                    <span class="grid place-items-center w-10 h-10 rounded-full" style="background:rgba(245,245,246,0.10);">
-                        <svg viewBox="0 0 40 40" class="w-8 h-8">
-                            <circle cx="20" cy="20" r="14" fill="none" stroke="#BAA6D6" stroke-width="1.2"/>
-                            <circle cx="20" cy="20" r="8"  fill="none" stroke="#F5F5F6" stroke-width="1.2"/>
-                            <circle cx="20" cy="12" r="2" fill="#BAA6D6"/><circle cx="20" cy="28" r="2" fill="#BAA6D6"/>
-                            <circle cx="12" cy="20" r="2" fill="#BAA6D6"/><circle cx="28" cy="20" r="2" fill="#BAA6D6"/>
-                        </svg>
-                    </span>
-                    <div class="font-display text-xl">Child <span style="color:#BAA6D6;">See</span></div>
+                    @if(!empty($site['site_logo']))
+                        <img src="{{ asset('storage/'.$site['site_logo']) }}" alt="{{ $site['site_name'] ?? 'Child See' }}" class="h-10 w-auto object-contain">
+                    @else
+                        <span class="grid place-items-center w-10 h-10 rounded-full" style="background:rgba(245,245,246,0.10);">
+                            <svg viewBox="0 0 40 40" class="w-8 h-8">
+                                <circle cx="20" cy="20" r="14" fill="none" stroke="#BAA6D6" stroke-width="1.2"/>
+                                <circle cx="20" cy="20" r="8"  fill="none" stroke="#F5F5F6" stroke-width="1.2"/>
+                                <circle cx="20" cy="12" r="2" fill="#BAA6D6"/><circle cx="20" cy="28" r="2" fill="#BAA6D6"/>
+                                <circle cx="12" cy="20" r="2" fill="#BAA6D6"/><circle cx="28" cy="20" r="2" fill="#BAA6D6"/>
+                            </svg>
+                        </span>
+                        <div class="font-display text-xl">Child <span style="color:#BAA6D6;">See</span></div>
+                    @endif
                 </div>
                 <p class="text-sm leading-relaxed max-w-md" style="color:rgba(245,245,246,0.80);">
                     Platform identifikasi awal Anak Berkebutuhan Khusus (ABK) tingkat Sekolah Dasar,

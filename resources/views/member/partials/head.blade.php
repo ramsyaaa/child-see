@@ -9,7 +9,7 @@
     <meta name="author" content="Child See" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- [Favicon] icon -->
-    <link rel="icon" href="{{ !empty($site['site_logo']) ? asset('storage/'.$site['site_logo']) : asset('favicon-childsee.png') }}" type="image/x-icon" />
+    <link rel="icon" href="{{ faviconUrl($site ?? null) }}" type="image/x-icon" />
     @if(!empty($site['og_image']))
     <meta property="og:image" content="{{ asset('storage/'.$site['og_image']) }}" />
     @endif

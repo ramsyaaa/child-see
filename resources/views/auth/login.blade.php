@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Masuk — Child See</title>
-    <link rel="icon" href="{{ !empty($site['site_logo']) ? asset('storage/'.$site['site_logo']) : asset('favicon-childsee.png') }}" type="image/x-icon" />
+    <link rel="icon" href="{{ faviconUrl($site ?? null) }}" type="image/x-icon" />
     @if(!empty($site['og_image']))
     <meta property="og:image" content="{{ asset('storage/'.$site['og_image']) }}" />
     @endif
@@ -21,13 +21,17 @@
         <div class="kawung-overlay" style="position:absolute;inset:0;opacity:0.06;background-image:var(--kawung);background-size:60px 60px;"></div>
         <div style="position:relative;z-index:1;">
             <a href="{{ route('home') }}" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;">
-                <svg width="32" height="32" viewBox="0 0 48 48" fill="none">
-                    <circle cx="24" cy="24" r="22" stroke="#BAA6D6" stroke-width="2"/>
-                    <circle cx="24" cy="24" r="15" stroke="#BAA6D6" stroke-width="1.5"/>
-                    <circle cx="24" cy="24" r="8" fill="#BAA6D6" opacity="0.5"/>
-                    <circle cx="24" cy="24" r="3" fill="#BAA6D6"/>
-                </svg>
-                <span style="font-family:'Playfair Display SC',serif;color:#F5F5F6;font-size:1.1rem;letter-spacing:0.06em;">Child See</span>
+                @if(!empty($site['site_logo']))
+                    <img src="{{ asset('storage/'.$site['site_logo']) }}" alt="{{ $site['site_name'] ?? 'Child See' }}" style="height:32px;width:auto;object-fit:contain;">
+                @else
+                    <svg width="32" height="32" viewBox="0 0 48 48" fill="none">
+                        <circle cx="24" cy="24" r="22" stroke="#BAA6D6" stroke-width="2"/>
+                        <circle cx="24" cy="24" r="15" stroke="#BAA6D6" stroke-width="1.5"/>
+                        <circle cx="24" cy="24" r="8" fill="#BAA6D6" opacity="0.5"/>
+                        <circle cx="24" cy="24" r="3" fill="#BAA6D6"/>
+                    </svg>
+                    <span style="font-family:'Playfair Display SC',serif;color:#F5F5F6;font-size:1.1rem;letter-spacing:0.06em;">Child See</span>
+                @endif
             </a>
         </div>
         <div style="position:relative;z-index:1;">
@@ -50,8 +54,12 @@
     <div style="padding:2.5rem;display:flex;flex-direction:column;justify-content:center;" class="md:col-span-1 col-span-2">
         <div class="md:hidden mb-6">
             <a href="{{ route('home') }}" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;">
-                <svg width="24" height="24" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="#5C477F" stroke-width="2"/><circle cx="24" cy="24" r="15" stroke="#5C477F" stroke-width="1.5"/><circle cx="24" cy="24" r="3" fill="#5C477F"/></svg>
-                <span style="font-family:'Playfair Display SC',serif;color:#4A3769;font-size:1rem;">Child See</span>
+                @if(!empty($site['site_logo']))
+                    <img src="{{ asset('storage/'.$site['site_logo']) }}" alt="{{ $site['site_name'] ?? 'Child See' }}" style="height:24px;width:auto;object-fit:contain;">
+                @else
+                    <svg width="24" height="24" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="#5C477F" stroke-width="2"/><circle cx="24" cy="24" r="15" stroke="#5C477F" stroke-width="1.5"/><circle cx="24" cy="24" r="3" fill="#5C477F"/></svg>
+                    <span style="font-family:'Playfair Display SC',serif;color:#4A3769;font-size:1rem;">Child See</span>
+                @endif
             </a>
         </div>
 

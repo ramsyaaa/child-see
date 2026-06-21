@@ -57,7 +57,7 @@
                             </div>
                             @endif
                             <input type="file" name="site_logo" accept="image/*" class="form-control" style="border-color:#BAA6D6;">
-                            <small style="color:rgba(74,55,105,0.50);">Disarankan PNG transparan, min. 200px. Maks. 5MB (otomatis dikompres ke ±500KB). Biarkan kosong untuk tidak mengubah.</small>
+                            <small style="color:rgba(74,55,105,0.50);">Disarankan PNG transparan, min. 200px. Maks. 5MB. Biarkan kosong untuk tidak mengubah.</small>
                         </div>
                     </div>
                 </div>
@@ -129,7 +129,7 @@
                         <div class="mb-2"><img src="{{ asset('storage/' . $settings['og_image']) }}" style="width:100%;border-radius:6px;border:1px solid rgba(186,166,214,0.3);" alt="OG"></div>
                         @endif
                         <input type="file" name="og_image" accept="image/*" class="form-control" style="border-color:#BAA6D6;">
-                        <small style="color:rgba(74,55,105,0.50);">Disarankan 1200×630px. Maks. 5MB (otomatis dikompres ke ±500KB).</small>
+                        <small style="color:rgba(74,55,105,0.50);">Disarankan 1200×630px. Maks. 5MB.</small>
                     </div>
 
                     <!-- Google SERP Preview -->

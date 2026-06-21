@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;700&family=Josefin+Sans:wght@300;400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-    <link rel="icon" href="{{ !empty($site['site_logo']) ? asset('storage/'.$site['site_logo']) : asset('favicon-childsee.png') }}" type="image/x-icon" />
+    <link rel="icon" href="{{ faviconUrl($site ?? null) }}" type="image/x-icon" />
     @if(!empty($site['og_image']))
     <meta property="og:image" content="{{ asset('storage/'.$site['og_image']) }}" />
     @endif

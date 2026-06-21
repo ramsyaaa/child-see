@@ -4,7 +4,7 @@
         {{-- Logo --}}
         <a href="{{ route('home') }}" class="flex items-center gap-3">
             @if(!empty($site['site_logo']))
-                <img src="{{ asset('storage/'.$site['site_logo']) }}" alt="{{ $site['site_name'] ?? 'Child See' }}" class="w-10 h-10 rounded-full object-cover">
+                <img src="{{ asset('storage/'.$site['site_logo']) }}" alt="{{ $site['site_name'] ?? 'Child See' }}" class="h-10 w-auto object-contain">
             @else
                 <span class="relative grid place-items-center w-10 h-10 rounded-full" style="background:#8E77AB;">
                     <svg viewBox="0 0 40 40" class="w-8 h-8">
@@ -17,11 +17,11 @@
                         <circle cx="9"  cy="20" r="2"  fill="#F5F5F6" opacity=".7"/>
                     </svg>
                 </span>
+                <div class="leading-tight">
+                    <div class="font-display text-[18px] font-semibold" style="color:#4A3769;">Child <span style="color:#BAA6D6;">See</span></div>
+                    <div class="text-[10px] uppercase -mt-0.5" style="letter-spacing:0.16em;color:rgba(92,71,127,0.55);">Identifikasi ABK</div>
+                </div>
             @endif
-            <div class="leading-tight">
-                <div class="font-display text-[18px] font-semibold" style="color:#4A3769;">Child <span style="color:#BAA6D6;">See</span></div>
-                <div class="text-[10px] uppercase -mt-0.5" style="letter-spacing:0.16em;color:rgba(92,71,127,0.55);">Identifikasi ABK</div>
-            </div>
         </a>
 
         {{-- Desktop Nav --}}

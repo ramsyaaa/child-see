@@ -4,13 +4,17 @@
         <div class="m-header" style="background:var(--inklu-sidebar,#2E2046)!important;border-bottom:1px solid rgba(186,166,214,.15);">
             <a href="{{ route('superadmin.dashboard') }}" class="b-brand text-white"
                style="display:flex;align-items:center;gap:0.6rem;padding:0 1rem;text-decoration:none;">
-                <svg width="30" height="30" viewBox="0 0 48 48" fill="none">
-                    <circle cx="24" cy="24" r="22" stroke="#BAA6D6" stroke-width="2"/>
-                    <circle cx="24" cy="24" r="15" stroke="#BAA6D6" stroke-width="1.5"/>
-                    <circle cx="24" cy="24" r="8"  fill="#BAA6D6" opacity="0.35"/>
-                    <circle cx="24" cy="24" r="3"  fill="#BAA6D6"/>
-                </svg>
-                <span style="font-family:'Playfair Display SC',serif;color:#F5F5F6;font-size:0.95rem;letter-spacing:0.06em;">Child See</span>
+                @if(!empty($site['site_logo']))
+                    <img src="{{ asset('storage/'.$site['site_logo']) }}" alt="{{ $site['site_name'] ?? 'Child See' }}" style="height:30px;width:auto;object-fit:contain;">
+                @else
+                    <svg width="30" height="30" viewBox="0 0 48 48" fill="none">
+                        <circle cx="24" cy="24" r="22" stroke="#BAA6D6" stroke-width="2"/>
+                        <circle cx="24" cy="24" r="15" stroke="#BAA6D6" stroke-width="1.5"/>
+                        <circle cx="24" cy="24" r="8"  fill="#BAA6D6" opacity="0.35"/>
+                        <circle cx="24" cy="24" r="3"  fill="#BAA6D6"/>
+                    </svg>
+                    <span style="font-family:'Playfair Display SC',serif;color:#F5F5F6;font-size:0.95rem;letter-spacing:0.06em;">Child See</span>
+                @endif
             </a>
         </div>
 

@@ -50,13 +50,17 @@
 {{-- Sidebar --}}
 <aside class="sidebar" id="sidebar">
   <div class="flex items-center gap-3 px-6 py-5 border-b border-white/10">
-    <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:#8E77AB">
-      <i class="fas fa-eye text-white text-base"></i>
-    </div>
-    <div>
-      <div class="text-white font-semibold text-sm" style="font-family:'Playfair Display',serif">Child See</div>
-      <div class="text-white/40 text-xs">Member Portal</div>
-    </div>
+    @if(!empty($site['site_logo']))
+      <img src="{{ asset('storage/'.$site['site_logo']) }}" alt="{{ $site['site_name'] ?? 'Child See' }}" class="h-8 w-auto object-contain">
+    @else
+      <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:#8E77AB">
+        <i class="fas fa-eye text-white text-base"></i>
+      </div>
+      <div>
+        <div class="text-white font-semibold text-sm" style="font-family:'Playfair Display',serif">Child See</div>
+        <div class="text-white/40 text-xs">Member Portal</div>
+      </div>
+    @endif
   </div>
 
   <nav class="py-4">

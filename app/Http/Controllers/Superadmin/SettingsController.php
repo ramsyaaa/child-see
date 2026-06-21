@@ -4,16 +4,11 @@ namespace App\Http\Controllers\Superadmin;
 
 use App\Http\Controllers\Controller;
 use App\Models\SiteSettings;
-use App\Services\ImageCompressionService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class SettingsController extends Controller
 {
-    public function __construct(private ImageCompressionService $imageCompression)
-    {
-    }
-
     public function index()
     {
         $settings = SiteSettings::all_as_array();
@@ -39,17 +34,17 @@ class SettingsController extends Controller
             'og_image'        => 'nullable|image|max:5120',
         ]);
 
-        // Handle logo upload — compressed to ~500KB for fast loading
+        // Handle logo upload
         if ($request->hasFile('site_logo') && $request->file('site_logo')->isValid()) {
             $old = SiteSettings::get('site_logo');
-            $fields['site_logo'] = $this->imageCompression->storeCompressed($request->file('site_logo'), 'logos', 500);
+            $fields['site_logo'] = $request->file('site_logo')->store('logos', 'public');
             if ($old) Storage::disk('public')->delete($old);
         }
 
-        // Handle OG image upload — compressed to ~500KB for fast loading
+        // Handle OG image upload
         if ($request->hasFile('og_image') && $request->file('og_image')->isValid()) {
             $old = SiteSettings::get('og_image');
-            $fields['og_image'] = $this->imageCompression->storeCompressed($request->file('og_image'), 'og', 500);
+            $fields['og_image'] = $request->file('og_image')->store('og', 'public');
             if ($old) Storage::disk('public')->delete($old);
         }
 
